@@ -1,0 +1,25 @@
+{
+  "name": "cappuccino",
+  "authors": [
+    "Daniel Pedro <danielfpedro@gmailcom>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower": "*",
+    "install": "^1.0.4",
+    "jquery": "^2.2.3",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.1"
+  }
+}
