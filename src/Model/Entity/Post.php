@@ -51,6 +51,11 @@ class Post extends Entity
         ];
     }
 
+    protected function _getFullImgPath()
+    {
+        return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/' . $this->_properties['photo'];
+    }
+
     protected function _setTitle($title)
     {
         $this->set('slug', strtolower(Inflector::slug($title)));
