@@ -3,6 +3,7 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\Utility\Inflector;
+use Cake\I18n\Time;
 
 /**
  * Post Entity.
@@ -51,9 +52,18 @@ class Post extends Entity
         ];
     }
 
+    protected function _getPubDateInWords()
+    {
+        $config = ['accuracy' => 'day'];
+        return (new Time($this->_properties['pub_date']))->timeAgoInWords($config);
+    }
     protected function _getFullImgPath()
     {
         return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/' . $this->_properties['photo'];
+    }
+    protected function _getFullImgSquarePath()
+    {
+        return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/square_' . $this->_properties['photo'];
     }
 
     protected function _setTitle($title)

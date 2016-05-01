@@ -92,11 +92,12 @@ class PostsTable extends Table
             ->requirePresence('tags', 'create')
             ->notEmpty('tags');
 
-        $validator
-            ->allowEmpty('photo');
 
         $validator
             ->allowEmpty('photo_dir');
+            
+        $validator
+            ->allowEmpty('photo');
 
         $validator
             ->requirePresence('pub_date', 'create')

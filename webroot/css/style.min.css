@@ -1,6 +1,100 @@
 a {
   text-decoration: none !important; }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0; }
+
+.label {
+  display: inline-block;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999em;
+  line-height: 22px;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-decoration: none; }
+
+.label-default {
+  background-color: #e67e22;
+  color: #FFF; }
+
+.label-sm {
+  font-size: 9px;
+  height: 20px; }
+
+.box-padding-top {
+  padding-top: 25px; }
+
+.text-block-padding-top {
+  margin-top: 5px; }
+
+.ad-horizontal-full {
+  text-align: center;
+  margin: 50px 0; }
+
+.side-col-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.post-compact {
+  border-bottom: 1px solid #e6e6e6;
+  overflow: hidden;
+  height: auto;
+  padding: 0px 0 10px;
+  margin-bottom: 25px; }
+
+.post-compact-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.post-compact-body > h2 {
+  margin: 0;
+  margin-top: 0;
+  line-height: 18px; }
+
+.post-compact-body > h2 > a {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000; }
+
+.post-compact-body > span.pub-date {
+  font-size: 12px;
+  font-weight: normal;
+  font-color: #000;
+  margin-top: 5px;
+  display: block; }
+
+.post-compact-footer {
+  margin-top: 10px; }
+
+.post-compact-footer a {
+  color: #000;
+  font-size: 12px; }
+
+.post-compact-avatar > a > img {
+  width: 100%; }
+
+.post-compact-pub-date {
+  color: #666666;
+  font-size: 12px;
+  text-align: left; }
+
+.post-compact-share {
+  color: #000;
+  font-size: 12px;
+  text-align: right; }
+
 .posts-main-container {
   background-image: url("../img/bg_home_main.jpg");
   background-size: cover;
@@ -40,33 +134,37 @@ a {
   background-size: cover;
   background-position: center center;
   /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-  -webkit-border-radius: 6px;
+  -webkit-border-radius: 4px;
   /* Firefox 1-3.6 */
-  -moz-border-radius: 6px;
+  -moz-border-radius: 4px;
   /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-  border-radius: 6px;
+  border-radius: 4px;
   position: relative;
   z-index: 1;
   text-align: center;
   padding: 20px 40px; }
+
+.post-main-content {
+  background-color: #red; }
 
 .post-main > h2 {
   margin: 0;
   margin-top: 10px;
   color: #FFF;
   font-weight: bold;
-  font-size: 26px; }
+  font-size: 26px;
+  line-height: 35px; }
 
 .post-main > p {
   margin: 0; }
 
 .post-main::after {
   /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-  -webkit-border-radius: 6px;
+  -webkit-border-radius: 4px;
   /* Firefox 1-3.6 */
-  -moz-border-radius: 6px;
+  -moz-border-radius: 4px;
   /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-  border-radius: 6px;
+  border-radius: 4px;
   content: "";
   display: block;
   height: 100%;
@@ -76,5 +174,72 @@ a {
   width: 100%;
   z-index: -1;
   background-color: rgba(0, 0, 0, 0.6); }
+
+.post-main-small {
+  padding: 15px;
+  background-color: #FFF;
+  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+  -webkit-border-radius: 4px;
+  /* Firefox 1-3.6 */
+  -moz-border-radius: 4px;
+  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+  border-radius: 4px; }
+
+.post-main-small-avatar > img {
+  width: 100%; }
+
+.post-main-small-body > h3 {
+  line-height: 18px; }
+
+.post-main-small-body > h3 > a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000; }
+
+.post-latest-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.post-latest-body > h2 {
+  margin-top: 10px; }
+
+.post-latest-body > h2 > a {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000; }
+
+.post-latest-body > span.pub-date {
+  font-size: 12px;
+  font-weight: normal;
+  font-color: #000;
+  margin-top: 5px;
+  display: block; }
+
+.post-latest-footer {
+  margin-top: 20px;
+  text-align: left; }
+
+.post-latest-footer > a {
+  color: #000;
+  font-size: 12px; }
+
+.post-latest {
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 25px; }
+
+.post-latest-avatar > a > img {
+  width: 100%; }
 
 /*# sourceMappingURL=style.min.css.map */

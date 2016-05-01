@@ -24,8 +24,31 @@ class SiteController extends AppController
 			'limit' => 2
 		]);
 
+		$mainSmall = $this->Posts->find('all', [
+			'contain' => [
+				'Categories'
+			],
+			'limit' => 3
+		]);
+
+		$latest = $this->Posts->find('all', [
+			'contain' => [
+				'Categories'
+			]
+		]);
+
+		$trend = $this->Posts->find('all', [
+			'contain' => [
+				'Categories'
+			],
+			'limit' => 8
+		]);
+
 		$this->set([
-			'main' => $main
+			'main' => $main,
+			'mainSmall' => $mainSmall,
+			'latest' => $latest,
+			'trend' => $trend,
 		]);
 	}
 }
