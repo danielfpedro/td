@@ -8,6 +8,8 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title><?= $this->fetch('title') ?></title>
 
+
+        <?= $this->Html->css('../lib/animate.css/animate.min') ?>
         <!-- Bootstrap -->
         <?= $this->Html->css('../lib/bootstrap/dist/css/bootstrap.min') ?>
         
@@ -28,5 +30,13 @@
 
         <?= $this->Html->script('../lib/jquery/dist/jquery.min') ?>
         <?= $this->Html->script('../lib/bootstrap/dist/js/bootstrap.min') ?>
+
+        <script>
+            $(function(){
+                window.setTimeout(function(){
+                    $('.ad-horizontal-full > a').show().addClass('animated fadeInLeft');
+                }, 1000);
+            })
+        </script>
     </body>
 </html>

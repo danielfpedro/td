@@ -1,4 +1,4 @@
-<div class="posts-main-container">
+<div class="posts-main-container posts-main-container-has-horizontal-ad">
 	<div class="container">
 		
 			<div class="row">
@@ -8,6 +8,10 @@
 							<div
 								class="post-main"
 								style="background-image: url(<?= $this->Url->image($post->full_img_path) ?>);">
+
+								<a href="#">
+									<div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;z-index:-1;"></div>
+								</a>
 								
 								<div class="post-main-content">
 <!-- 									<span class="label label-default">

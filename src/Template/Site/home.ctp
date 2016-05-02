@@ -59,7 +59,7 @@
 <div class="main-wrap">
 
 	<div class="ad-horizontal-full">
-		<a href="#">
+		<a href="#" style="display: none">
 			<img src="http://placehold.it/800x90">
 		</a>
 	</div>
