@@ -1,4 +1,6 @@
-$main-color: #e67e22;
+$main-color: #9b59b6;
+$border-radius: 4px;
+$title-color: lighten(#000, 15%);
 
 // deve ser do mesmo tamanho do gutter do bootstrap para ficar harmonioso
 $box-padding: 25px;
@@ -10,20 +12,22 @@ $text-block-padding-lg: $text-block-padding * 2;
 // MAIN
 $main-post-border-radius: 4px;
 $main-post-height: 250px;
+$main-post-title-size: 22px;
+$main-post-title-line-height: 30px;
 
 // MAIN SMALL
 $post-main-small-padding: 15px;
 $post-main-small-bgcolor: #FFF;
-$post-main-small-border-radius: 4px;
+$post-main-small-border-radius: $border-radius;
 $post-main-small-line-height: 18px;
-$post-main-small-title-color: #000;
+$post-main-small-title-color: $title-color;
 $post-main-small-title-size: 16px;
 $post-main-small-title-weight: bold;
 
 // LATEST POSTS
 $post-latest-title-size: 22px;
 $post-latest-title-weight: bold;
-$post-latest-title-color: #000; 
+$post-latest-title-color: $title-color; 
 
 $post-latest-pub-date-size: 12px;
 $post-latest-pub-date-weight: normal;
