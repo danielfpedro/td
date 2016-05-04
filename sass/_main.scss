@@ -98,7 +98,7 @@
 	margin-right: $post-main-small-avatar-offset-right;
 }
 .post-main-small-avatar > a > img{
-	width: 90px;
+	width: $post-main-small-avatar-width;
 }
 .post-main-small-body {
 	text-align: left;

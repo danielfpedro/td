@@ -1,9 +1,14 @@
+
 .post-latest-content {
     @include flexbox();
     @include flex-direction(column);
 }
 .post-latest-body > h2{
-    margin-top: 10px;
+    line-height: $post-latest-title-line-height;
+    margin-top: $post-latest-title-offset-up;
+}
+.post-latest-body > p {
+    margin-top: 8px;
 }
 
 .post-latest-body > h2 > a{
@@ -14,26 +19,34 @@
 .post-latest-body > span.pub-date {
     font-size: $post-latest-pub-date-size;
     font-weight: $post-latest-pub-date-weight;
-    font-color: $post-latest-pub-date-color;
+    color: $post-latest-pub-date-color;
     margin-top: $post-latest-pub-date-offset-up;
     display: block;
 }
 
 .post-latest-footer {
     margin-top: 20px;
-    text-align: left;
 }
 .post-latest-footer > a {
-    color: #000;
-    font-size: 12px;
+    color: $post-latest-action-buttons-color;
+    font-size: $post-latest-action-buttons-size;
+}
+.post-latest-footer > a > span.fa {
+    font-size: $post-latest-action-buttons-icon-size;
 }
 
 .post-latest {
     border: 1px solid darken(#FFF, 10%);
+    background-color: #fff;
     overflow: hidden;
     height: auto;
     padding: 20px;
-    margin-bottom: 25px;
+
+    margin-bottom: 15px;
+
+    @include border-radius($post-latest-border-radius);
+
+    // border-bottom: 1px solid $border-color;
 }
 .post-latest-avatar{
 

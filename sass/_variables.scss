@@ -1,7 +1,11 @@
 $main-color: #9b59b6;
 $border-radius: 4px;
-$title-color: lighten(#000, 15%);
+$title-color: lighten(#000, 20%);
+$border-color: darken(#FFF, 12%);
 
+// COLORS
+$color-muted: darken(#FFF, 50%);
+$positive-color: #3498db;
 // deve ser do mesmo tamanho do gutter(30px) do bootstrap para ficar harmonioso
 $box-margin: 30px;
 $box-padding: $box-margin;
@@ -23,34 +27,42 @@ $post-main-title-size: 22px;
 $post-main-title-line-height: 30px;
 
 // MAIN SMALL
-$post-main-small-padding: 12px;
+$post-main-small-padding: 10px;
 $post-main-small-bgcolor: #FFF;
 $post-main-small-border-radius: $border-radius;
 $post-main-small-line-height: 22px;
 $post-main-small-title-color: ($title-color);
-$post-main-small-title-size: 16px;
+$post-main-small-title-size: 17px;
 $post-main-small-title-weight: bold;
 $post-main-small-avatar-offset-right: 18px;
+$post-main-small-avatar-width: 60px;
 
 // LATEST POSTS
+$post-latest-border-radius: $border-radius;
 $post-latest-title-size: 22px;
 $post-latest-title-weight: bold;
-$post-latest-title-color: $title-color; 
+$post-latest-title-color: $title-color;
+$post-latest-title-line-height: 22px;
+$post-latest-title-offset-up: 10px;
 
 $post-latest-pub-date-size: 12px;
 $post-latest-pub-date-weight: normal;
-$post-latest-pub-date-color: #000; 
-$post-latest-pub-date-offset-up: 5px;
+$post-latest-pub-date-color: $color-muted; 
+$post-latest-pub-date-offset-up: 8px;
+
+$post-latest-action-buttons-size: 12px;
+$post-latest-action-buttons-icon-size: 14px;
+$post-latest-action-buttons-color: $color-muted;
 
 // COMPACT POSTS
-$post-compact-padding: 0px 0 10px;
+$post-compact-padding: 15px 0;
 $post-compact-title-size: 15px;
-$post-compact-title-line-height: 18px; 
+$post-compact-title-line-height: 15px; 
 $post-compact-title-weight: bold;
-$post-compact-title-color: #000; 
+$post-compact-title-color: $title-color; 
 $post-compact-title-offset-up: 0;
 
 $post-compact-pub-date-size: 12px;
 $post-compact-pub-date-weight: normal;
 $post-compact-pub-date-color: #000; 
-$post-compact-pub-date-offset-up: 5px;
+$post-compact-pub-date-offset-up: 4px;

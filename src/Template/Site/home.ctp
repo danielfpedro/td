@@ -43,7 +43,7 @@
         	<a href="#" class="text-primary">
         		<span class="fa fa-facebook"></span>
         	</a>
-        </li>
+        </li> 
         <li>
         	<a href="#" class="text-danger">
         		<span class="fa fa-youtube-play"></span>
@@ -63,51 +63,21 @@
 <div class="main-wrap main-container-has-horizontal-ad">
 
 	<div class="ad-horizontal-full">
-		<img src="http://placehold.it/800x90">
+		<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
 	</div>
 
 	<?= $this->element('Site/home_main') ?>
 </div>
 
-<div class="container" style="margin-top: 20px;">
-		<h4 class="side-col-title">Últimos posts</h4>
+<div class="container" style="margin-top: 60px;">
 		<div class="row">
 			<div class="col-md-8">
-				<?php for ($i=0; $i < 4; $i++): ?>
-				<?php foreach ($latest as $post): ?>
-					<div class="post-latest">
-						<div class="row">
-							<div class="col-md-3 post-latest-avatar">
-								<?= $this->Html->image($post->full_img_square_path, ['url' => ['controller' => 'Posts']]) ?>
-							</div>
-							<div class="col-md-9">
-								<div class="post-latest-content">
-									<div class="post-latest-body">
-										<div class="label label-default">
-											Noticias
-										</div>
-										<h2 class=""><?= $this->Html->link($post->title, []) ?></h2>
-										<span class="pub-date"><?= $post->pub_date_in_words ?></span>	
-									</div>
-									<div class="post-latest-footer">
-										<?= $this->Html->link('<span class="fa fa-heart"></span> Compartilhar',
-											[],
-											[
-												'escape' => false
-											])
-										?>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				<?php endforeach ?>
-				<?php endfor; ?>
+				<?= $this->element('Site/latest_posts') ?>
 			</div>
 			<div class="col-md-4">
 				<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="230" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 				
-				<h4 class="side-col-title">Trend posts</h4>
+				<h4 class="title title-with-divider">Trend posts</h4>
 
 				<?php foreach ($latest as $post): ?>
 					<div class="post-compact">
@@ -115,23 +85,21 @@
 							<div class="col-md-3 post-compact-avatar">
 								<?= $this->Html->image($post->full_img_square_path, ['class' => 'img-circle', 'url' => ['controller' => 'Posts']]) ?>
 							</div>
-							<div class="col-md-9">
-								<div class="post-compact-body">
-									<h2 class="">
-										<?= $this->Html->link($post->title, []) ?>
-									</h2>
-									<div class="row post-compact-footer">
-										<div class="col-md-5 post-compact-pub-date">
-											<span class="pub-date"><?= $post->pub_date_in_words ?></span>	
-										</div>
-										<div class="col-md-7 post-compact-share">
-											<?= $this->Html->link('<span class="fa fa-heart"></span> Compartilhar',
-												[],
-												[
-													'escape' => false
-												])
-											?>
-										</div>
+							<div class="col-md-9 post-compact-body">
+								<h2 class="">
+									<?= $this->Html->link($post->title, []) ?>
+								</h2>
+								<div class="row post-compact-footer">
+									<div class="col-md-5 post-compact-pub-date">
+										<span class="pub-date"><?= $post->pub_date_in_words ?></span>	
+									</div>
+									<div class="col-md-7 post-compact-share">
+										<?= $this->Html->link('<span class="fa fa-heart"></span> Compartilhar',
+											[],
+											[
+												'escape' => false
+											])
+										?>
 									</div>
 								</div>
 							</div>

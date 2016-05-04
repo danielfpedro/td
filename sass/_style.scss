@@ -1,13 +1,21 @@
 body {
     // Fixed navbar offset
     padding-top: 50px;
-    font-family: 'Lato', sans-serif;
+    background-color: darken(#FFF, 4%);    
+}
+body, a {
+    font-family: 'Lato', sans-serif!important;
 }
 a {
 	text-decoration: none!important;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
+}
+
+.post-call-subtitle {
+    color: $color-muted;
+    font-size: 14px;
 }
 
 // BOX PADDING
@@ -59,20 +67,23 @@ $color: darken(#FFF, 20%);
     color: darken($main-color, 20%)!important;
 }
 .label {
-    $height: 20px;
+    $height: 18px;
 	display: inline-block;
     height: $height;
     padding: 0 10px;
     border-radius: 999em;
-    line-height: $height;
-    font-size: 10px;
+    line-height: ($height + 1);
+    font-size: 8px;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
 }
-.label-default {
+.label-default, .label-default:hover {
     background-color: $main-color;
     color: #FFF;
+}
+.label-default:hover {
+    background-color: darken($main-color, 10%)!important;
 }
 .label-sm {
     font-size: 9px;
@@ -83,28 +94,39 @@ $color: darken(#FFF, 20%);
     margin-top: $text-block-padding;
 }
 
-.side-col-title {
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 20px;
+.title {
+    margin: 0;
+    font-size: 22px;
+    // font-weight: bold;
     margin-bottom: 20px;
+    color: $title-color;
 }
-
+.title-with-divider{
+    padding-bottom: 12px;
+    border-bottom: 1px solid $border-color;
+}
 .post-compact {
     border-bottom: 1px solid darken(#FFF, 10%);
     overflow: hidden;
     height: auto;
     padding: $post-compact-padding;
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
 }
-
 .post-compact-content {
     @include flexbox();
     @include flex-direction(column);
 }
+.post-compact-avatar{
+    margin-right: 0!important;
+    padding-right: 0!important;
+    padding-right: 18px!important;
+}
+.post-compact-body {
+    margin-left: 0!important;
+    padding-left: 0!important;
+}
 .post-compact-body > h2{
     margin: 0;
-    margin-top: $post-compact-title-offset-up;
     line-height: $post-compact-title-line-height;
 }
 
