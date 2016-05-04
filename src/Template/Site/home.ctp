@@ -21,20 +21,24 @@
       </ul>
 
       <div class="navbar-right">
-	      <form class="navbar-form navbar-left" role="search">
-	        <div class="form-group">
-	        	<div class="input-group">
-	        		<span class="input-group-btn">
-	        			<button type="submit" class="btn btn-default">
-	        				<span class="fa fa-search"></span>
-	        			</button>
-	        		</span>
-	          	<input type="text" class="form-control" placeholder="Buscar...">
-	          </div>
-	        </div>
-	        
-	      </form>
+<!-- 			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-btn">
+							<button type="submit" class="btn btn-default navbar-search-submit">
+								<span class="fa fa-search"></span>
+							</button>
+						</div>
+						<input type="search" class="form-control navbar-search-input" placeholder="Buscar...">
+					</div>
+				</div>
+			</form> -->
       <ul class="nav navbar-nav">
+        <li style="margin-right: 10px;">
+        	<a href="#" class="text-primary">
+        		<span class="fa fa-search"></span>
+        	</a>
+        </li>
         <li>
         	<a href="#" class="text-primary">
         		<span class="fa fa-facebook"></span>
@@ -56,12 +60,10 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="main-wrap">
+<div class="main-wrap main-container-has-horizontal-ad">
 
 	<div class="ad-horizontal-full">
-		<a href="#" style="display: none">
-			<img src="http://placehold.it/800x90">
-		</a>
+		<img src="http://placehold.it/800x90">
 	</div>
 
 	<?= $this->element('Site/home_main') ?>

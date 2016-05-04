@@ -2,27 +2,35 @@ $main-color: #9b59b6;
 $border-radius: 4px;
 $title-color: lighten(#000, 15%);
 
-// deve ser do mesmo tamanho do gutter do bootstrap para ficar harmonioso
-$box-padding: 25px;
+// deve ser do mesmo tamanho do gutter(30px) do bootstrap para ficar harmonioso
+$box-margin: 30px;
+$box-padding: $box-margin;
+
+$box-margin-sm: ($box-margin / 2);
+$box-padding-sm: $box-margin-sm;
+
+$box-margin-lg: ($box-margin * 1.5);
+$box-padding-lg: $box-margin-lg;
 
 // espaço entre blocos de texto
 $text-block-padding: 5px;
 $text-block-padding-lg: $text-block-padding * 2;
 
 // MAIN
-$main-post-border-radius: 4px;
-$main-post-height: 250px;
-$main-post-title-size: 22px;
-$main-post-title-line-height: 30px;
+$post-main-border-radius: 4px;
+$post-main-height: 250px;
+$post-main-title-size: 22px;
+$post-main-title-line-height: 30px;
 
 // MAIN SMALL
-$post-main-small-padding: 15px;
+$post-main-small-padding: 12px;
 $post-main-small-bgcolor: #FFF;
 $post-main-small-border-radius: $border-radius;
-$post-main-small-line-height: 18px;
-$post-main-small-title-color: $title-color;
+$post-main-small-line-height: 22px;
+$post-main-small-title-color: ($title-color);
 $post-main-small-title-size: 16px;
 $post-main-small-title-weight: bold;
+$post-main-small-avatar-offset-right: 18px;
 
 // LATEST POSTS
 $post-latest-title-size: 22px;

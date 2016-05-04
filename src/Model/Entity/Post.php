@@ -40,10 +40,10 @@ class Post extends Entity
         'id' => false,
     ];
 
-    protected function _getUrlViewParams()
+    protected function _getViewUrl()
     {
         return [
-            'controller' => 'Post',
+            'controller' => 'Posts',
             'action' => 'view',
             'year' => $this->_properties['year'],
             'month' => $this->_properties['month'],

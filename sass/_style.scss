@@ -10,6 +10,48 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+// BOX PADDING
+.box-padding {
+    padding: $box-padding;
+}
+.box-padding-top {
+    padding-top: $box-padding;
+}
+.box-padding-right {
+    padding-right: $box-padding;
+}
+.box-padding-bottom {
+    padding-bottom: $box-padding;
+}
+.box-padding-left {
+    padding-left: $box-padding;
+}
+// ADS
+.ad-horizontal-full {
+    text-align: center;
+    height: auto;
+    width: 100%;
+}
+$color: darken(#FFF, 20%);
+.navbar-search-input, .navbar-search-submit, .navbar-search-submit:hover {
+    border: none;
+    background: none;
+    box-shadow: none!important;
+    
+}
+.navbar-search-input, .navbar-search-input::-webkit-input-placeholder{
+    color: $color;
+    font-family: 'Slabo 27px', serif;
+    font-size: 14px;
+    font-style: italic;
+}
+.navbar-search-input {
+    color: darken($color, 30%);
+    font-weight: normal;
+}
+.navbar-search-submit, .navbar-search-submit:hover {
+    color: $color;
+}
 .navbar-nav > li > a {
     color: $main-color!important;
 }
@@ -37,18 +79,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 20px;
 }
 
-.box-padding-top {
-    padding-top: $box-padding;
-}
-
 .text-block-padding-top {
     margin-top: $text-block-padding;
-}
-
-.ad-horizontal-full {
-    text-align: center;
-    margin: 20px 0;
-    height: 90px;
 }
 
 .side-col-title {

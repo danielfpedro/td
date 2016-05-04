@@ -50,6 +50,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Site', 'action' => 'home']);
 
+    $routes->connect('/posts/:day/:month/:year/:slug', ['controller' => 'Posts', 'action' => 'view']);
+
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
