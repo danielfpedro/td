@@ -7,6 +7,8 @@ body, a {
     font-family: 'Lato', sans-serif!important;
 }
 a {
+    color: $main-color;
+    font-weight: bold;
 	text-decoration: none!important;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -16,23 +18,6 @@ h1, h2, h3, h4, h5, h6 {
 .post-call-subtitle {
     color: $color-muted;
     font-size: 14px;
-}
-
-// BOX PADDING
-.box-padding {
-    padding: $box-padding;
-}
-.box-padding-top {
-    padding-top: $box-padding;
-}
-.box-padding-right {
-    padding-right: $box-padding;
-}
-.box-padding-bottom {
-    padding-bottom: $box-padding;
-}
-.box-padding-left {
-    padding-left: $box-padding;
 }
 // ADS
 .ad-horizontal-full {
@@ -96,74 +81,23 @@ $color: darken(#FFF, 20%);
 
 .title {
     margin: 0;
-    font-size: 22px;
-    // font-weight: bold;
-    margin-bottom: 20px;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
     color: $title-color;
 }
 .title-with-divider{
     padding-bottom: 12px;
     border-bottom: 1px solid $border-color;
 }
-.post-compact {
-    border-bottom: 1px solid darken(#FFF, 10%);
-    overflow: hidden;
-    height: auto;
-    padding: $post-compact-padding;
-    // margin-bottom: 25px;
+.btn-share {
+    color: $color-muted!important;
 }
-.post-compact-content {
-    @include flexbox();
-    @include flex-direction(column);
+.post-view-title {
+    font-size: 44px;
 }
-.post-compact-avatar{
-    margin-right: 0!important;
-    padding-right: 0!important;
-    padding-right: 18px!important;
-}
-.post-compact-body {
-    margin-left: 0!important;
-    padding-left: 0!important;
-}
-.post-compact-body > h2{
-    margin: 0;
-    line-height: $post-compact-title-line-height;
-}
-
-.post-compact-body > h2 > a {
-    font-size: $post-compact-title-size;
-    font-weight: $post-compact-title-weight;
-
-    color: $post-compact-title-color;
-}
-.post-compact-body > span.pub-date {
-    font-size: $post-compact-pub-date-size;
-    font-weight: $post-compact-pub-date-weight;
-    font-color: $post-compact-pub-date-color;
-    margin-top: $post-compact-pub-date-offset-up;
-    display: block;
-}
-
-.post-compact-footer {
-    margin-top: 10px;
-}
-.post-compact-footer a {
-    color: #000;
-    font-size: 12px;
-}
-.post-compact-avatar{
-
-}
-.post-compact-avatar > a > img{
-    width: 100%;
-}
-.post-compact-pub-date{
-    color: darken(#FFF, 60%);
-    font-size: 12px;
-    text-align: left;    
-}
-.post-compact-share {
-    color: #000;
-    font-size: 12px;
-    text-align: right;
+.post-view-body > p {
+    font-size: 16px;
+    line-height: 28px;
+    color: lighten(#000, 35%);
 }

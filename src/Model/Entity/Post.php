@@ -43,7 +43,7 @@ class Post extends Entity
     protected function _getViewUrl()
     {
         return [
-            'controller' => 'Posts',
+            'controller' => 'Site',
             'action' => 'view',
             'year' => $this->_properties['year'],
             'month' => $this->_properties['month'],

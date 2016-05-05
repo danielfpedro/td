@@ -1,0 +1,39 @@
+// BOX PADDING
+.box-padding {
+    padding: $box-padding!important;
+}
+.box-padding-top {
+    padding-top: $box-padding!important;
+}
+.box-padding-right {
+    padding-right: $box-padding!important;
+}
+.box-padding-bottom {
+    padding-bottom: $box-padding!important;
+}
+.box-padding-left {
+    padding-left: $box-padding!important;
+}
+.box-margin {
+    margin: $box-margin;
+}
+.box-margin-top {
+    margin-top: $box-margin!important;
+}
+.box-margin-right {
+    margin-right: $box-margin!important;
+}
+.box-margin-bottom {
+    margin-bottom: $box-margin!important;
+}
+.box-margin-left {
+    margin-left: $box-margin!important;
+}
+// LG
+.box-margin-top-lg {
+    margin-top: $box-margin-lg!important;   
+}
+// SM
+.box-margin-bottom-sm {
+    margin-bottom: $box-margin-sm!important;   
+}

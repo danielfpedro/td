@@ -13,7 +13,7 @@ $box-padding: $box-margin;
 $box-margin-sm: ($box-margin / 2);
 $box-padding-sm: $box-margin-sm;
 
-$box-margin-lg: ($box-margin * 1.5);
+$box-margin-lg: ($box-margin * 2);
 $box-padding-lg: $box-margin-lg;
 
 // espaço entre blocos de texto
@@ -27,12 +27,12 @@ $post-main-title-size: 22px;
 $post-main-title-line-height: 30px;
 
 // MAIN SMALL
-$post-main-small-padding: 10px;
+$post-main-small-padding: 15px;
 $post-main-small-bgcolor: #FFF;
 $post-main-small-border-radius: $border-radius;
 $post-main-small-line-height: 22px;
 $post-main-small-title-color: ($title-color);
-$post-main-small-title-size: 17px;
+$post-main-small-title-size: 16px;
 $post-main-small-title-weight: bold;
 $post-main-small-avatar-offset-right: 18px;
 $post-main-small-avatar-width: 60px;
@@ -57,10 +57,12 @@ $post-latest-action-buttons-color: $color-muted;
 // COMPACT POSTS
 $post-compact-padding: 15px 0;
 $post-compact-title-size: 15px;
-$post-compact-title-line-height: 15px; 
+$post-compact-title-line-height: 20px; 
 $post-compact-title-weight: bold;
 $post-compact-title-color: $title-color; 
 $post-compact-title-offset-up: 0;
+
+$post-compact-avatar-width: 60px;
 
 $post-compact-pub-date-size: 12px;
 $post-compact-pub-date-weight: normal;

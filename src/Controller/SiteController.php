@@ -15,7 +15,7 @@ class SiteController extends AppController
 	}
 	public function home()
 	{
-		$this->loadmodel('Posts');
+		$this->loadModel('Posts');
 
 		$main = $this->Posts->find('all', [
 			'contain' => [
@@ -37,18 +37,22 @@ class SiteController extends AppController
 			]
 		]);
 
-		$trend = $this->Posts->find('all', [
-			'contain' => [
-				'Categories'
-			],
-			'limit' => 8
-		]);
-
 		$this->set([
 			'main' => $main,
 			'mainSmall' => $mainSmall,
-			'latest' => $latest,
-			'trend' => $trend,
+			'latest' => $latest
 		]);
+	}
+	public function view()
+	{
+		$this->loadModel('Posts');
+		
+		$post = $this->Posts->find('all', [
+			'contain' => [
+				'Categories'
+			]
+		])
+		->first();
+		$this->set(compact('post'));
 	}
 }

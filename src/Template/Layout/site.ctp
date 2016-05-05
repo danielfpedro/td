@@ -29,6 +29,9 @@
         <![endif]-->
     </head>
     <body>
+    
+        <?= $this->element('Site/navbar') ?>
+
         <?= $this->fetch('content') ?>
 
         <?= $this->Html->script('../lib/jquery/dist/jquery.min') ?>
