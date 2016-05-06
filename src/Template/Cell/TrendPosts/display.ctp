@@ -1,9 +1,9 @@
 <h4 class="title title-with-divider box-margin-top">#Trend posts</h4>
 
-<?php foreach ($trend as $post): ?>
+<?php foreach ($trend as $key => $post): ?>
 	<div class="post-compact">
 		<div class="post-compact-avatar">
-			<?= $this->Html->image($post->full_img_square_path, ['class' => 'img-circle', 'url' => ['controller' => 'Posts']]) ?>
+			<?= ($key + 1) ?>
 		</div>
 		<div class="post-compact-body">
 			<a href="#">
@@ -14,3 +14,13 @@
 		</div>
 	</div>
 <?php endforeach ?>
+
+<!-- <div class="list-group">
+	<?php foreach ($trend as $post): ?>
+		<a href="#" class="list-group-item" style="font-size: 16px;">
+			<?= $post->title ?>
+			<br>
+			<span class="text-muted" style="font-size: 12px;">2 dias atrás</span>
+		</a>
+	<?php endforeach ?>
+</div> -->

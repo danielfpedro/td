@@ -1,7 +1,7 @@
 body {
     // Fixed navbar offset
     padding-top: 50px;
-    background-color: darken(#FFF, 4%);    
+    background-color: darken(#FFF, 3%);    
 }
 body, a {
     font-family: 'Lato', sans-serif!important;
@@ -13,6 +13,21 @@ a {
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
+}
+
+.bg-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index:-1;
+}
+.bg-overlay-40 {
+    background-color: rgba(0, 0, 0, .4);
+}
+.bg-overlay-border-radius {
+    @include border-radius($border-radius);
 }
 
 .post-call-subtitle {
@@ -55,10 +70,10 @@ $color: darken(#FFF, 20%);
     $height: 18px;
 	display: inline-block;
     height: $height;
-    padding: 0 10px;
+    padding: 0 8px;
     border-radius: 999em;
     line-height: ($height + 1);
-    font-size: 8px;
+    font-size: 10px;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
@@ -70,19 +85,31 @@ $color: darken(#FFF, 20%);
 .label-default:hover {
     background-color: darken($main-color, 10%)!important;
 }
+.label-light, .label-light:hover {
+    background-color: darken(#FFF, 10%);
+    color: $title-color;
+}
+.label-light:hover {
+    background-color: darken(#FFF, 15%)!important;
+}
 .label-sm {
     font-size: 9px;
+    height: 19px;
+}
+.label-lg {
+    font-size: 11px;
     height: 20px;
 }
-
 .text-block-padding-top {
     margin-top: $text-block-padding;
 }
-
+.text-muted {
+    color: $color-muted;
+}
 .title {
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: $title-color;
 }
@@ -93,11 +120,64 @@ $color: darken(#FFF, 20%);
 .btn-share {
     color: $color-muted!important;
 }
-.post-view-title {
-    font-size: 44px;
+.post-view-info {
+    // background-color: red;
+    @include flexbox();
+    @include flex-direction(row);
+    @include align-items(center);
 }
-.post-view-body > p {
+.post-view-title {
+    font-size: 42px;
+    font-weight: normal;
+    line-height: 45px;
+}
+.post-view-author-profile-picture {
+    width: 25px;
+}
+.post-view-pubdate {
+    color: $color-muted;
+}
+.post-view-body {
     font-size: 16px;
     line-height: 28px;
     color: lighten(#000, 35%);
+}
+
+.btn-share-lg > span.fa{
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.post-squared {
+    @include border-radius($border-radius);
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+.post-squared-title > a > h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+    padding: 15px;
+    min-height: 100px;
+}
+.post-squared-footer {
+    font-size: 14px;
+    font-weight: normal;
+    color: #FFF;
+    padding: 15px;
+}
+.post-squared-footer > a {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.post-squared-footer-pub-date {
+    font-size: 12px;
+    padding-left: 3px;
+}
+.post-squared-footer img {
+    width: 25px!important;
+    border: 1px solid #FFF;
 }

@@ -53,6 +53,16 @@ class SiteController extends AppController
 			]
 		])
 		->first();
-		$this->set(compact('post'));
+
+		$readMore = $this->Posts->find('all', [
+			'contain' => [
+				'Categories'
+			],
+			'limit' => 2
+		]);
+		$this->set([
+			'post' => $post,
+			'readMore' => $readMore
+		]);
 	}
 }
