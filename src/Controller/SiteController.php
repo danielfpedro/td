@@ -65,4 +65,12 @@ class SiteController extends AppController
 			'readMore' => $readMore
 		]);
 	}
+	public function decks()
+	{
+
+	}
+	public function deck()
+	{
+		
+	}
 }

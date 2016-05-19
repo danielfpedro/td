@@ -1,7 +1,7 @@
-$main-color: #9b59b6;
+$main-color: #3498db;
 $border-radius: 4px;
 $title-color: lighten(#000, 20%);
-$border-color: darken(#FFF, 12%);
+$border-color: darken(#FFF, 10%);
 
 // COLORS
 $color-muted: darken(#FFF, 50%);
@@ -52,6 +52,7 @@ $post-latest-pub-date-offset-up: 8px;
 
 $post-latest-action-buttons-size: 12px;
 $post-latest-action-buttons-icon-size: 14px;
+$post-latest-action-buttons-font-weight: normal;
 $post-latest-action-buttons-color: $color-muted;
 
 // COMPACT POSTS

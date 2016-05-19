@@ -3,15 +3,16 @@
     @include flexbox();
     @include flex-direction(column);
 }
-.post-latest-body > h2{
+.post-latest-body > a > h2{
     line-height: $post-latest-title-line-height;
-    margin-top: $post-latest-title-offset-up;
 }
 .post-latest-body > p {
     margin-top: 8px;
 }
-
-.post-latest-body > h2 > a{
+.post-latest-body > a:hover > h2 {
+    color: #000!important;
+}
+.post-latest-body > a > h2{
     font-size: $post-latest-title-size;
     font-weight: $post-latest-title-weight;
     color: $post-latest-title-color;
@@ -30,6 +31,7 @@
 .post-latest-footer > a {
     color: $post-latest-action-buttons-color;
     font-size: $post-latest-action-buttons-size;
+    font-weight: $post-latest-action-buttons-font-weight;
 }
 .post-latest-footer > a > span.fa {
     font-size: $post-latest-action-buttons-icon-size;

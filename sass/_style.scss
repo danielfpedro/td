@@ -1,6 +1,7 @@
 body {
     // Fixed navbar offset
-    padding-top: 50px;
+    //padding-top: 50px;
+    padding: 0;
     background-color: darken(#FFF, 3%);    
 }
 body, a {
@@ -13,6 +14,20 @@ a {
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
+}
+
+hr {
+    height: 1px;
+    background-color: $border-color;
+    border: none!important;
+    margin: $box-margin-sm 0;
+}
+// Engloba o header e o main
+.container-topo {
+    background-image: url(../img/bg-hs.jpg);
+
+    background-size: cover;
+    background-position: center center;
 }
 
 .bg-overlay{
@@ -132,10 +147,15 @@ $color: darken(#FFF, 20%);
     line-height: 45px;
 }
 .post-view-author-profile-picture {
-    width: 25px;
+    width: 30px;
+    margin-top: -5px;
+    padding-right: 5px;
 }
 .post-view-pubdate {
     color: $color-muted;
+}
+.post-view-author{
+    // margin-left: 5px;
 }
 .post-view-body {
     font-size: 16px;
@@ -180,4 +200,60 @@ $color: darken(#FFF, 20%);
 .post-squared-footer img {
     width: 25px!important;
     border: 1px solid #FFF;
+}
+
+.footer {
+    background-color: darken(#FFF, 5%);
+    padding: $box-padding-sm;
+}
+
+.deck-hero-container{
+    background-position: top right;
+    background-size: cover;
+}
+
+.deck-hero-container table td{
+    // background-color: #000;
+    // color: #FFF;
+}
+
+.title-with-avatar {
+    @include flexbox();
+    @include flex-direction(row);
+    @include align-items(center);
+}
+.title-with-avatar > .avatar > img{
+    width: 35px;
+    height: auto;
+}
+.title-with-avatar > .avatar-sm > img{
+    width: 30px;
+    height: auto;
+}
+.title-with-avatar > h2{
+    font-size: 20px;
+}
+.title-with-avatar > h1{
+    margin: 0;
+    font-size: 42px;
+}
+.title-with-avatar > a > h3, .title-with-avatar > h3{
+    margin: 0;
+    font-size: 14px;
+}
+.title-with-avatar > h1,
+.title-with-avatar > h2,
+.title-with-avatar > a > h3{
+    margin-left: 10px;
+}
+
+.container-deck-list {
+}
+.container-deck-list-fixed {
+    position: fixed;
+    top: 0;
+    margin-top: 20px;
+    width: 380px;
+    height: 600px;
+    overflow: auto;
 }

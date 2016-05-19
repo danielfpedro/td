@@ -1,10 +1,16 @@
-<div class="main-wrap main-container-has-horizontal-ad">
+<?php $this->assign('title', 'Papo de Taverna') ?>
 
-	<div class="ad-horizontal-full hidden-xs">
-		<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
+<div class="container-topo">
+	<?= $this->element('Site/navbar') ?>
+
+	<div class="main-wrap main-container-has-horizontal-ad">
+
+		<div class="ad-horizontal-full hidden-xs" style="margin: 20px 0">
+			<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
+		</div>
+
+		<?= $this->element('Site/home_main') ?>
 	</div>
-
-	<?= $this->element('Site/home_main') ?>
 </div>
 
 <div class="container box-margin-top-lg">

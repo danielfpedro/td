@@ -11,9 +11,12 @@
 					<div class="post-latest-content">
 						<div class="post-latest-body">
 							<?= $this->Html->link('Noticias', [], ['class' => 'label label-default']) ?>
-							<h2 class=""><?= $this->Html->link($post->title, []) ?></h2>
+							<a href="#" class="box-padding-top-sm" style="display: block">
+								<h2>
+									<?= $post->title ?>
+								</h2>
+							</a>
 							<span class="pub-date">
-								<span class="fa fa-clock-o"></span>
 								<?= $post->pub_date_in_words ?>
 							</span>	
 							<p class="post-call-subtitle">

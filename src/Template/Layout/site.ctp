@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title><?= $this->fetch('title') ?></title>
+        <title><?= $this->fetch('title') ?>Papo de Taverna</title>
 
 
         <?= $this->Html->css('../lib/animate.css/animate.min') ?>
@@ -29,15 +29,54 @@
         <![endif]-->
     </head>
     <body>
-    
-        <?= $this->element('Site/navbar') ?>
 
         <?= $this->fetch('content') ?>
 
+        <div class="box-margin-top-x-3">
+            <?= $this->element('Site/footer') ?>
+        </div>
+
         <?= $this->Html->script('../lib/jquery/dist/jquery.min') ?>
         <?= $this->Html->script('../lib/bootstrap/dist/js/bootstrap.min') ?>
+        
+        <?= $this->Html->script('../lib/anchor-js/anchor.min') ?>
 
         <script>
+            $(function(){
+
+                anchors.add('.has-anchor');
+
+                $('[data-toggle="tooltip"]').tooltip()
+
+window.setTimeout(function() {
+if(location.hash.length !== 0) {
+    window.scrollTo(window.scrollX, window.scrollY - 20);
+}
+}, 1); 
+
+$('.anchorjs-link ').click(function(){
+    $('html, body').animate({
+        scrollTop: ($( $.attr(this, 'href') ).offset().top - 20)
+    }, 500);
+    return false;
+});
+
+                $(window).scroll(function(){
+                    var scrollTop     = $(window).scrollTop(),
+                        elementOffset = $('body').offset().top,
+                        distance      = (elementOffset - scrollTop);
+
+                    console.log('Offset do body para o topo', distance);
+
+                    if (distance <= -55) {
+                        $('.navbar').addClass('navbar-fixed-top')
+                        $('.navbar').removeClass('navbar-custom-big-font');
+                    } else {
+                        $('.navbar').removeClass('navbar-fixed-top')
+                        $('.navbar').addClass('navbar-custom-big-font');
+                    }
+                });
+            });
         </script>
     </body>
 </html>

@@ -1,0 +1,42 @@
+$topo-bg-color: rgba(255, 255, 255, 1);
+.topo-container {
+	background-color: $topo-bg-color;
+	overflow: hidden;
+	height: auto;
+	width: 100%;
+	position: relative;
+}
+
+.navbar-custom {
+	background-color: $topo-bg-color;
+	// background-color: red;
+	z-index: 2!important;
+	display: none;
+}
+.navbar-custom-big-font ul.navbar-nav > li > a {
+	// color: blue!important;
+	font-size: 18px;
+}
+
+.topo-wrap {
+    @include flexbox();
+    @include flex-direction(row);
+}
+.topo-logo {
+	width: 230px;
+	padding: 15px 50px 15px 0;
+}
+.topo-body {
+	@include flexbox();
+    @include flex-direction(column);
+	@include flex(1);
+
+	@include justify-content(center);	
+}
+.topo-body-buttons {
+	text-align: right;
+	margin-bottom: 15px;
+}
+.topo-body-footer ul > li > a {
+	font-size: 18px;
+}

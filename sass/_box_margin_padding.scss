@@ -5,6 +5,9 @@
 .box-padding-top {
     padding-top: $box-padding!important;
 }
+.box-padding-top-sm {
+    padding-top: $box-padding-sm!important;
+}
 .box-padding-right {
     padding-right: $box-padding!important;
 }
@@ -22,6 +25,9 @@
 }
 .box-margin-top {
     margin-top: $box-margin!important;
+}
+.box-margin-top-x-3 {
+    margin-top: ($box-margin * 3)!important;
 }
 .box-margin-right {
     margin-right: $box-margin!important;

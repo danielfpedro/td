@@ -1,4 +1,4 @@
-<?= $this->assign('title', $post->title) ?>
+<?= $this->assign('title', 'Deck Legendary Midrange - ') ?>
 
 <div class="ad-horizontal-full hidden-xs box-margin-top">
 	<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
@@ -9,17 +9,28 @@
 		<div class="col-md-8" style="background-color: #fff;">
 			<a href="" class="box-margin-top-sm" style="margin-top: 15px; display: block">
 				<span class="label label-default label-lg">
-					Review
+					Deck
 				</span>
 			</a>	
-			<h1 class="post-view-title box-margin-bottom box-margin-top-sm">
-				<?= $post->title ?>
+			<h1 class="post-view-title box-margin-top-sm">
+				Legendary Midrange
 			</h1>
+			<div class="title-with-avatar box-margin-bottom box-margin-top-sm">
+				<div class="avatar avatar-sm">
+					<?= $this->Html->image('mage_avatar.png', ['class' => 'img-circle']) ?>
+				</div>
+				
+				<a href="#">
+					<h3>
+						Deck de Mago
+					</h3>
+				</a>
+			</div>
 			<hr>
 			<div class="row post-view-info">
 				<div class="col-md-5">
 					<div class="">
-						<img src="http://graph.facebook.com/v2.6/100001591518421/picture?type=square" class="img-circle post-view-author-profile-picture"> <a href="#" class="post-view-author">Daniel Cocota</a> . <span class="post-view-pubdate"><?= $post->pub_date_in_words ?></span>
+						<span class="post-view-pubdate">Atualizado 2 dias atrás</span>
 					</div>
 				</div>
 				<div class="col-md-7 text-right">
@@ -38,27 +49,10 @@
 			</div>
 
 			<hr>
-			
-			<div class="row">
-				<div class="col-md-12">
-					<?= $this->Html->image('druid.jpg', ['width' => '100%']) ?>	
-				</div>
-			</div>
+
 			<div class="row box-margin-top">
-<!-- 				<div class="col-md-2 text-right">
-					<div>
-						<img src="http://graph.facebook.com/v2.6/100001591518421/picture?type=square" class="img-circle">
-					</div>
-					<a href="#">
-						<h4>
-							Por Daniel Cocota
-						</h4>
-					</a>
-					<hr>
-					<?= $post->pub_date_in_words ?>
-				</div> -->
 				<div class="col-md-12 post-view-body box-padding-right">
-					<?= $this->Text->autoParagraph($post->body) ?>		
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				</div>
 			</div>
 
@@ -67,7 +61,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							Tópicos:
-<a href="#"><span class="label label-light label-sm">Game Of Thrones</span></a>&nbsp;<a href="#"><span class="label label-light label-sm">Game Of Thrones</span></a>&nbsp;<a href="#"><span class="label label-light label-sm">Game Of Thrones</span></a>&nbsp;<span class="label label-light label-sm">Shaniqua</span>		
+<a href="#"><span class="label label-light label-sm">Deck</span></a>&nbsp;<a href="#"><span class="label label-light label-sm">Midrange</span></a>&nbsp;<a href="#"><span class="label label-light label-sm">Mago</span></a>&nbsp;<span class="label label-light label-sm">Lendário</span>		
 						</div>
 					</div>
 					 
@@ -138,12 +132,51 @@ s.setAttribute('data-timestamp', +new Date());
 		</div>
 		<div class="col-md-4">
 			<div class="">
-			<div class="text-center">
-				<img src="http://placehold.it/350x300?text=Ad%20Side Column" width="100%">
-			</div>
-			<div class="box-margin-top">
-				<?= $this->cell('PostsRelated', [10]) ?>
-			</div>
+				<div class="text-center">
+					<img src="http://placehold.it/350x300?text=Ad%20Side Column" width="100%">
+				</div>
+				<div class="box-margin-top" style="display: relative;">
+					<div class="container-deck-list">
+						<table class="table table-striped table-condensed table-bordered">
+							<thead>
+								<tr>
+									<td colspan="2">
+										Cards de Mago (20)
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<?php for ($i = 1; $i < 30; $i++): ?>
+									<tr>
+										<td>
+											Alcólito da dor x 3 <span class="label label-sm label-success" data-toggle="tooltip" title="Sussuro dos Deuses Antigos">SDA</span>
+										</td>
+										<td style="width: 40px;" class="text-center">
+											<span class="" data-toggle="tooltip" title="Custa 2 de Mana" data-placement="left">2</span>
+										</td>
+									</tr>
+								<?php endfor ?>
+							</tbody>
+							<thead>
+								<tr>
+									<td colspan="2">
+										Cards de Neutros (10)
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										Alcólito da dor x 3 <span class="label label-sm label-success">ODA</span>
+									</td>
+									<td style="width: 40px;" class="text-center">
+										2
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
