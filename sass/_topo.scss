@@ -1,10 +1,9 @@
 $topo-bg-color: rgba(255, 255, 255, 1);
 .topo-container {
-	background-color: $topo-bg-color;
-	overflow: hidden;
-	height: auto;
-	width: 100%;
-	position: relative;
+background-image: url(../img/bg-hs.jpg);
+
+    background-size: cover;
+    background-position: top center;
 }
 
 .navbar-custom {

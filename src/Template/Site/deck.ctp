@@ -1,13 +1,141 @@
 <?= $this->assign('title', 'Deck Legendary Midrange - ') ?>
 
+
+
+<style>
+			.custom-popover {
+				border: none;
+				box-shadow: none;
+				background: none!important;
+				padding: 0;
+				z-index: 9999;
+				/*top: 10 !important;*/
+
+			}
+			.custom-popover > .popover-content {
+				padding: 0;
+				background: none!important;
+				background-color: none!important;
+			}
+			.custom-modal .modal-content{
+				background: none!important;
+			}
+			.custom-modal .modal-content{
+				background: none!important;
+			}
+			.custom-modal .modal-body {
+				
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+				position: relative;
+				overflow: hidden;
+			}
+			.overlay {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .8);
+				z-index: 2;
+				-webkit-background-size: cover;
+				background-size: cover;
+				display: none;
+			}
+			.my-modal {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				/*background-color: #000;*/
+				z-index: 3;
+				/*background-image: url(https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png);*/
+				margin: 40px;
+			}
+			.my-modal-body {
+				width: 100%;
+				height: 100%;
+				-webkit-background-size: cover;
+				background-size: auto 100%;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			.my-modal-body-loading {
+				border-radius: 6px;
+				background-color: #FFF;
+				padding: 60px;
+			}
+
+.loader {
+  margin: 0;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 5px solid rgba(231, 76, 60,1.0);
+  border-right: 5px solid rgba(231, 76, 60,1.0);
+  border-bottom: 5px solid rgba(231, 76, 60,1.0);
+  border-left: 5px solid #FFF;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.loader-container{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: rgba(0, 0, 0, .8);
+	padding: 10px;
+	border-radius: 4px;
+}
+.loader-text {
+	font-size: 16px;
+	margin-left: 10px;
+	font-family: 'Arial';
+
+}
+</style>
+
+<?= $this->Html->script('../lib/preview-card/src/jquery.boilerplate.js', ['block' => true]) ?>
+
 <div class="ad-horizontal-full hidden-xs box-margin-top">
 	<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
 </div>
 
-<div class="container box-margin-top">
+<div class="container">
 	<div class="row">
-		<div class="col-md-8" style="background-color: #fff;">
-			<a href="" class="box-margin-top-sm" style="margin-top: 15px; display: block">
+		<div class="col-md-8 deck-view-cover" style="background-color: #fff;">
+			<a href="" class="box-margin-top-sm" style="">
 				<span class="label label-default label-lg">
 					Deck
 				</span>
@@ -26,7 +154,6 @@
 					</h3>
 				</a>
 			</div>
-			<hr>
 			<div class="row post-view-info">
 				<div class="col-md-5">
 					<div class="">
@@ -41,15 +168,12 @@
 						<span class="fa fa-twitter"></span> Compartilhar no Twitter
 					</button>
 				</div>
-<!-- 				<div class="col-md-4 text-right">
-					<button class="btn btn-default btn-sm">
-						<span class="fa fa-comments"></span> 12 Comentários
-					</button>					
-				</div> -->
 			</div>
-
-			<hr>
-
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8" style="background-color: #fff;">
 			<div class="row box-margin-top">
 				<div class="col-md-12 post-view-body box-padding-right">
 					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -103,80 +227,12 @@
 					</div>
 				<?php endforeach ?>
 			</div>
-<!-- DISQUS -->
-			<div>
-<div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//topdeck.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>				
-			</div>
-
+			<!-- DISQUS -->
+			<?= $this->element('Site/disqus') ?>
 		</div>
 		<div class="col-md-4">
-			<div class="">
-				<div class="text-center">
-					<img src="http://placehold.it/350x300?text=Ad%20Side Column" width="100%">
-				</div>
-				<div class="box-margin-top" style="display: relative;">
-					<div class="container-deck-list">
-						<table class="table table-striped table-condensed table-bordered">
-							<thead>
-								<tr>
-									<td colspan="2">
-										Cards de Mago (20)
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php for ($i = 1; $i < 30; $i++): ?>
-									<tr>
-										<td>
-											Alcólito da dor x 3 <span class="label label-sm label-success" data-toggle="tooltip" title="Sussuro dos Deuses Antigos">SDA</span>
-										</td>
-										<td style="width: 40px;" class="text-center">
-											<span class="" data-toggle="tooltip" title="Custa 2 de Mana" data-placement="left">2</span>
-										</td>
-									</tr>
-								<?php endfor ?>
-							</tbody>
-							<thead>
-								<tr>
-									<td colspan="2">
-										Cards de Neutros (10)
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										Alcólito da dor x 3 <span class="label label-sm label-success">ODA</span>
-									</td>
-									<td style="width: 40px;" class="text-center">
-										2
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+			<div class="deck-list">
+				<?= $this->element('Site/deck_list') ?>
 			</div>
 		</div>
 	</div>

@@ -1,8 +1,14 @@
+    .navbar-nav{
+        float:none;
+        margin: 0 auto;
+        display: table;
+        table-layout: fixed;
+    }
 body {
     // Fixed navbar offset
     //padding-top: 50px;
     padding: 0;
-    background-color: darken(#FFF, 3%);    
+    background-color: darken(#FFF, 5%);    
 }
 body, a {
     font-family: 'Lato', sans-serif!important;
@@ -24,7 +30,7 @@ hr {
 }
 // Engloba o header e o main
 .container-topo {
-    background-image: url(../img/bg-hs.jpg);
+    // background-image: url(../img/bg-hs.jpg);
 
     background-size: cover;
     background-position: center center;
@@ -247,13 +253,19 @@ $color: darken(#FFF, 20%);
     margin-left: 10px;
 }
 
-.container-deck-list {
+.deck-list{
 }
-.container-deck-list-fixed {
+.deck-list-unfixed {
+    display: relative;
+    width: 100%;
+    height: auto;
+}
+.deck-list-fixed {
     position: fixed;
     top: 0;
-    margin-top: 20px;
-    width: 380px;
-    height: 600px;
+    margin-top: 10px;
     overflow: auto;
+}
+.deck-list-wrap{
+    
 }

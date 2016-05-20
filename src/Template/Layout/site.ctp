@@ -20,6 +20,7 @@
         
         <!-- My style -->
         <?= $this->Html->css('style.min') ?>
+        <?= $this->fetch('css') ?>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,8 +42,12 @@
         
         <?= $this->Html->script('../lib/anchor-js/anchor.min') ?>
 
+        <?= $this->fetch('script') ?>
+
         <script>
             $(function(){
+
+                // DECK LIST FIXED
 
                 anchors.add('.has-anchor');
 
@@ -62,21 +67,77 @@ $('.anchorjs-link ').click(function(){
 });
 
                 $(window).scroll(function(){
-                    var scrollTop     = $(window).scrollTop(),
-                        elementOffset = $('body').offset().top,
-                        distance      = (elementOffset - scrollTop);
+                    var height = $(window).height();
 
-                    console.log('Offset do body para o topo', distance);
+                    $deckList = $('.deck-list');
 
-                    if (distance <= -55) {
-                        $('.navbar').addClass('navbar-fixed-top')
-                        $('.navbar').removeClass('navbar-custom-big-font');
-                    } else {
-                        $('.navbar').removeClass('navbar-fixed-top')
-                        $('.navbar').addClass('navbar-custom-big-font');
+                    var distance = getElementOffset('.deck-list', height, 'top');
+                    var footerDistance = getElementOffset('.footer', height, 'bottom');
+
+                    var unFix = false;
+
+                    if (footerDistance < 0) {
+                        // $deckList.removeClass('deck-list-fixed').css({'height': 'auto', 'width': 'auto'});   
+                        // unFix = true;
                     }
+
+                    if (distance < 10) {
+                        $deckList
+                            .addClass('deck-list-fixed')
+                            .removeClass('deck-list-unfixed')
+                            .css({
+                                'width': $deckList.parent().width() + 'px'
+                            });
+                        $deckList
+                            .css('height', (height - 20) + 'px');
+                    }
+
+                    var coverDistance = getElementOffset('.deck-view-cover', height, 'top');
+                    console.log('distancia da deck view covver', coverDistance);
+                    if (coverDistance > 2) {
+                        $deckList
+                            .addClass('deck-list-unfixed')
+                            .removeClass('deck-list-fixed');
+                    }
+
+                    console.log('Distancia do deck list para o topo', distance);
+
+                    
+                    console.log('Distancia do footer para o topo', footerDistance);
+
                 });
             });
+
+            function getElementOffset(selector, height, position){
+                var scroll = $(window).scrollTop();
+                console.log('window height', height);
+                var elementOffset = $(selector).offset().top;
+                
+                var distanceToTop = (elementOffset - scroll);
+                if (position == 'bottom') {
+                    distanceToTop = (distanceToTop < 0) ? 0 : distanceToTop;
+                    return (distanceToTop - height);
+                }
+
+                return distanceToTop;
+            }
         </script>
+        <script>
+            $( function() {
+                var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards';
+                var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/EX1_570';
+
+                $("a#element" ).defaultPluginName({
+                    imageSize: 500,
+                    endPoint: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/{id}?locale=ptBR',
+                    field: 'img',
+                    beforeSend: function(request) {
+                        var key = "MsGzaHtBCPmsh23JKgh4K8FNMl2Ap1uXfoyjsnOxBYFvYuhW49";
+                        request.setRequestHeader("X-Mashape-Key", key);
+                    }
+                });
+            } );
+        </script>
+
     </body>
 </html>
