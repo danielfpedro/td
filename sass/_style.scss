@@ -1,12 +1,5 @@
-    .navbar-nav{
-        float:none;
-        margin: 0 auto;
-        display: table;
-        table-layout: fixed;
-    }
 body {
     // Fixed navbar offset
-    //padding-top: 50px;
     padding: 0;
     background-color: darken(#FFF, 5%);    
 }
@@ -30,10 +23,13 @@ hr {
 }
 // Engloba o header e o main
 .container-topo {
-    // background-image: url(../img/bg-hs.jpg);
+    background-color: #000;
+    background-image: url(../img/bg-hs.jpg);
 
     background-size: cover;
-    background-position: center center;
+    background-position: top center;
+
+    padding-top: 90px;
 }
 
 .bg-overlay{
@@ -80,12 +76,6 @@ $color: darken(#FFF, 20%);
 }
 .navbar-search-submit, .navbar-search-submit:hover {
     color: $color;
-}
-.navbar-nav > li > a {
-    color: $main-color!important;
-}
-.navbar-nav > li > a:hover {
-    color: darken($main-color, 20%)!important;
 }
 .label {
     $height: 18px;

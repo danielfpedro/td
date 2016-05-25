@@ -1,5 +1,7 @@
 <?= $this->assign('title', $post->title) ?>
 
+<?= $this->element('Site/navbar') ?>
+
 <div class="ad-horizontal-full hidden-xs box-margin-top">
 	<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
 </div>

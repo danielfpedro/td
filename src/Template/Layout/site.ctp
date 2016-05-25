@@ -67,6 +67,18 @@ $('.anchorjs-link ').click(function(){
 });
 
                 $(window).scroll(function(){
+
+                    var mainWrapDistance = getElementOffset('.main-wrap', height, 'top');
+                    console.log('Main wrap', mainWrapDistance);
+
+                    if (mainWrapDistance < 40) {
+                        $('.navbar').addClass('navbar-small');
+                        $('.navbar').removeClass('navbar-custom');
+                    } else {
+                        $('.navbar').removeClass('navbar-small');
+                        $('.navbar').addClass('navbar-custom');
+                    }
+
                     var height = $(window).height();
 
                     $deckList = $('.deck-list');
@@ -77,8 +89,6 @@ $('.anchorjs-link ').click(function(){
                     var unFix = false;
 
                     if (footerDistance < 0) {
-                        // $deckList.removeClass('deck-list-fixed').css({'height': 'auto', 'width': 'auto'});   
-                        // unFix = true;
                     }
 
                     if (distance < 10) {
