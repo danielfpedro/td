@@ -42,6 +42,10 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 
+Router::scope('/categorias', function (RouteBuilder $routes) {
+    $routes->connect('/:slug', ['controller' => 'Categories', 'action' => 'view']);
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -50,7 +54,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Site', 'action' => 'home']);
 
-    $routes->connect('/:day/:month/:year/:slug', ['controller' => 'Site', 'action' => 'view']);
+    $routes->connect('/:year/:month/:day/:slug', ['controller' => 'Site', 'action' => 'view']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

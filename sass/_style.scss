@@ -1,6 +1,5 @@
 body {
     // Fixed navbar offset
-    padding: 0;
     background-color: darken(#FFF, 5%);    
 }
 body, a {
@@ -29,7 +28,7 @@ hr {
     background-size: cover;
     background-position: top center;
 
-    padding-top: 90px;
+    padding-top: $navbar-custom-height;
 }
 
 .bg-overlay{

@@ -4,6 +4,8 @@
 
         <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +46,22 @@
 
         <?= $this->fetch('script') ?>
 
+<script>
+    $(function(){
+        var speed = 200;
+        $('a.latests-posts-share').mouseenter(function(){
+            $(this).fadeOut(speed, function(){
+                $('latests-posts-share-list-buttons').fadeIn(speed);
+            });
+        });
+        $('ul.latests-posts-share-list-buttons').mouseleave(function(){
+            $(this).fadeOut(speed, function(){
+                $('latests-posts-share').fadeIn(speed);
+            });
+        });
+    });
+</script>
+
         <script>
             $(function(){
 
@@ -65,62 +83,67 @@ $('.anchorjs-link ').click(function(){
     }, 500);
     return false;
 });
+                var wHeight = $(window).height();
 
                 $(window).scroll(function(){
+                    wHeight = $(window).height();                    
+                });
+                var $navbar = $('.navbar');
+                var $navbarHasBigVersion = $navbar.data('has-big-version');
+                $(window).scroll(function(){
 
-                    var mainWrapDistance = getElementOffset('.main-wrap', height, 'top');
-                    console.log('Main wrap', mainWrapDistance);
-
-                    if (mainWrapDistance < 40) {
-                        $('.navbar').addClass('navbar-small');
-                        $('.navbar').removeClass('navbar-custom');
-                    } else {
-                        $('.navbar').removeClass('navbar-small');
-                        $('.navbar').addClass('navbar-custom');
+                    if ($navbarHasBigVersion) {
+                        var bodyTopDistance = getElementOffset('body', wHeight, 'top');
+                        if (bodyTopDistance < -40) {
+                            $('.navbar').addClass('navbar-small');
+                            $('.navbar').removeClass('navbar-custom');
+                        } else {
+                            $('.navbar').removeClass('navbar-small');
+                            $('.navbar').addClass('navbar-custom');
+                        }
                     }
 
-                    var height = $(window).height();
+                    // var height = $(window).height();
 
-                    $deckList = $('.deck-list');
+                    // $deckList = $('.deck-list');
 
-                    var distance = getElementOffset('.deck-list', height, 'top');
-                    var footerDistance = getElementOffset('.footer', height, 'bottom');
+                    // var distance = getElementOffset('.deck-list', height, 'top');
+                    // var footerDistance = getElementOffset('.footer', height, 'bottom');
 
-                    var unFix = false;
+                    // var unFix = false;
 
-                    if (footerDistance < 0) {
-                    }
+                    // if (footerDistance < 0) {
+                    // }
 
-                    if (distance < 10) {
-                        $deckList
-                            .addClass('deck-list-fixed')
-                            .removeClass('deck-list-unfixed')
-                            .css({
-                                'width': $deckList.parent().width() + 'px'
-                            });
-                        $deckList
-                            .css('height', (height - 20) + 'px');
-                    }
+                    // if (distance < 10) {
+                    //     $deckList
+                    //         .addClass('deck-list-fixed')
+                    //         .removeClass('deck-list-unfixed')
+                    //         .css({
+                    //             'width': $deckList.parent().width() + 'px'
+                    //         });
+                    //     $deckList
+                    //         .css('height', (height - 20) + 'px');
+                    // }
 
-                    var coverDistance = getElementOffset('.deck-view-cover', height, 'top');
-                    console.log('distancia da deck view covver', coverDistance);
-                    if (coverDistance > 2) {
-                        $deckList
-                            .addClass('deck-list-unfixed')
-                            .removeClass('deck-list-fixed');
-                    }
+                    // var coverDistance = getElementOffset('.deck-view-cover', height, 'top');
+                    // console.log('distancia da deck view covver', coverDistance);
+                    // if (coverDistance > 2) {
+                    //     $deckList
+                    //         .addClass('deck-list-unfixed')
+                    //         .removeClass('deck-list-fixed');
+                    // }
 
-                    console.log('Distancia do deck list para o topo', distance);
+                    // console.log('Distancia do deck list para o topo', distance);
 
                     
-                    console.log('Distancia do footer para o topo', footerDistance);
+                    // console.log('Distancia do footer para o topo', footerDistance);
 
                 });
             });
 
             function getElementOffset(selector, height, position){
                 var scroll = $(window).scrollTop();
-                console.log('window height', height);
                 var elementOffset = $(selector).offset().top;
                 
                 var distanceToTop = (elementOffset - scroll);
@@ -137,15 +160,15 @@ $('.anchorjs-link ').click(function(){
                 var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards';
                 var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/EX1_570';
 
-                $("a#element" ).defaultPluginName({
-                    imageSize: 500,
-                    endPoint: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/{id}?locale=ptBR',
-                    field: 'img',
-                    beforeSend: function(request) {
-                        var key = "MsGzaHtBCPmsh23JKgh4K8FNMl2Ap1uXfoyjsnOxBYFvYuhW49";
-                        request.setRequestHeader("X-Mashape-Key", key);
-                    }
-                });
+                // $("a#element" ).defaultPluginName({
+                //     imageSize: 500,
+                //     endPoint: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/{id}?locale=ptBR',
+                //     field: 'img',
+                //     beforeSend: function(request) {
+                //         var key = "MsGzaHtBCPmsh23JKgh4K8FNMl2Ap1uXfoyjsnOxBYFvYuhW49";
+                //         request.setRequestHeader("X-Mashape-Key", key);
+                //     }
+                // });
             } );
         </script>
 

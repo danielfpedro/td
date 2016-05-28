@@ -65,6 +65,8 @@ class PostsController extends AppController
         $categories = $this->Posts->Categories->find('list', ['limit' => 200]);
         $this->set(compact('post', 'authors', 'categories'));
         $this->set('_serialize', ['post']);
+
+        $this->viewBuilder()->template('form');
     }
 
     /**
@@ -92,6 +94,8 @@ class PostsController extends AppController
         $categories = $this->Posts->Categories->find('list', ['limit' => 200]);
         $this->set(compact('post', 'authors', 'categories'));
         $this->set('_serialize', ['post']);
+
+        $this->viewBuilder()->template('form');
     }
 
     /**

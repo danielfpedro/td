@@ -63,6 +63,66 @@ class PostsTable extends Table
         ]);
     }
 
+    public function getLatestsPosts($limit = 15)
+    {
+        return $this->find('all', [
+            'fields' => [
+                'title',
+                'subtitle',
+                'slug',
+                'pub_date',
+                'year',
+                'month',
+                'day',
+                'photo',
+                'photo_dir'
+            ],
+            'conditions' => [
+                'is_active' => true,
+            ],
+            'contain' => [
+                'Categories' => function($q){
+                    return $q->select(['name', 'slug']);
+                },
+            ],
+            'order' => ['pub_date' => 'DESC'],
+            'limit' => $limit
+        ]);
+    }
+
+    public function getHomeMain($limit = 5)
+    {
+        $posts = $this->find('all', [
+            'fields' => [
+                'title',
+                'slug',
+                'year',
+                'month',
+                'day',
+                'photo',
+                'photo_dir'
+            ],
+            'conditions' => [
+                'home_main' => true,
+                'is_active' => true,
+            ],
+            'order' => ['home_main' => 'DESC'],
+            'limit' => $limit
+        ]);
+
+        // Divido em chunk de 2
+        $posts = $posts->chunk(2)->toArray();
+        // 2 grandes obrigatórios
+        // 3 menores não obrigatórios porém se posuir tem que ser os tres, por exemplo, eu nunca poderei ter os 2 grandes e 1 pequeno.
+        if (isset($posts[2])) {
+
+            $posts[2][] = $posts[4][0];
+            unset($posts[4]);
+        }
+
+        return $posts;
+    }
+
     /**
      * Default validation rules.
      *

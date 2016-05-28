@@ -1,0 +1,98 @@
+$topo-bg-color: rgba(255, 255, 255, 1);
+
+.navbar .dropdown-menu {
+	background-color: $dropdown-bgcolor;
+	border: none;
+}
+.navbar .dropdown-menu > li > a{
+	color: $dropdown-font-color;
+	font-size: $dropdown-font-size;
+}
+.navbar .dropdown-menu > li > a:hover{
+	background-color: $dropdown-hover-bgcolor;
+	color: $dropdown-hover-font-color;
+}
+.navbar .dropdown-menu > li.divider{
+	background-color: $dropdown-divider-color;
+}
+.navbar-custom {
+	background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+	background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+
+	// background: none;
+	// background-color: #000;
+	
+	height: $navbar-custom-height;
+
+	border: none;
+}
+.navbar-custom ul.navbar-main-menu > li > a, .navbar-custom ul.navbar-extra-buttons > li > a {
+	font-family: $navbar-font!important;
+	color: $navbar-link-color;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: $navbar-custom-font-size;
+	line-height: $navbar-custom-line-height;
+}
+// Extra button sempre são brancos para destacar, e quando hover ele assumen a cor da rede social
+.navbar-custom ul.navbar-main-menu > li > a:hover, .navbar-custom ul.navbar-extra-buttons > li > a:hover {
+	color: $navbar-hover-link-color;
+}
+.navbar-custom ul.navbar-main-menu {
+	margin-left: $navbar-custom-main-menu-margin-left;
+}
+
+.navbar-custom .navbar-brand {
+}
+.navbar-custom .navbar-brand > img {
+	height: $navbar-custom-brand-height;
+	margin-top: $navbar-custom-brand-margin-top;
+}
+.navbar-custom  ul.navbar-main-menu > li.open > a{
+	background: none!important;
+	color: $navbar-hover-link-color!important;
+}
+
+.navbar-extra-buttons > li > a.twitter:hover {
+	color: #2c89c6!important;
+}
+.navbar-extra-buttons > li > a.facebook:hover {
+	color: #3498db!important;
+}
+.navbar-extra-buttons > li > a.youtube:hover {
+	color: #e85445!important;
+}
+
+// NAVBAR SMALL
+.navbar-small {
+	background: none;
+	background-color: $main-color;
+	border: none;
+}
+.navbar-small ul.navbar-main-menu > li > a, .navbar-small ul.navbar-extra-buttons > li > a {
+	font-family: $navbar-font!important;
+	color: $navbar-link-color;
+	text-transform: uppercase!important;
+	font-weight: normal;
+	font-size: 12px;
+}
+.navbar-small ul.navbar-main-menu > li > a:hover, .navbar-small ul.navbar-extra-buttons > li > a:hover {
+	color: $navbar-hover-link-color;
+}
+.navbar-small ul.navbar-extra-buttons > li > a {
+	font-size: 15px!important;	
+}
+
+.navbar-small ul.navbar-main-menu > li.open > a{
+	background-color: $navbar-strong-color-light!important;
+	color: $navbar-hover-link-color!important;
+}
+.navbar-small .navbar-brand > img {
+	height: $navbar-small-brand-height!important;
+	width: auto;
+}
+.navbar-small .navbar-brand {
+	margin-top: $navbar-small-brand-margin-top;
+}

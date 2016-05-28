@@ -1,4 +1,4 @@
-$main-color: darken(#35293F, 0%);
+$main-color: darken(#35293F, 9%);
 $border-radius: 4px;
 $title-color: lighten(#000, 20%);
 $border-color: darken(#FFF, 10%);
@@ -19,6 +19,33 @@ $box-padding-lg: $box-margin-lg;
 // espaço entre blocos de texto
 $text-block-padding: 5px;
 $text-block-padding-lg: $text-block-padding * 2;
+
+// NAVBAR
+$navbar-link-color: darken(#FFF, 15%);
+$navbar-hover-link-color: darken(#FFF, 0%);
+$navbar-font: 'Roboto Slab', serif;
+
+$navbar-strong-color-light: lighten($main-color, 4%);
+// NAVBAR-CUSTOM
+$navbar-custom-height: 110px;
+$navbar-custom-main-menu-margin-left: 50px;
+$navbar-custom-font-size: 14px;
+$navbar-custom-line-height: 80px;
+
+$navbar-custom-brand-height: 45px;
+$navbar-custom-brand-margin-top: 15px;
+
+// NAVBAR SMALL
+$navbar-small-brand-margin-top: -5px;
+$navbar-small-brand-height: 30px;
+
+// DROPDOWN
+$dropdown-bgcolor: $main-color;
+$dropdown-font-color: $navbar-link-color;
+$dropdown-font-size: 14px!important;
+$dropdown-hover-bgcolor: $navbar-strong-color-light;
+$dropdown-hover-font-color: $navbar-hover-link-color;
+$dropdown-divider-color: $navbar-strong-color-light;
 
 // MAIN
 $post-main-border-radius: 4px;

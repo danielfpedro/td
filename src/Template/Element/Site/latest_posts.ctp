@@ -11,11 +11,15 @@
 					<div class="post-latest-content">
 						<div class="post-latest-body">
 							<?= $this->Html->link('Noticias', [], ['class' => 'label label-default']) ?>
-							<a href="#" class="box-padding-top-sm" style="display: block">
-								<h2>
-									<?= $post->title ?>
-								</h2>
-							</a>
+
+							<?= $this->Html->link('<h2>'.$post->title.'</h2>',
+								$post->viewUrl,
+								[
+									'class' => 'box-padding-top-sm',
+									'style' => 'display: block;',
+									'escape' => false
+								]
+							) ?>
 							<span class="pub-date">
 								<?= $post->pub_date_in_words ?>
 							</span>	

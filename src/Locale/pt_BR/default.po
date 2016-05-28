@@ -1,0 +1,154 @@
+msgid "shit"
+msgstr "coco"
+
+#: I18n/Number.php:89
+msgid "{0,number,#,###.##} KB"
+msgstr ""
+
+#: I18n/Number.php:91
+msgid "{0,number,#,###.##} MB"
+msgstr ""
+
+#: I18n/Number.php:93
+msgid "{0,number,#,###.##} GB"
+msgstr ""
+
+#: I18n/Number.php:95
+msgid "{0,number,#,###.##} TB"
+msgstr ""
+
+#: I18n/Number.php:87
+msgid "{0,number,integer} Byte"
+msgid_plural "{0,number,integer} Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} from now"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:82
+msgid "{0} after"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:82
+msgid "{0} before"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:113
+msgid "just now"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:150
+msgid "about a second ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:151
+msgid "about a minute ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:152
+msgid "about an hour ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:153;328
+msgid "about a day ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:154;329
+msgid "about a week ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:155;330
+msgid "about a month ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:156;331
+msgid "about a year ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:166
+msgid "in about a second"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:167
+msgid "in about a minute"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:168
+msgid "in about an hour"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:169;341
+msgid "in about a day"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:170;342
+msgid "in about a week"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:171;343
+msgid "in about a month"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:172;344
+msgid "in about a year"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:300
+msgid "today"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:364
+msgid "%s ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:365
+msgid "on %s"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:47;125;312
+msgid "{0} year"
+msgid_plural "{0} years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:51;128;315
+msgid "{0} month"
+msgid_plural "{0} months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:57;131;318
+msgid "{0} week"
+msgid_plural "{0} weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:59;134;321
+msgid "{0} day"
+msgid_plural "{0} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:64;137
+msgid "{0} hour"
+msgid_plural "{0} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:68;140
+msgid "{0} minute"
+msgid_plural "{0} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:72;143
+msgid "{0} second"
+msgid_plural "{0} seconds"
+msgstr[0] ""
+msgstr[1] ""

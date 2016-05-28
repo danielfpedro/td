@@ -5,6 +5,8 @@ use Cake\ORM\Entity;
 use Cake\Utility\Inflector;
 use Cake\I18n\Time;
 
+use Cake\View\Helper\UrlHelper;
+
 /**
  * Post Entity.
  *
@@ -51,7 +53,21 @@ class Post extends Entity
             'slug' => $this->_properties['slug'],
         ];
     }
-
+    protected function _getFacebookShareUrl()
+    {
+        $viewUrl = UrlHelper::build($this->_getViewUrl(), true);
+        return "https://www.facebook.com/sharer/sharer.php?u=" . $viewUrl;
+    }
+    protected function _getTwitterShareUrl()
+    {
+        $viewUrl = UrlHelper::build($this->_getViewUrl(), true);
+        return "https://twitter.com/home?status=" . $viewUrl;
+    }
+    protected function _getGooglePlusShareUrl()
+    {
+        $viewUrl = UrlHelper::build($this->_getViewUrl(), true);
+        return "https://plus.google.com/share?url=" . $viewUrl;
+    }
     protected function _getPubDateInWords()
     {
         $config = ['accuracy' => 'day'];
