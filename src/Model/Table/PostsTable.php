@@ -6,6 +6,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\I18n\Time;
 
 /**
  * Posts Model
@@ -36,6 +37,7 @@ class PostsTable extends Table
             'foreignKey' => 'author_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('Trends');
         $this->belongsTo('Categories', [
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
@@ -61,6 +63,95 @@ class PostsTable extends Table
                 'thumbnailMethod' => 'Gd'  // Options are Imagick, Gd or Gmagick
             ]
         ]);
+    }
+
+    /**
+     * @param  int $limit Quantidade de posts
+     * @param  int $daysAgo Quanto tempo atrás serão selecionados os trends 
+     * @return obj Posts
+     */
+    public function getTrends($limit, $daysAgo)
+    {
+        $now = Time::now();
+
+        $trend = $this->Trends->find();
+
+        $trend
+            ->select([
+                'post_id',
+                'total' => $trend->func()->count('post_id')
+            ])
+            ->where([
+                'created >=' => $now->subDays($daysAgo)
+            ])
+            ->group('post_id')
+            ->order(['total' => 'DESC'])
+            ->limit($limit);
+
+        $ids = [];
+        $postsQtd = [];
+        foreach ($trend as $value) {
+            $ids[] = $value['post_id'];
+            $postsQtd[$value['post_id']]['total'] = $value['total'];
+        }
+
+        $conditions = [];
+
+        if ($ids) {
+            $conditions['id IN'] = $ids;
+        }
+
+        $posts = $this->find('all', [
+            'fields' => [
+                'id',
+                'title',
+                'slug',
+                'year',
+                'month',
+                'day'
+            ],
+            'conditions' => $conditions
+        ]);
+
+        $new = $posts->map(function($post) use ($postsQtd){
+            $post->total = (isset($postsQtd[$post->id]['total'])) ? $postsQtd[$post->id]['total'] : 0;
+            return $post;
+        });
+
+        return $new->sortBy('total');
+    }
+
+    public function getForView($slug)
+    {
+        return $this->find('all', [
+            'fields' => [
+                'id',
+                'title',
+                'subtitle',
+                'body',
+                'slug',
+                'pub_date',
+                'photo',
+                'photo_dir',
+                'year',
+                'month',
+                'day',
+                'tags'
+            ],
+            'conditions' => [
+                'is_active' => true,
+                'Posts.slug' => $slug
+            ],
+            'contain' => [
+                'Categories' => function($q){
+                    return $q->select(['name', 'slug']);
+                },
+                'Authors' => function($q){
+                    return $q->select(['id', 'name']);
+                },
+            ],
+        ])
+        ->first();
     }
 
     public function getLatestsPosts($limit = 15)

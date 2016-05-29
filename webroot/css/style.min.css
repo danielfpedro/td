@@ -131,6 +131,9 @@ hr {
   border: none !important;
   margin: 15px 0; }
 
+.discount-navbar-fixed {
+  margin-top: 50px; }
+
 .container-topo {
   background-color: #000;
   background-image: url(../img/bg-hs.jpg);

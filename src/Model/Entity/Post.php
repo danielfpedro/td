@@ -53,6 +53,14 @@ class Post extends Entity
             'slug' => $this->_properties['slug'],
         ];
     }
+    protected function _getTagsArray()
+    {
+        return explode(',', str_replace(', ', ',', $this->_properties['tags']));
+    }
+    protected function _getTagUrl()
+    {
+        return ['controller' => 'Site', 'tags'];
+    }
     protected function _getFacebookShareUrl()
     {
         $viewUrl = UrlHelper::build($this->_getViewUrl(), true);
@@ -72,6 +80,10 @@ class Post extends Entity
     {
         $config = ['accuracy' => 'day'];
         return (new Time($this->_properties['pub_date']))->timeAgoInWords($config);
+    }
+    protected function _getTagUrlString()
+    {
+         return UrlHelper::build(['controller' => 'Site', 'action' => 'tag', 'slug' => $this->_properties['category']['sçug']]);
     }
     protected function _getFullImgPath()
     {

@@ -2,16 +2,19 @@
 
 <?= $this->cell('Navbar') ?>
 
-<div class="ad-horizontal-full hidden-xs box-margin-top">
-	<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
+<div class="discount-navbar-fixed">
+	<div class="ad-horizontal-full hidden-xs box-padding-top">
+		<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
+	</div>
 </div>
 
 <div class="container box-margin-top">
 	<div class="row">
 		<div class="col-md-8" style="background-color: #fff;">
-			<a href="" class="box-margin-top-sm" style="margin-top: 15px; display: block">
+			<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $post->category->slug] ?>
+			<a href="<?= $this->Url->build($tagUrl) ?>" class="box-margin-top-sm" style="margin-top: 15px; display: block">
 				<span class="label label-default label-lg">
-					Review
+					<?= $post->category->name ?>
 				</span>
 			</a>	
 			<h1 class="post-view-title box-margin-bottom box-margin-top-sm">
@@ -21,44 +24,33 @@
 			<div class="row post-view-info">
 				<div class="col-md-5">
 					<div class="">
-						<img src="http://graph.facebook.com/v2.6/100001591518421/picture?type=square" class="img-circle post-view-author-profile-picture"> <a href="#" class="post-view-author">Daniel Cocota</a> . <span class="post-view-pubdate"><?= $post->pub_date_in_words ?></span>
+						<img src="http://graph.facebook.com/v2.6/100001591518421/picture?type=square" class="img-circle post-view-author-profile-picture"> <a href="#" class="post-view-author"><?= $post->author->name ?></a> . <span class="post-view-pubdate"><?= $post->pub_date_in_words ?></span>
 					</div>
 				</div>
 				<div class="col-md-7 text-right">
-					<button class="btn btn-primary btn-share-lg">
+					<a
+						href="<?= $post->facebook_share_url ?>"
+						class="btn btn-primary btn-share-lg"
+						target="_blank">
 						<span class="fa fa-facebook"></span> Compartilhar no Facebook
-					</button>
-					<button class="btn btn-info btn-share-lg">
+					</a>
+					<a
+						href="<?= $post->twitter_share_url ?>"
+						class="btn btn-info btn-share-lg"
+						target="_blank">
 						<span class="fa fa-twitter"></span> Compartilhar no Twitter
-					</button>
+					</a>
 				</div>
-<!-- 				<div class="col-md-4 text-right">
-					<button class="btn btn-default btn-sm">
-						<span class="fa fa-comments"></span> 12 Comentários
-					</button>					
-				</div> -->
 			</div>
 
 			<hr>
 			
 			<div class="row">
 				<div class="col-md-12">
-					<?= $this->Html->image('druid.jpg', ['width' => '100%']) ?>	
+					<?= $this->Html->image($post->full_img_path, ['width' => '100%']) ?>	
 				</div>
 			</div>
 			<div class="row box-margin-top">
-<!-- 				<div class="col-md-2 text-right">
-					<div>
-						<img src="http://graph.facebook.com/v2.6/100001591518421/picture?type=square" class="img-circle">
-					</div>
-					<a href="#">
-						<h4>
-							Por Daniel Cocota
-						</h4>
-					</a>
-					<hr>
-					<?= $post->pub_date_in_words ?>
-				</div> -->
 				<div class="col-md-12 post-view-body box-padding-right">
 					<?= $this->Text->autoParagraph($post->body) ?>		
 				</div>
@@ -69,7 +61,12 @@
 					<div class="row">
 						<div class="col-md-12">
 							Tópicos:
-<a href="#"><span class="label label-light label-sm">Game Of Thrones</span></a>&nbsp;<a href="#"><span class="label label-light label-sm">Game Of Thrones</span></a>&nbsp;<a href="#"><span class="label label-light label-sm">Game Of Thrones</span></a>&nbsp;<span class="label label-light label-sm">Shaniqua</span>		
+							<?php foreach ($post->tagsArray as $tag): ?>
+								<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $this->Blog->tagSlugfy($tag)] ?>
+								<a href="<?= $this->Url->build($tagUrl) ?>">
+									<span class="label label-light label-sm"><?= $tag ?></span>
+								</a>&nbsp;								
+							<?php endforeach ?>
 						</div>
 					</div>
 					 
@@ -77,12 +74,18 @@
 				
 				<div class="col-md-12">
 					<hr>
-					<button class="btn btn-primary btn-share-lg">
+					<a
+						href="<?= $post->facebook_share_url ?>"
+						class="btn btn-primary btn-share-lg"
+						target="_blank">
 						<span class="fa fa-facebook"></span> Compartilhar no Facebook
-					</button>
-					<button class="btn btn-info btn-share-lg">
+					</a>
+					<a
+						href="<?= $post->twitter_share_url ?>"
+						class="btn btn-info btn-share-lg"
+						target="_blank">
 						<span class="fa fa-twitter"></span> Compartilhar no Twitter
-					</button>
+					</a>
 					<hr>
 				</div>
 			</div>

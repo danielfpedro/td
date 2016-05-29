@@ -8,10 +8,14 @@ use Cake\Event\Event;
 
 class SiteController extends AppController
 {
+
 	public function beforeRender(Event $event)
 	{
 		parent::beforeRender($event);
-		$this->viewBuilder()->layout('site');
+		$this
+			->viewBuilder()
+			->helpers(['Blog'])
+			->layout('site');
 	}
 	public function home()
 	{
@@ -46,13 +50,13 @@ class SiteController extends AppController
 	public function view()
 	{
 		$this->loadModel('Posts');
+		$this->loadModel('Trends');
 		
-		$post = $this->Posts->find('all', [
-			'contain' => [
-				'Categories'
-			]
-		])
-		->first();
+		$post = $this->Posts->getForView($this->request['slug']);
+
+		$trend = $this->Trends->newEntity();
+		$trend->post_id = $post->id;
+		$this->Trends->save($trend);
 
 		$readMore = $this->Posts->find('all', [
 			'contain' => [

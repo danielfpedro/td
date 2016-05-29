@@ -42,8 +42,8 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 
-Router::scope('/categorias', function (RouteBuilder $routes) {
-    $routes->connect('/:slug', ['controller' => 'Categories', 'action' => 'view']);
+Router::scope('/categoria', function (RouteBuilder $routes) {
+    $routes->connect('/:slug', ['controller' => 'Site', 'action' => 'category']);
 });
 
 Router::scope('/', function (RouteBuilder $routes) {
