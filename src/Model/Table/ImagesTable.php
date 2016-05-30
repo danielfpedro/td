@@ -2,10 +2,20 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\Image;
+
+use Cake\Event\Event;
+
+use Cake\ORM\EntityInterface;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+
 use Cake\Validation\Validator;
+
+use Cake\Utility\Inflector;
+use WideImage\WideImage;
+
+use Cake\Filesystem\Folder;
 
 /**
  * Images Model
@@ -30,27 +40,25 @@ class ImagesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->addBehavior('Proffer.Proffer', [
-            'photo' => [    // The name of your upload field
-                'root' => WWW_ROOT . 'files', // Customise the root upload folder here, or omit to use the default
-                'dir' => 'photo_dir',   // The name of the field to store the folder
-                // 'thumbnailSizes' => [ // Declare your thumbnails
-                //     'square' => [   // Define the prefix of your thumbnail
-                //         'w' => 200, // Width
-                //         'h' => 200, // Height
-                //         'crop' => true,  // Crop will crop the image as well as resize it
-                //         'jpeg_quality'  => 100,
-                //         'png_compression_level' => 9
-                //     ],
-                //     'portrait' => [     // Define a second thumbnail
-                //         'w' => 100,
-                //         'h' => 300
-                //     ],
-                // ],
-                'thumbnailMethod' => 'Gd'  // Options are Imagick, Gd or Gmagick
-            ]
-        ]);
 
+    }
+
+    public function beforeSave(Event $event, EntityInterface $entity)
+    {
+        $img = WideImage::load($entity->photo['tmp_name']);
+        $dir = new Folder(WWW_ROOT . 'files' . DS . 'images' . DS, true);
+
+        $ext = explode('/', $entity->photo['type']);
+        /**
+         * JPG, JPEG vira jpg
+         */
+        $ext = (strtolower($ext[1]) == 'png') ? 'png' : 'jpg';
+        $quality = ($ext == 'png') ? 8 : 80;
+
+        $name = Inflector::slug($entity->alt) . '.' . $ext;
+        $entity->name = $name;
+
+        $img->saveToFile($dir->path . $name, $quality);
     }
 
     /**

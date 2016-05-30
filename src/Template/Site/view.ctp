@@ -11,7 +11,7 @@
 <div class="container box-margin-top">
 
 	<div class="row">
-		<div class="col-md-8" style="background-color: #fff;">
+		<div class="col-md-9" style="background-color: #fff;">
 
 						<!-- Capa de vídeo -->
 			<?php if ($post->video_cover): ?>
@@ -55,20 +55,20 @@
 			<hr>
 
 			<!-- Capa imagem -->
-			<?php if ($post->has_cover): ?>
+			<?php if ($post->image_cover): ?>
 				<div style="margin: 0 -15px;">
-					<?= $this->Html->image($post->full_img_portrait_path, ['width' => '100%']) ?>	
+					<?= $this->Html->image($post->image_cover_full_path, ['width' => '100%']) ?>	
 				</div>
 			<?php endif ?>
 
 			<div class="row box-margin-top">
-				<div class="col-md-12 post-view-body box-padding-right">
+				<div class="col-md-11 post-view-body box-padding-right">
 					<?= $this->Text->autoParagraph($post->body) ?>		
 				</div>
 			</div>
 
 			<div class="row box-margin-top box-margin-bottom">
-				<div class="col-md-12">
+				<div class="col-md-11">
 					<div class="row">
 						<div class="col-md-12">
 							Tópicos:
@@ -152,7 +152,7 @@ s.setAttribute('data-timestamp', +new Date());
 			</div>
 
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="">
 			<div class="text-center">
 				<img src="http://placehold.it/350x300?text=Ad%20Side Column" width="100%">

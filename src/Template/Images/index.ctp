@@ -9,24 +9,20 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('photo') ?></th>
+                <th><?= $this->Paginator->sort('alt') ?></th>
+                <th>Full Path</th>
                 <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
                 <th><?= $this->Paginator->sort('tags') ?></th>
-                <th><?= $this->Paginator->sort('photo_dir') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($images as $image): ?>
             <tr>
-                <td><?= $this->Number->format($image->id) ?></td>
-                <td><?= h($image->photo) ?></td>
+                <td><?= h($image->alt) ?></td>
+                <td><?= h($image->name) ?></td>
                 <td><?= h($image->created) ?></td>
-                <td><?= h($image->modified) ?></td>
                 <td><?= h($image->tags) ?></td>
-                <td><?= h($image->photo_dir) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $image->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $image->id]) ?>

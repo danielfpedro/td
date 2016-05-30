@@ -2,11 +2,17 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\Post;
+
+use Cake\Event\Event;
+
+use Cake\ORM\EntityInterface;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\I18n\Time;
+
+use WideImage\WideImage;
 
 /**
  * Posts Model
@@ -45,29 +51,43 @@ class PostsTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
         ]);
+    }
 
-        $this->addBehavior('Proffer.Proffer', [
-            'photo' => [    // The name of your upload field
-                'root' => WWW_ROOT . 'files', // Customise the root upload folder here, or omit to use the default
-                'dir' => 'photo_dir',   // The name of the field to store the folder
-                'thumbnailSizes' => [ // Declare your thumbnails
-                    'square' => [   // Define the prefix of your thumbnail
-                        'w' => 200, // Width
-                        'h' => 200, // Height
-                        'crop' => true,  // Crop will crop the image as well as resize it
-                        'jpeg_quality'  => 100,
-                        'png_compression_level' => 9
-                    ],
-                    'portrait' => [     // Define a second thumbnail
-                        'w' => 1000,
-                        'h' => 700,
-                        'jpeg_quality'  => 100,
-                        'png_compression_level' => 9
-                    ],
-                ],
-                'thumbnailMethod' => 'Gd'  // Options are Imagick, Gd or Gmagick
-            ]
-        ]);
+    public function beforeSave(Event $event, EntityInterface $entity)
+    {
+        $imagePath = WWW_ROOT . 'files' . DS . 'images' . DS;
+
+        if ($entity->thumb_image) {
+            $cropPosition = explode(',', $entity->thumb_image_crop_position);
+
+            $img = WideImage::load($imagePath . $entity->thumb_image);
+
+            $img
+                ->resize(400, 400, 'outside')
+                ->crop($cropPosition[0], $cropPosition[1], 400, 400)
+                ->saveToFile($imagePath . 'square_' . $entity->thumb_image);
+        }
+
+        if ($entity->cover_image) {
+            $cropPosition = explode(',', $entity->cover_image_crop_position);
+
+            $img = WideImage::load($imagePath . $entity->cover_image);
+
+            $maxWith = 1000;
+
+            $width = $img->getWidth();
+
+            if ($width > $maxWith) {
+                $width = $maxWith;
+            }
+
+            $height = $width / 2;
+
+            $img
+                ->resize($width, $height, 'outside')
+                ->crop($cropPosition[0], $cropPosition[1], $width, $height)
+                ->saveToFile($imagePath . 'cover_' . $entity->cover_image);
+        }
     }
 
     /**
@@ -139,8 +159,7 @@ class PostsTable extends Table
                 'video_cover_provider',
                 'has_cover',
                 'pub_date',
-                'photo',
-                'photo_dir',
+                'cover_image',
                 'year',
                 'month',
                 'day',
@@ -173,8 +192,7 @@ class PostsTable extends Table
                 'year',
                 'month',
                 'day',
-                'photo',
-                'photo_dir'
+                'thumb_image',
             ],
             'conditions' => [
                 'is_active' => true,
@@ -198,8 +216,7 @@ class PostsTable extends Table
                 'year',
                 'month',
                 'day',
-                'photo',
-                'photo_dir'
+                'cover_image',
             ],
             'conditions' => [
                 'home_main' => true,
@@ -251,12 +268,6 @@ class PostsTable extends Table
             ->requirePresence('tags', 'create')
             ->notEmpty('tags');
 
-
-        $validator
-            ->allowEmpty('photo_dir');
-            
-        $validator
-            ->allowEmpty('photo');
 
         $validator
             ->requirePresence('pub_date', 'create')

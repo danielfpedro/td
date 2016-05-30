@@ -9,7 +9,7 @@
     </ul>
 </nav>
 <div class="posts form large-9 medium-8 columns content">
-    <?= $this->Form->create($post, ['type' => 'file']) ?>
+    <?= $this->Form->create($post) ?>
     <fieldset>
         <legend><?= __('Add Post') ?></legend>
         <?php
@@ -23,7 +23,10 @@
             echo $this->Form->input('video_cover');
             echo $this->Form->input('video_cover_provider');
             echo $this->Form->input('home_main_order');
-            echo $this->Form->input('photo', ['type' => 'file']);
+            echo $this->Form->input('thumb_image');
+            echo $this->Form->input('thumb_image_crop_position');
+            echo $this->Form->input('cover_image');
+            echo $this->Form->input('cover_image_crop_position');
             echo $this->Form->input('author_id', ['options' => $authors]);
             echo $this->Form->input('category_id', ['options' => $categories]);
         ?>

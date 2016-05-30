@@ -9,7 +9,7 @@
 					<div class="post-main-wrap">
 						<div
 							class="post-main"
-							style="background-image: url(<?= $this->Url->image($post->full_img_path) ?>);">
+							style="background-image: url(<?= $this->Url->image($post->image_cover_full_path) ?>);">
 
 							<a href="<?= $postUrl ?>">
 								<div class="post-main-overlay"></div>

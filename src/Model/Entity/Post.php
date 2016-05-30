@@ -18,8 +18,6 @@ use Cake\View\Helper\UrlHelper;
  * @property string $slug
  * @property int $is_active
  * @property string $tags
- * @property string $photo
- * @property string $photo_dir
  * @property int $author_id
  * @property \App\Model\Entity\Author $author
  * @property int $category_id
@@ -91,11 +89,11 @@ class Post extends Entity
     }
     protected function _getFullImgSquarePath()
     {
-        return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/square_' . $this->_properties['photo'];
+        return '../files/images/square_' . $this->_properties['thumb_image'];
     }
-    protected function _getFullImgPortraitPath()
+    protected function _getImageCoverFullPath()
     {
-        return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/portrait_' . $this->_properties['photo'];
+        return '../files/images/cover_' . $this->_properties['cover_image'];
     }
 
     protected function _setTitle($title)

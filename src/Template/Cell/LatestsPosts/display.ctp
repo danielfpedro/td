@@ -2,7 +2,10 @@
 	<div class="post-latest box-margin-bottom-sm">
 		<div class="row">
 			<div class="col-md-3 post-latest-avatar">
-				<?= $this->Html->image($post->full_img_square_path, ['url' => $post->view_url]) ?>
+				<?= $this->Html->image($post->full_img_square_path, [
+					'url' => $post->view_url,
+					'alt' => $post->thumb_image
+				]) ?>
 			</div>
 			<div class="col-md-9">
 				<div class="post-latest-content">

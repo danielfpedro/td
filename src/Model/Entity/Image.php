@@ -29,4 +29,9 @@ class Image extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getFullPath()
+    {
+        return WWW_ROOT . 'files' . DS . 'images' . DS . $this->_properties['name'];
+    }
 }

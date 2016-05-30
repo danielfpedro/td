@@ -10,6 +10,7 @@
         <legend><?= __('Add Image') ?></legend>
         <?php
             echo $this->Form->input('photo', ['type' => 'file']);
+            echo $this->Form->input('alt');
             echo $this->Form->input('tags');
         ?>
     </fieldset>
