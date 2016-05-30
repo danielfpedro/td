@@ -19,7 +19,9 @@
             echo $this->Form->input('is_active');
             echo $this->Form->input('tags');
             echo $this->Form->input('pub_date');
-            echo $this->Form->input('home_main', ['type' => 'checkbox']);
+            echo $this->Form->input('has_cover', ['type' => 'checkbox']);
+            echo $this->Form->input('video_cover');
+            echo $this->Form->input('video_cover_provider');
             echo $this->Form->input('home_main_order');
             echo $this->Form->input('photo', ['type' => 'file']);
             echo $this->Form->input('author_id', ['options' => $authors]);

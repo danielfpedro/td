@@ -9,8 +9,17 @@
 </div>
 
 <div class="container box-margin-top">
+
 	<div class="row">
 		<div class="col-md-8" style="background-color: #fff;">
+
+						<!-- Capa de vídeo -->
+			<?php if ($post->video_cover): ?>
+				<div style="margin: 0 -15px;">
+					<?= $this->Post->showVideo($post->video_cover, $post->video_cover_provider) ?>
+				</div>
+			<?php endif ?>
+
 			<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $post->category->slug] ?>
 			<a href="<?= $this->Url->build($tagUrl) ?>" class="box-margin-top-sm" style="margin-top: 15px; display: block">
 				<span class="label label-default label-lg">
@@ -44,12 +53,14 @@
 			</div>
 
 			<hr>
-			
-			<div class="row">
-				<div class="col-md-12">
-					<?= $this->Html->image($post->full_img_path, ['width' => '100%']) ?>	
+
+			<!-- Capa imagem -->
+			<?php if ($post->has_cover): ?>
+				<div style="margin: 0 -15px;">
+					<?= $this->Html->image($post->full_img_portrait_path, ['width' => '100%']) ?>	
 				</div>
-			</div>
+			<?php endif ?>
+
 			<div class="row box-margin-top">
 				<div class="col-md-12 post-view-body box-padding-right">
 					<?= $this->Text->autoParagraph($post->body) ?>		

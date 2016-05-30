@@ -37,7 +37,10 @@ class PostsTable extends Table
             'foreignKey' => 'author_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Trends');
+        $this->belongsTo('Trends', [
+            'dependent' => true,
+            'cascadeCallbacks' => true
+        ]);
         $this->belongsTo('Categories', [
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
@@ -56,8 +59,10 @@ class PostsTable extends Table
                         'png_compression_level' => 9
                     ],
                     'portrait' => [     // Define a second thumbnail
-                        'w' => 100,
-                        'h' => 300
+                        'w' => 1000,
+                        'h' => 700,
+                        'jpeg_quality'  => 100,
+                        'png_compression_level' => 9
                     ],
                 ],
                 'thumbnailMethod' => 'Gd'  // Options are Imagick, Gd or Gmagick
@@ -130,6 +135,9 @@ class PostsTable extends Table
                 'subtitle',
                 'body',
                 'slug',
+                'video_cover',
+                'video_cover_provider',
+                'has_cover',
                 'pub_date',
                 'photo',
                 'photo_dir',

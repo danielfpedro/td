@@ -19,8 +19,6 @@
                 <th><?= $this->Paginator->sort('slug') ?></th>
                 <th><?= $this->Paginator->sort('is_active') ?></th>
                 <th><?= $this->Paginator->sort('tags') ?></th>
-                <th><?= $this->Paginator->sort('photo') ?></th>
-                <th><?= $this->Paginator->sort('photo_dir') ?></th>
                 <th><?= $this->Paginator->sort('author_id') ?></th>
                 <th><?= $this->Paginator->sort('category_id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -35,8 +33,6 @@
                 <td><?= h($post->slug) ?></td>
                 <td><?= $this->Number->format($post->is_active) ?></td>
                 <td><?= h($post->tags) ?></td>
-                <td><?= h($post->photo) ?></td>
-                <td><?= h($post->photo_dir) ?></td>
                 <td><?= $post->has('author') ? $this->Html->link($post->author->name, ['controller' => 'Authors', 'action' => 'view', $post->author->id]) : '' ?></td>
                 <td><?= $post->has('category') ? $this->Html->link($post->category->name, ['controller' => 'Categories', 'action' => 'view', $post->category->id]) : '' ?></td>
                 <td class="actions">

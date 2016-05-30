@@ -93,6 +93,10 @@ class Post extends Entity
     {
         return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/square_' . $this->_properties['photo'];
     }
+    protected function _getFullImgPortraitPath()
+    {
+        return '../files/posts/photo/' . $this->_properties['photo_dir'] . '/portrait_' . $this->_properties['photo'];
+    }
 
     protected function _setTitle($title)
     {
