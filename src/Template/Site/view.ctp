@@ -55,7 +55,7 @@
 			<hr>
 
 			<!-- Capa imagem -->
-			<?php if ($post->image_cover): ?>
+			<?php if ($post->cover_image): ?>
 				<div style="margin: 0 -15px;">
 					<?= $this->Html->image($post->image_cover_full_path, ['width' => '100%']) ?>	
 				</div>
@@ -63,7 +63,8 @@
 
 			<div class="row box-margin-top">
 				<div class="col-md-11 post-view-body box-padding-right">
-					<?= $this->Text->autoParagraph($post->body) ?>		
+					<!-- <?= $this->Text->autoParagraph($post->body) ?>		 -->
+					<?= $this->Post->parseText($post->body) ?>		
 				</div>
 			</div>
 
