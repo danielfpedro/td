@@ -263,3 +263,26 @@ $color: darken(#FFF, 20%);
 .deck-list-wrap{
     
 }
+
+.text-post .image-description, .text-post h2{
+    
+}
+.text-post .image-description{
+    padding: 8px 10px;
+    font-size: 14px;
+    background-color: darken(#FFF, 5%);
+}
+.text-post h2{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+}
+.text-post p{
+    margin-bottom: 0;
+}
+.text-post .video-wrap{
+    background-color: darken(#FFF, 5%);
+}

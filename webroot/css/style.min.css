@@ -118,7 +118,7 @@ body, a {
   font-family: "Lato", sans-serif !important; }
 
 a {
-  color: #1e1723;
+  color: #231b29;
   font-weight: bold;
   text-decoration: none !important; }
 
@@ -199,11 +199,11 @@ hr {
   font-weight: bold; }
 
 .label-default, .label-default:hover {
-  background-color: #1e1723;
+  background-color: #231b29;
   color: #FFF; }
 
 .label-default:hover {
-  background-color: #040304 !important; }
+  background-color: #09070a !important; }
 
 .label-light, .label-light:hover {
   background-color: #e6e6e6;
@@ -376,6 +376,25 @@ hr {
   top: 0;
   margin-top: 10px;
   overflow: auto; }
+
+.text-post .image-description {
+  padding: 8px 10px;
+  font-size: 14px;
+  background-color: #f2f2f2; }
+
+.text-post h2 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  display: block; }
+
+.text-post p {
+  margin-bottom: 0; }
+
+.text-post .video-wrap {
+  background-color: #f2f2f2; }
 
 .main-wrap {
   background-size: cover;
@@ -560,7 +579,7 @@ hr {
   width: 100%; }
 
 .navbar .dropdown-menu {
-  background-color: #1e1723;
+  background-color: #231b29;
   border: none; }
 
 .navbar .dropdown-menu > li > a {
@@ -568,11 +587,11 @@ hr {
   font-size: 14px !important; }
 
 .navbar .dropdown-menu > li > a:hover {
-  background-color: #281f30;
+  background-color: #2d2336;
   color: white; }
 
 .navbar .dropdown-menu > li.divider {
-  background-color: #281f30; }
+  background-color: #2d2336; }
 
 .navbar-custom {
   background: -moz-linear-gradient(top, black 0%, transparent 100%);
@@ -615,7 +634,7 @@ hr {
 
 .navbar-small {
   background: none;
-  background-color: #1e1723;
+  background-color: #231b29;
   border: none; }
 
 .navbar-small ul.navbar-main-menu > li > a, .navbar-small ul.navbar-extra-buttons > li > a {
@@ -632,7 +651,7 @@ hr {
   font-size: 15px !important; }
 
 .navbar-small ul.navbar-main-menu > li.open > a {
-  background-color: #281f30 !important;
+  background-color: #2d2336 !important;
   color: white !important; }
 
 .navbar-small .navbar-brand > img {
