@@ -1,18 +1,18 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Category;
+use App\Model\Entity\Tag;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Categories Model
+ * Tags Model
  *
- * @property \Cake\ORM\Association\HasMany $Posts
+ * @property \Cake\ORM\Association\BelongsToMany $Posts
  */
-class CategoriesTable extends Table
+class TagsTable extends Table
 {
 
     /**
@@ -25,29 +25,17 @@ class CategoriesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('categories');
+        $this->table('tags');
         $this->displayField('name');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Posts', [
-            'foreignKey' => 'category_id'
+        $this->belongsToMany('Posts', [
+            'foreignKey' => 'tag_id',
+            'targetForeignKey' => 'post_id',
+            'joinTable' => 'posts_tags'
         ]);
-    }
-
-    public function getBySlug($slug)
-    {
-        return $this->find('all', [
-            'fields' => [
-                'Categories.id',
-                'Categories.name'
-            ],
-            'conditions' => [
-                'Categories.is_active' => true,
-                'Categories.slug' => $slug
-            ]
-        ])->first();
     }
 
     /**

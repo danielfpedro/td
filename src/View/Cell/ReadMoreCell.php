@@ -4,9 +4,9 @@ namespace App\View\Cell;
 use Cake\View\Cell;
 
 /**
- * PostsRelated cell
+ * ReadMore cell
  */
-class PostsRelatedCell extends Cell
+class ReadMoreCell extends Cell
 {
 
     /**
@@ -22,15 +22,13 @@ class PostsRelatedCell extends Cell
      *
      * @return void
      */
-    public function display($currentPost, $limit, $title = null)
+    public function display($currentPost, $limit = 4)
     {
         $this->loadModel('Posts');
-        
-        $posts = $this->Posts->getPostsRelated($currentPost, $limit);
 
-        $this->set([
-            'title' => $title,
-            'posts' => $posts
-        ]);
+        $posts = $this->Posts->getReadMore($currentPost, $limit);
+
+        return $this->set(compact('posts'));
+
     }
 }

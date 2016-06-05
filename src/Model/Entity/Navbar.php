@@ -31,16 +31,16 @@ class Navbar
 	        'label' => 'Notícias',
 	        'url' => [
 	            'controller' => 'Site',
-	            'action' => 'categories',
-	            'category' => 'noticias'
+	            'action' => 'category',
+	            'slug' => 'noticia'
 	        ]
 	    ],
 	    [
 	        'label' => 'Guias',
 	        'url' => [
 	            'controller' => 'Site',
-	            'action' => 'categories',
-	            'category' => 'guias'
+	            'action' => 'category',
+	            'slug' => 'guia'
 	        ]
 	    ],
 	    [

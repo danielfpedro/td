@@ -56,6 +56,8 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/:year/:month/:day/:slug', ['controller' => 'Site', 'action' => 'view']);
 
+    $routes->connect('/pesquisa', ['controller' => 'Site', 'action' => 'search']);
+
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */

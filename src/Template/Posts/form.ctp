@@ -17,7 +17,8 @@
             echo $this->Form->input('subtitle');
             echo $this->Form->input('body');
             echo $this->Form->input('is_active');
-            echo $this->Form->input('tags');
+            echo $this->Form->input('tags_string');
+            echo "A ultima tag deve ser o nome da categoria";
             echo $this->Form->input('pub_date');
             echo $this->Form->input('has_cover', ['type' => 'checkbox']);
             echo $this->Form->input('video_cover');

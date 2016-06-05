@@ -53,7 +53,16 @@ class Post extends Entity
     }
     protected function _getTagsArray()
     {
-        return explode(',', str_replace(', ', ',', $this->_properties['tags']));
+        $tagsPre = explode(',', str_replace(', ', ',', $this->_properties['tags_string']));
+        $tags = [];
+        foreach ($tagsPre as $value) {
+            $name = trim($value);
+            $tags[] = [
+                'name' => $name,
+                'slug' => strtolower(Inflector::slug($name))
+            ];
+        }
+        return $tags;
     }
     protected function _getTagUrl()
     {
@@ -93,7 +102,11 @@ class Post extends Entity
     }
     protected function _getImageCoverFullPath()
     {
-        return '../files/images/cover_' . $this->_properties['cover_image'];
+        if ($this->_properties['cover_image']) {
+            
+            return '../files/images/cover_' . $this->_properties['cover_image'];
+        }
+        return 'default.png';
     }
 
     protected function _setTitle($title)

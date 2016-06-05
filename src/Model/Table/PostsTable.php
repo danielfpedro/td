@@ -5,12 +5,15 @@ use App\Model\Entity\Post;
 
 use Cake\Event\Event;
 
-use Cake\ORM\EntityInterface;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\Query;
+use Cake\ORM\ArrayObject;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\I18n\Time;
+
+use Cake\Utility\Inflector;
 
 use WideImage\WideImage;
 
@@ -22,6 +25,15 @@ use WideImage\WideImage;
  */
 class PostsTable extends Table
 {
+    ////////////
+    // Config //
+    ////////////
+    /**
+     * O Quantidade máxima de caracteres que uma query da busca pode conter, para não 
+     * sobrecarregar o banco de dados com um termo gigante
+     * @var integer
+     */
+    protected $_searchQueryMaxChars = 18;
 
     /**
      * Initialize method
@@ -51,10 +63,57 @@ class PostsTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'post_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'posts_tags'
+        ]);
+
+    }
+
+    public function beforeMarshal(Event $event, $data)
+    {
+        $tagsArray = explode(',', $data['tags_string']);
+
+        $category = $this->Categories->get($data['category_id']);
+        $tagsArray[] = $category['name'];
+
+        foreach ($tagsArray as $tagName) {
+
+            $tagName = trim($tagName);
+            $tagSlug = strtolower(Inflector::slug($tagName));
+
+            $tag = $this->Tags->find('all', [
+                'fields' => [
+                    'Tags.id',
+                    'Tags.name',
+                    'Tags.slug'
+                ],
+                'conditions' => [
+                    'Tags.slug' => $tagSlug
+                ]
+            ])->first();
+
+            if (!$tag) {
+                $newTagData = [
+                    'name' => $tagName,
+                    'slug' => $tagSlug
+                ];
+
+                $newTag = $this->Tags->newEntity($newTagData);
+
+                $this->Tags->save($newTag);
+            }
+        }
+
+        // debug($data);
+        // exit();
     }
 
     public function beforeSave(Event $event, EntityInterface $entity)
     {
+
         $imagePath = WWW_ROOT . 'files' . DS . 'images' . DS;
 
         if ($entity->thumb_image) {
@@ -88,6 +147,63 @@ class PostsTable extends Table
                 ->crop($cropPosition[0], $cropPosition[1], $width, $height)
                 ->saveToFile($imagePath . 'cover_' . $entity->cover_image);
         }
+    }
+
+    public function getPostsRelated($currentPost, $limit)
+    {
+        $conditions = ['is_active' => true];
+
+        if ($currentPost) {
+            $conditions['Posts.id !='] = $currentPost->id;
+        }
+
+        return $this->find('all', [
+            'fields' => [
+                'Posts.id',
+                'Posts.title',
+                'Posts.slug',
+                'Posts.pub_date',
+                'Posts.thumb_image',
+                'Posts.day',
+                'Posts.month',
+                'Posts.year',
+                'Posts.cover_image'
+            ],
+            'conditions' => $conditions,
+            'contain' => [
+                'Authors' => function($q){
+                    return $q->select(['Authors.id', 'Authors.name']);
+                }
+            ],
+            'order' => 'rand()',
+            'limit' => $limit
+        ]);
+    }
+
+    public function getReadMore($currentPost, $limit)
+    {
+        return $this->find('all', [
+            'fields' => [
+                'Posts.id',
+                'Posts.title',
+                'Posts.slug',
+                'Posts.pub_date',
+                'Posts.day',
+                'Posts.month',
+                'Posts.year',
+                'Posts.cover_image'
+            ],
+            'conditions' => [
+                'Posts.id !=' => $currentPost->id
+            ],
+            'contain' => [
+                'Authors' => function($q){
+                    return $q->select(['Authors.id', 'Authors.name']);
+                }
+            ],
+            'order' => 'rand()',
+            'limit' => $limit
+        ]);
     }
 
     /**
@@ -150,23 +266,23 @@ class PostsTable extends Table
     {
         return $this->find('all', [
             'fields' => [
-                'id',
-                'title',
-                'subtitle',
-                'body',
-                'slug',
-                'video_cover',
-                'video_cover_provider',
-                'has_cover',
-                'pub_date',
-                'cover_image',
-                'year',
-                'month',
-                'day',
-                'tags'
+                'Posts.id',
+                'Posts.title',
+                'Posts.subtitle',
+                'Posts.body',
+                'Posts.slug',
+                'Posts.video_cover',
+                'Posts.video_cover_provider',
+                'Posts.has_cover',
+                'Posts.pub_date',
+                'Posts.cover_image',
+                'Posts.year',
+                'Posts.month',
+                'Posts.day',
+                'Posts.tags_string'
             ],
             'conditions' => [
-                'is_active' => true,
+                'Posts.is_active' => true,
                 'Posts.slug' => $slug
             ],
             'contain' => [
@@ -179,6 +295,74 @@ class PostsTable extends Table
             ],
         ])
         ->first();
+    }
+
+    public function getByCategory($category, $limit = 15)
+    {
+        /**
+         * Troca os espaços vazios por %, técnica basica no LIKE
+         */
+        $categoryName = '%'.str_replace(' ', '%', $category->name).'%';
+
+        return [
+            'fields' => [
+                'Posts.title',
+                'Posts.subtitle',
+                'Posts.slug',
+                'Posts.pub_date',
+                'Posts.year',
+                'Posts.month',
+                'Posts.day',
+                'Posts.thumb_image',
+            ],
+            'conditions' => [
+                'Posts.is_active' => true,
+                'Posts.tags_string LIKE' => $categoryName
+            ],
+            'contain' => [
+                'Categories' => function($q){
+                    return $q->select(['Categories.name', 'Categories.slug']);
+                },
+            ],
+            'order' => ['Posts.pub_date' => 'DESC'],
+            'limit' => $limit
+        ];
+    }
+
+    public function getSearch($query, $limit = 15)
+    {
+        /**
+         * Não importa o quanto ele escreve eu só levo em conta os 18 primeiros characters
+         */
+        $query = substr($query, 0, $this->_searchQueryMaxChars);
+        /**
+         * Troca os espaços vazios por %, técnica basica no LIKE
+         */
+        $query = '%'.str_replace(' ', '%', $query).'%';
+
+        return [
+            'fields' => [
+                'title',
+                'subtitle',
+                'slug',
+                'pub_date',
+                'year',
+                'month',
+                'day',
+                'thumb_image',
+            ],
+            'conditions' => [
+                'Posts.is_active' => true,
+                'Posts.tags_slug LIKE' => $query
+            ],
+            'contain' => [
+                'Categories' => function($q){
+                    return $q->select(['name', 'slug']);
+                },
+            ],
+            'order' => ['pub_date' => 'DESC'],
+            'limit' => $limit
+        ];
     }
 
     public function getLatestsPosts($limit = 15)
@@ -195,7 +379,7 @@ class PostsTable extends Table
                 'thumb_image',
             ],
             'conditions' => [
-                'is_active' => true,
+                'Posts.is_active' => true,
             ],
             'contain' => [
                 'Categories' => function($q){
@@ -265,8 +449,8 @@ class PostsTable extends Table
             ->notEmpty('is_active');
 
         $validator
-            ->requirePresence('tags', 'create')
-            ->notEmpty('tags');
+            ->requirePresence('tags_string', 'create')
+            ->notEmpty('tags_string');
 
 
         $validator

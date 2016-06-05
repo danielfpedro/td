@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 
 use Cake\Event\Event;
+use Cake\Network\Exception\NotFoundException;
 
 class SiteController extends AppController
 {
@@ -76,5 +77,51 @@ class SiteController extends AppController
 	public function deck()
 	{
 		
+	}
+	public function search()
+	{
+		$this->loadModel('Posts');
+
+		if (!$this->request->query('q')) {
+			throw new NotFoundException(__("Página não encontrada."));
+		}
+
+		$this->paginate = $this->Posts->getSearch($this->request->query('q'), 20);
+		$posts = $this->paginate($this->Posts);
+
+		$this->set(compact('posts'));
+	}
+	public function category()
+	{
+		$this->loadModel('Posts');
+		$this->loadModel('Tags');
+
+        $tag = $this->Tags->find('all', [
+        	'fields' => [
+        		'Tags.id',
+        		'Tags.name'
+        	],
+            'conditions' => [
+                'Tags.slug' => $this->request->slug
+            ]
+        ])->first();
+
+		if (!$tag) {
+			throw new NotFoundException(__("Página não encontrada."));
+		}
+
+		$this->paginate = $this->Posts->getByCategory($tag);
+		$posts = $this->paginate($this->Posts);
+
+		$this->set(compact('posts', 'tag'));
+	}
+	public function author()
+	{
+		$this->loadModel('Posts');
+
+		$this->paginate = $this->Posts->getByAuthor($author);
+		$posts = $this->paginate($this->Posts);
+
+		$this->set(compact('posts'));
 	}
 }

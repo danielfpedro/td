@@ -74,9 +74,9 @@
 						<div class="col-md-12">
 							Tópicos:
 							<?php foreach ($post->tagsArray as $tag): ?>
-								<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $tag['slug']] ?>
+								<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $this->Blog->tagSlugfy($tag)] ?>
 								<a href="<?= $this->Url->build($tagUrl) ?>">
-									<span class="label label-light label-sm"><?= $tag['name'] ?></span>
+									<span class="label label-light label-sm"><?= $tag ?></span>
 								</a>&nbsp;								
 							<?php endforeach ?>
 						</div>
