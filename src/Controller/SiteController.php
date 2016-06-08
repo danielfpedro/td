@@ -72,7 +72,15 @@ class SiteController extends AppController
 	}
 	public function decks()
 	{
+		$this->loadModel('PlayClasses');
 
+		$classes = $this->PlayClasses->getAll();
+
+		$this->set(compact('classes'));
+	}
+	public function decksByClass()
+	{
+		
 	}
 	public function deck()
 	{

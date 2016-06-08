@@ -10,11 +10,7 @@
 			?>
 		</div>
 		<div class="post-compact-body">
-			<a href="#">
-				<h2>
-					<?= $post->title ?>
-				</h2>
-			</a>
+			<?= $this->Html->link('<h2>'.$post->title.'</h2>', $post->view_url, ['escape' => false]) ?>
 		</div>
 	</div>
 <?php endforeach ?>

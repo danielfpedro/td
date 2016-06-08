@@ -151,7 +151,7 @@ class PostsTable extends Table
 
     public function getPostsRelated($currentPost, $limit)
     {
-        $conditions = ['is_active' => true];
+        $conditions = ['Posts.is_active' => true];
 
         if ($currentPost) {
             $conditions['Posts.id !='] = $currentPost->id;
@@ -194,7 +194,9 @@ class PostsTable extends Table
                 'Posts.cover_image'
             ],
             'conditions' => [
-                'Posts.id !=' => $currentPost->id
+                'Posts.is_active' => true,
+                'Posts.id !=' => $currentPost->id,
+                ''
             ],
             'contain' => [
                 'Authors' => function($q){
@@ -342,18 +344,18 @@ class PostsTable extends Table
 
         return [
             'fields' => [
-                'title',
-                'subtitle',
-                'slug',
-                'pub_date',
-                'year',
-                'month',
-                'day',
-                'thumb_image',
+                'Posts.title',
+                'Posts.subtitle',
+                'Posts.slug',
+                'Posts.pub_date',
+                'Posts.year',
+                'Posts.month',
+                'Posts.day',
+                'Posts.thumb_image',
             ],
             'conditions' => [
                 'Posts.is_active' => true,
-                'Posts.tags_slug LIKE' => $query
+                'Posts.tags_string LIKE' => $query
             ],
             'contain' => [
                 'Categories' => function($q){

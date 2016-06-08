@@ -22,15 +22,62 @@
 				</p>
 
 				<br>
-			
-				<?php foreach ($classes as $class): ?>
-					<?= $this->Html->link($class->name, [
-						'controller' => 'Site',
-						'action' => 'decksByClass',
-						'slug' => $class->slug
-					]) ?>
+
+				<?php foreach (['Mago', 'Bruxo', 'Xamã', 'Guerreiro', 'Ladino', 'Paladino'] as $hero): ?>
+					<div class="deck-hero-container" style="background-image: url()">
+						<div class="title-with-avatar">
+							<div class="avatar">
+								<?= $this->Html->image('mage_avatar.png', ['class' => 'img-circle']) ?>
+							</div>
+							<h2 class="has-anchor" id="ladino">
+								<?= $hero ?>
+							</h2>
+						</div>
+
+						<br>
+
+						<table class="table table-striped table-hover table-bordered table-condensed">
+							<thead>
+								<tr>
+									<th>
+										Nome
+									</th>
+									<th>
+										Estilo
+									</th>
+									<th>
+										Custo (Mana)
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<?= $this->Html->link('Reno Jacksson Lander', ['controller' => 'Site', 'action' => 'deck']) ?>
+									</td>
+									<td>
+										<?= $this->Html->link('Midrange', []) ?>
+									</td>
+									<td>
+										3.000
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<?= $this->Html->link('Face', []) ?>
+									</td>
+									<td>
+										<?= $this->Html->link('Aggro', []) ?>
+									</td>
+									<td>
+										1.500
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
 				<?php endforeach ?>
-	
 			</div>
 			<div class="col-md-4">
 				<div class="">
