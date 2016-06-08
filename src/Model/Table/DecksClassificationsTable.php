@@ -36,6 +36,38 @@ class DecksClassificationsTable extends Table
         ]);
     }
 
+    public function getByClass($classSlug)
+    {
+        $playClass = $this
+            ->Decks
+            ->PlayClasses
+            ->find('all', [
+                'fields' => [
+                    'PlayClasses.id',
+                    'PlayClasses.name'
+                ],
+                'conditions' => [
+                'PlayClasses.slug' => $classSlug
+            ]
+        ])
+        ->first();
+
+        $decksClassifications = $this->find('all', [
+            'contain' => [
+                'Decks' => function($q) use ($playClass){
+                    return $q
+                        ->where(['Decks.play_class_id' => $playClass->id])
+                        ->contain([
+                            'Posts',
+                            'DecksTypes'
+                        ]);
+                },
+            ]
+        ]);
+
+        return ['playClass' => $playClass, 'decksClassifications' => $decksClassifications];
+    }
+
     /**
      * Default validation rules.
      *

@@ -21,6 +21,7 @@ class PlayClassesFixture extends TestFixture
         'name' => ['type' => 'string', 'length' => 120, 'null' => true, 'default' => '120', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'slug' => ['type' => 'string', 'length' => 200, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -40,8 +41,9 @@ class PlayClassesFixture extends TestFixture
         [
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-06-08 02:13:02',
-            'modified' => '2016-06-08 02:13:02'
+            'created' => '2016-06-08 10:33:17',
+            'modified' => '2016-06-08 10:33:17',
+            'slug' => 'Lorem ipsum dolor sit amet'
         ],
     ];
 }

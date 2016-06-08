@@ -80,7 +80,18 @@ class SiteController extends AppController
 	}
 	public function decksByClass()
 	{
+		$this->loadModel('DecksClassifications');
+		$playClassAndClassifications = $this
+			->DecksClassifications
+			->getByClass($this->request->slug);
 		
+		//debug($playClassAndClassifications);
+
+		if (!$playClassAndClassifications['playClass']) {
+			throw new NotFoundException("Página não encontrada.");
+		}
+
+		$this->set($playClassAndClassifications);
 	}
 	public function deck()
 	{

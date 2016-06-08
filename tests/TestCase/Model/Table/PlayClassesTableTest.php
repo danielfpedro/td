@@ -26,8 +26,8 @@ class PlayClassesTableTest extends TestCase
     public $fixtures = [
         'app.play_classes',
         'app.decks',
-        'app.heroes',
-        'app.decks_types'
+        'app.decks_types',
+        'app.decks_classifications'
     ];
 
     /**
@@ -60,6 +60,16 @@ class PlayClassesTableTest extends TestCase
      * @return void
      */
     public function testInitialize()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getAll method
+     *
+     * @return void
+     */
+    public function testGetAll()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

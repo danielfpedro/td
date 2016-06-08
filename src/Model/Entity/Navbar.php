@@ -50,8 +50,7 @@ class Navbar
 	                'label' => 'Todos',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    'decks'
+	                    'action' => 'decks'
 	                ]
 	            ],
 
@@ -61,72 +60,72 @@ class Navbar
 	                'label' => 'Bruxo',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'bruxo'
 	                ]
 	            ],
 	            [
 	                'label' => 'Caçador',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'cacador'
 	                ]
 	            ],	
 	            [
 	                'label' => 'Druida',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'druida'
 	                ]
 	            ],
 	            [
 	                'label' => 'Guerreiro',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'guerreiro'
 	                ]
 	            ],	
 	            [
 	                'label' => 'Ladino',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'ladino'
 	                ]
 	            ],
 	            [
 	                'label' => 'Mago',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'mago'
 	                ]
 	            ],
 	            [
 	                'label' => 'Paladino',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'paladino'
 	                ]
 	            ],                        
 	            [
 	                'label' => 'Sacerdote',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'sacerdote'
 	                ]
 	            ],	
 	            [
 	                'label' => 'Xamã',
 	                'url' => [
 	                    'controller' => 'Site',
-	                    'action' => 'decks',
-	                    '#' => 'mage'
+	                    'action' => 'decksByClass',
+	                    'slug' => 'xama'
 	                ]
 	            ],     
 	        ]

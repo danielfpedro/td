@@ -19,7 +19,7 @@ class DecksController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Heroes', 'DecksTypes']
+            'contain' => ['DecksTypes', 'PlayClasses', 'DecksClassifications', 'Posts']
         ];
         $decks = $this->paginate($this->Decks);
 
@@ -37,7 +37,7 @@ class DecksController extends AppController
     public function view($id = null)
     {
         $deck = $this->Decks->get($id, [
-            'contain' => ['Heroes', 'DecksTypes']
+            'contain' => ['DecksTypes', 'PlayClasses', 'DecksClassifications', 'Posts']
         ]);
 
         $this->set('deck', $deck);
@@ -61,9 +61,11 @@ class DecksController extends AppController
                 $this->Flash->error(__('The deck could not be saved. Please, try again.'));
             }
         }
-        $heroes = $this->Decks->Heroes->find('list', ['limit' => 200]);
         $decksTypes = $this->Decks->DecksTypes->find('list', ['limit' => 200]);
-        $this->set(compact('deck', 'heroes', 'decksTypes'));
+        $playClasses = $this->Decks->PlayClasses->find('list', ['limit' => 200]);
+        $decksClassifications = $this->Decks->DecksClassifications->find('list', ['limit' => 200]);
+        $posts = $this->Decks->Posts->find('list', ['limit' => 200]);
+        $this->set(compact('deck', 'decksTypes', 'playClasses', 'decksClassifications', 'posts'));
         $this->set('_serialize', ['deck']);
     }
 
@@ -88,9 +90,11 @@ class DecksController extends AppController
                 $this->Flash->error(__('The deck could not be saved. Please, try again.'));
             }
         }
-        $heroes = $this->Decks->Heroes->find('list', ['limit' => 200]);
         $decksTypes = $this->Decks->DecksTypes->find('list', ['limit' => 200]);
-        $this->set(compact('deck', 'heroes', 'decksTypes'));
+        $playClasses = $this->Decks->PlayClasses->find('list', ['limit' => 200]);
+        $decksClassifications = $this->Decks->DecksClassifications->find('list', ['limit' => 200]);
+        $posts = $this->Decks->Posts->find('list', ['limit' => 200]);
+        $this->set(compact('deck', 'decksTypes', 'playClasses', 'decksClassifications', 'posts'));
         $this->set('_serialize', ['deck']);
     }
 

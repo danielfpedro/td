@@ -70,6 +70,9 @@ class PostsTable extends Table
             'joinTable' => 'posts_tags'
         ]);
 
+        $this->belongsTo('Decks', [
+        ]);
+
     }
 
     public function beforeMarshal(Event $event, $data)
@@ -293,6 +296,9 @@ class PostsTable extends Table
                 },
                 'Authors' => function($q){
                     return $q->select(['id', 'name']);
+                },
+                'Decks' => function($q){
+                    return $q->select(['id']);
                 },
             ],
         ])

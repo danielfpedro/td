@@ -46,7 +46,7 @@ Router::scope('/categoria', function (RouteBuilder $routes) {
     $routes->connect('/:slug', ['controller' => 'Site', 'action' => 'category']);
 });
 Router::scope('/decks', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'Site', 'action' => 'decks']);
+    $routes->connect('/classes', ['controller' => 'Site', 'action' => 'decks']);
     $routes->connect('/:slug', ['controller' => 'Site', 'action' => 'decksByClass']);
 });
 

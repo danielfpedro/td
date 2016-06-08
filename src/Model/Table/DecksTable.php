@@ -10,8 +10,10 @@ use Cake\Validation\Validator;
 /**
  * Decks Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Heroes
  * @property \Cake\ORM\Association\BelongsTo $DecksTypes
+ * @property \Cake\ORM\Association\BelongsTo $PlayClasses
+ * @property \Cake\ORM\Association\BelongsTo $DecksClassifications
+ * @property \Cake\ORM\Association\BelongsTo $Posts
  */
 class DecksTable extends Table
 {
@@ -32,13 +34,19 @@ class DecksTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Heroes', [
-            'foreignKey' => 'hero_id',
-            'joinType' => 'INNER'
-        ]);
         $this->belongsTo('DecksTypes', [
             'foreignKey' => 'decks_type_id',
             'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('PlayClasses', [
+            'foreignKey' => 'play_class_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('DecksClassifications', [
+            'foreignKey' => 'decks_classification_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->hasOne('Posts', [
         ]);
     }
 
@@ -66,8 +74,10 @@ class DecksTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['hero_id'], 'Heroes'));
         $rules->add($rules->existsIn(['decks_type_id'], 'DecksTypes'));
+        $rules->add($rules->existsIn(['play_class_id'], 'PlayClasses'));
+        $rules->add($rules->existsIn(['decks_classification_id'], 'DecksClassifications'));
+        $rules->add($rules->existsIn(['post_id'], 'Posts'));
         return $rules;
     }
 }

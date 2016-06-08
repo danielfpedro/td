@@ -17,8 +17,15 @@ class DecksControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.decks',
-        'app.heroes',
-        'app.decks_types'
+        'app.decks_types',
+        'app.play_classes',
+        'app.decks_classifications',
+        'app.posts',
+        'app.authors',
+        'app.trends',
+        'app.categories',
+        'app.tags',
+        'app.posts_tags'
     ];
 
     /**

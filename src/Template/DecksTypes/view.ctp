@@ -37,8 +37,9 @@
                 <th><?= __('Id') ?></th>
                 <th><?= __('Created') ?></th>
                 <th><?= __('Modified') ?></th>
-                <th><?= __('Hero Id') ?></th>
                 <th><?= __('Decks Type Id') ?></th>
+                <th><?= __('Play Class Id') ?></th>
+                <th><?= __('Decks Classification Id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($decksType->decks as $decks): ?>
@@ -46,8 +47,9 @@
                 <td><?= h($decks->id) ?></td>
                 <td><?= h($decks->created) ?></td>
                 <td><?= h($decks->modified) ?></td>
-                <td><?= h($decks->hero_id) ?></td>
                 <td><?= h($decks->decks_type_id) ?></td>
+                <td><?= h($decks->play_class_id) ?></td>
+                <td><?= h($decks->decks_classification_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Decks', 'action' => 'view', $decks->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Decks', 'action' => 'edit', $decks->id]) ?>

@@ -40,8 +40,8 @@ class DecksTypesFixture extends TestFixture
         [
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-06-08 02:06:32',
-            'modified' => '2016-06-08 02:06:32'
+            'created' => '2016-06-08 10:32:56',
+            'modified' => '2016-06-08 10:32:56'
         ],
     ];
 }

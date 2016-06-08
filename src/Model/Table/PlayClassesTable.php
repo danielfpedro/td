@@ -39,12 +39,7 @@ class PlayClassesTable extends Table
     public function getAll()
     {
         return $this->find('all', [
-            'fields' => [
-                'PlayClasses.id',
-                'PlayClasses.name',
-                'PlayClasses.slug'
-            ],
-            'order' => ['PlayClasses.name']
+            
         ]);
     }
 
@@ -62,6 +57,10 @@ class PlayClassesTable extends Table
 
         $validator
             ->allowEmpty('name');
+
+        $validator
+            ->requirePresence('slug', 'create')
+            ->notEmpty('slug');
 
         return $validator;
     }

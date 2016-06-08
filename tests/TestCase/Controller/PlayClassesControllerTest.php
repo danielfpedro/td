@@ -18,8 +18,8 @@ class PlayClassesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.play_classes',
         'app.decks',
-        'app.heroes',
-        'app.decks_types'
+        'app.decks_types',
+        'app.decks_classifications'
     ];
 
     /**

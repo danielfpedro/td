@@ -9,10 +9,14 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property int $hero_id
- * @property \App\Model\Entity\Hero $hero
  * @property int $decks_type_id
  * @property \App\Model\Entity\DecksType $decks_type
+ * @property int $play_class_id
+ * @property \App\Model\Entity\PlayClass $play_class
+ * @property int $decks_classification_id
+ * @property \App\Model\Entity\DecksClassification $decks_classification
+ * @property int $post_id
+ * @property \App\Model\Entity\Post $post
  */
 class Deck extends Entity
 {

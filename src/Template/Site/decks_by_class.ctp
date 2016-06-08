@@ -12,35 +12,26 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h2 class="title title-with-divider">
-					Decks
+					<?= $this->Html->link('Decks', ['controller' => 'Site', 'action' => 'decks']) ?>
+					>
+					<?= $playClass->name ?>
 				</h2>
 
-				<br>
-
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-				</p>
+				<?= $this->Html->image('mage_wide.jpg', ['width' => '100%']) ?>
 
 				<br>
 
-				<?php foreach (['Mago', 'Bruxo', 'Xamã', 'Guerreiro', 'Ladino', 'Paladino'] as $hero): ?>
-					<div class="deck-hero-container" style="background-image: url()">
-						<div class="title-with-avatar">
-							<div class="avatar">
-								<?= $this->Html->image('mage_avatar.png', ['class' => 'img-circle']) ?>
-							</div>
-							<h2 class="has-anchor" id="ladino">
-								<?= $hero ?>
-							</h2>
-						</div>
-
-						<br>
-
-						<table class="table table-striped table-hover table-bordered table-condensed">
+				<?php foreach ($decksClassifications as $classification): ?>
+					<h2 class="title box-margin-top"><?= $classification->name ?></h2>
+					<?php foreach ($classification->decks as $deck): ?>
+						<table class="table table-striped table-hover table-bordered table-condensed box-margin-top-sm box-margin-bottom">
 							<thead>
 								<tr>
 									<th>
 										Nome
+									</th>
+									<th>
+										Expansões
 									</th>
 									<th>
 										Estilo
@@ -53,30 +44,26 @@
 							<tbody>
 								<tr>
 									<td>
-										<?= $this->Html->link('Reno Jacksson Lander', ['controller' => 'Site', 'action' => 'deck']) ?>
+										<?= $this->Html->link($deck->post->title, ['controller' => 'Site', 'action' => 'deck']) ?>
+										<br>
+										
 									</td>
 									<td>
-										<?= $this->Html->link('Midrange', []) ?>
+										<span class="label label-small label-primary">TOG</span>
+									</td>
+									<td>
+										<?= $this->Html->link($deck->decks_type->name, []) ?>
 									</td>
 									<td>
 										3.000
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<?= $this->Html->link('Face', []) ?>
-									</td>
-									<td>
-										<?= $this->Html->link('Aggro', []) ?>
-									</td>
-									<td>
-										1.500
-									</td>
-								</tr>
 							</tbody>
 						</table>
-					</div>
-					<br>
+					<?php endforeach ?>
+					<?php if (!$classification->decks): ?>
+						<p class="box-margin-top-sm"><em>Nenhum deck adicionado ainda.</em></p>
+					<?php endif ?>
 				<?php endforeach ?>
 			</div>
 			<div class="col-md-4">
