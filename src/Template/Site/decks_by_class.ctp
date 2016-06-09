@@ -44,7 +44,7 @@
 							<tbody>
 								<tr>
 									<td>
-										<?= $this->Html->link($deck->post->title, ['controller' => 'Site', 'action' => 'deck']) ?>
+										<?= $this->Html->link($deck->post->title, $deck->post->view_url) ?>
 										<br>
 										
 									</td>

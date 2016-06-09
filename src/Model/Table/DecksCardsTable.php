@@ -1,21 +1,19 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Deck;
+use App\Model\Entity\DecksCard;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Decks Model
+ * DecksCards Model
  *
- * @property \Cake\ORM\Association\BelongsTo $DecksTypes
- * @property \Cake\ORM\Association\BelongsTo $PlayClasses
- * @property \Cake\ORM\Association\BelongsTo $DecksClassifications
- * @property \Cake\ORM\Association\BelongsTo $Posts
+ * @property \Cake\ORM\Association\BelongsTo $Decks
+ * @property \Cake\ORM\Association\BelongsTo $Cards
  */
-class DecksTable extends Table
+class DecksCardsTable extends Table
 {
 
     /**
@@ -28,29 +26,17 @@ class DecksTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('decks');
+        $this->table('decks_cards');
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->addBehavior('Timestamp');
-
-        $this->belongsTo('DecksTypes', [
-            'foreignKey' => 'decks_type_id',
+        $this->belongsTo('Decks', [
+            'foreignKey' => 'deck_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('PlayClasses', [
-            'foreignKey' => 'play_class_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('DecksClassifications', [
-            'foreignKey' => 'decks_classification_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->hasOne('Posts', [
-        ]);
-
         $this->belongsTo('Cards', [
-            'through' => 'DecksCards'
+            'foreignKey' => 'card_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -66,6 +52,10 @@ class DecksTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
+        $validator
+            ->integer('qtd')
+            ->allowEmpty('qtd');
+
         return $validator;
     }
 
@@ -78,10 +68,8 @@ class DecksTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['decks_type_id'], 'DecksTypes'));
-        $rules->add($rules->existsIn(['play_class_id'], 'PlayClasses'));
-        $rules->add($rules->existsIn(['decks_classification_id'], 'DecksClassifications'));
-        $rules->add($rules->existsIn(['post_id'], 'Posts'));
+        $rules->add($rules->existsIn(['deck_id'], 'Decks'));
+        $rules->add($rules->existsIn(['card_id'], 'Cards'));
         return $rules;
     }
 }
