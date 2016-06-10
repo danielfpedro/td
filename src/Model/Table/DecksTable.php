@@ -49,7 +49,7 @@ class DecksTable extends Table
         $this->hasOne('Posts', [
         ]);
 
-        $this->belongsTo('Cards', [
+        $this->belongsToMany('Cards', [
             'through' => 'DecksCards'
         ]);
     }

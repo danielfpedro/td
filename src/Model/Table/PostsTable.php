@@ -15,6 +15,8 @@ use Cake\I18n\Time;
 
 use Cake\Utility\Inflector;
 
+use Cake\Collection\Collection;
+
 use WideImage\WideImage;
 
 /**
@@ -269,7 +271,7 @@ class PostsTable extends Table
 
     public function getForView($slug)
     {
-        return $this->find('all', [
+        $post = $this->find('all', [
             'fields' => [
                 'Posts.id',
                 'Posts.title',
@@ -284,7 +286,8 @@ class PostsTable extends Table
                 'Posts.year',
                 'Posts.month',
                 'Posts.day',
-                'Posts.tags_string'
+                'Posts.tags_string',
+                'Posts.deck_id',
             ],
             'conditions' => [
                 'Posts.is_active' => true,
@@ -303,6 +306,43 @@ class PostsTable extends Table
             ],
         ])
         ->first();
+
+        $post->deck = null;
+
+        if ($post->deck_id) {
+            $deck = $this
+                ->Decks
+                ->find('all', [
+                    'conditions' => [
+                        'Decks.id' => $post->deck_id
+                    ],
+                    'contain' => [
+                        'Cards' => function($q){
+                            return $q
+                                ->contain(['CardsSets'])
+                                ->order(['mana_cost']);
+                        },
+                        'PlayClasses'
+                    ]
+                ])
+                ->first();
+
+            /**
+             * Agrupo cards por de classe e neutras
+             */
+            $cards = [];
+            foreach ($deck->cards as $card) {
+                $index = ($card->play_class_id) ? 0 : 1;
+
+                $cards[$index][] = $card;
+            }
+            $deck->cards = $cards;
+            // debug($cards);
+            // exit();
+            $post->deck = $deck;
+        }
+
+        return $post;
     }
 
     public function getByCategory($category, $limit = 15)

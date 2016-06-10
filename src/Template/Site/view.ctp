@@ -1,4 +1,4 @@
-<?= $this->assign('title', $post->title) ?>
+<?= $this->assign('title', $post->title .' - ') ?>
 
 <?= $this->cell('Navbar') ?>
 
@@ -26,6 +26,11 @@
 					<?= $post->category->name ?>
 				</span>
 			</a>	
+
+			<?php if ($post->deck): ?>
+				<?= $this->Html->link('Decks de ' . $post->deck->play_class->name, ['action' => 'decksByClass', 'slug' => $post->deck->play_class->slug]) ?> >
+			<?php endif ?>
+
 			<h1 class="post-view-title box-margin-bottom box-margin-top-sm">
 				<?= $post->title ?>
 			</h1>
@@ -58,6 +63,45 @@
 			<?php if ($post->has_cover): ?>
 				<div style="margin: 0 -15px;">
 					<?= $this->Html->image($post->image_cover_full_path, ['width' => '100%']) ?>	
+				</div>
+			<?php endif ?>
+			
+			<?php if ($post->deck): ?>
+				<div class="row">
+					<?php
+						$cardsGroups = ['Cartas de ' . $post->deck->play_class->name, 'Cartas Neutras'];
+					?>
+					<?php foreach ($cardsGroups as $key => $group): ?>
+						<div class="col-md-6">
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="" colspan="3">
+											<?= $group ?>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($post->deck->cards[$key] as $card): ?>
+										<tr>
+											<td style="width:50px;">
+												<?= $card->mana_cost ?> <?= $this->Html->image('mana_crystal.png', ['width' => 15]) ?>
+											</td>
+											<td>
+												<span class="rarity-<?= $card->rarity_id ?>">
+													<strong><?= $card->name ?></strong>
+													<span class="card-set"><?= $card->cards_set->name ?></span>
+												</span>
+											</td>
+											<td>
+												<?= $card->_joinData->qtd ?>
+											</td>
+										</tr>
+									<?php endforeach ?>
+								</tbody>
+							</table>
+						</div>
+					<?php endforeach ?>
 				</div>
 			<?php endif ?>
 
@@ -138,7 +182,7 @@ s.setAttribute('data-timestamp', +new Date());
 				<img src="http://placehold.it/350x300?text=Ad%20Side Column" width="100%">
 			</div>
 			<div class="box-margin-top">
-				<?= $this->cell('PostsRelated', [$post, 10]) ?>
+				<?= $this->cell('PostsRelated', [$post, 6]) ?>
 			</div>
 			</div>
 		</div>

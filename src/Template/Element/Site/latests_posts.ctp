@@ -1,3 +1,6 @@
+<?php if (count($posts) < 1): ?>
+	<em>Nenhum post para exibir.</em>
+<?php endif ?>
 <?php foreach ($posts as $post): ?>
 	<div class="post-latest box-margin-bottom-sm">
 		<div class="row">

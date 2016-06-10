@@ -131,6 +131,34 @@ hr {
   border: none !important;
   margin: 15px 0; }
 
+.navbar-hidden-search {
+  display: none; }
+
+.card-set {
+  font-size: 10px;
+  font-style: italic;
+  color: #EEE;
+  padding-left: 5px; }
+
+.rarity-1, .rarity-2, .rarity-3, .rarity-4, .rarity-5, .rarity-6 {
+  background-color: #2c3e50;
+  padding: 3px 6px; }
+
+.rarity-1 {
+  color: #f1c40f; }
+
+.rarity-2 {
+  color: #FFF; }
+
+.rarity-3 {
+  color: #f1c40f; }
+
+.rarity-4 {
+  color: #f1c40f; }
+
+.rarity-5 {
+  color: #f1c40f; }
+
 .discount-navbar-fixed {
   margin-top: 50px; }
 

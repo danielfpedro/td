@@ -60,8 +60,32 @@
                 <?php endforeach ?>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-extra-buttons">
+                <li class="">
+                    <form
+                        action="<?= $this->Url->build(['action' => 'search']) ?>"
+                        method="GET"
+                        class="navbar-form navbar-hidden-search"
+                        role="search">
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Digite a sua pesquisa e aperte enter..."
+                                autocomplete="off"
+                                name="q"
+                                id="q">
+                            <span class="input-group-btn">
+                                <button type="reset" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-remove">
+                                        <span class="sr-only">Close</span>
+                                    </span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
                 <li style="margin-right: 20px">
-                    <a href="#">
+                    <a href="#" class="btn-navbar-search">
                         <span class="fa fa-search"></span>
                     </a>
                 </li>
@@ -73,6 +97,7 @@
                     </li>
                 <?php endforeach ?>
             </ul>
+
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

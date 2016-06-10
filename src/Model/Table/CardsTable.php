@@ -44,12 +44,12 @@ class CardsTable extends Table
         $this->belongsTo('PlayClasses', [
             'foreignKey' => 'play_class_id'
         ]);
-        $this->belongsTo('Decks', [
-            'through' => 'DecksCards'
-        ]);
         $this->belongsTo('CardsSets', [
         ]);
         $this->belongsTo('Rarities', [
+        ]);
+        $this->belongsToMany('Decks', [
+            'through' => 'DecksCards'
         ]);        
     }
 
