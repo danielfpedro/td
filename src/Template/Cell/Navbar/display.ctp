@@ -75,7 +75,7 @@
                                 name="q"
                                 id="q">
                             <span class="input-group-btn">
-                                <button type="reset" class="btn btn-default">
+                                <button type="reset" class="btn btn-default btn-navbar-search-close">
                                     <span class="glyphicon glyphicon-remove">
                                         <span class="sr-only">Close</span>
                                     </span>

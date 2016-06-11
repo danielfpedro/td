@@ -399,11 +399,17 @@ hr {
   width: 100%;
   height: auto; }
 
-.deck-list-fixed {
-  position: fixed;
-  top: 0;
-  margin-top: 10px;
-  overflow: auto; }
+.container-deck-list {
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.container-deck-list.affix {
+  position: fixed !important;
+  top: 60px; }
+
+.container-deck-list.unfixed {
+  width: 100%;
+  height: auto; }
 
 .text-post .image-description {
   padding: 8px 10px;

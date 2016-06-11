@@ -65,6 +65,11 @@ class SiteController extends AppController
 			],
 			'limit' => 2
 		]);
+
+		if ($post->deck) {
+			$this->viewBuilder()->template('view_deck');
+		}
+
 		$this->set([
 			'post' => $post,
 			'readMore' => $readMore

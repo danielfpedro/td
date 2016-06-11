@@ -63,9 +63,9 @@
 
 $(function () {
 
-    $('.btn-navbar-search').click(function(){
+    $('.btn-navbar-search, .btn-navbar-search-close').click(function(){
         $('.navbar-hidden-search').fadeToggle();
-        $('#q').focus();
+        $('#q').val('').focus();
         return false;
     });
 
@@ -109,26 +109,8 @@ $(function () {
 
 
         <script>
-            $(function(){
 
-                // DECK LIST FIXED
-
-                anchors.add('.has-anchor');
-
-                $('[data-toggle="tooltip"]').tooltip()
-
-window.setTimeout(function() {
-if(location.hash.length !== 0) {
-    window.scrollTo(window.scrollX, window.scrollY - 20);
-}
-}, 1); 
-
-$('.anchorjs-link ').click(function(){
-    $('html, body').animate({
-        scrollTop: ($( $.attr(this, 'href') ).offset().top - 20)
-    }, 500);
-    return false;
-});
+$(function(){
                 var wHeight = $(window).height();
 
                 $(window).scroll(function(){
@@ -148,12 +130,29 @@ $('.anchorjs-link ').click(function(){
                             $('.navbar').addClass('navbar-custom');
                         }
                     }
-
+                    /**
+                     * Deck Fixed
+                     */
+                    // $('.container-deck-list').affix({
+                    //     offset: {
+                    //         top: $('.container-deck-list').offset().top - 75,
+                    //         bottom: 250
+                    //     }
+                    // });
                     // var height = $(window).height();
 
                     // $deckList = $('.deck-list');
 
-                    // var distance = getElementOffset('.deck-list', height, 'top');
+                    // var distanceFromTop = getElementOffset('.post-view-body', height, 'top');
+                    // console.log('Disntacia do texto do deck para o topo', distanceFromTop);
+                    // if (distanceFromTop < 60) {
+                    //     $deckList
+                    //         .addClass('deck-list-fixed')
+                    //         .removeClass('deck-list-unfixed')
+                    //         .css({
+                    //             'width': $deckList.parent().width() + 'px'
+                    //         });
+                    // }
                     // var footerDistance = getElementOffset('.footer', height, 'bottom');
 
                     // var unFix = false;
