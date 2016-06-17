@@ -10,9 +10,9 @@ use Cake\Network\Exception\NotFoundException;
 class SiteController extends AppController
 {
 
-	public function beforeRender(Event $event)
+	public function beforeFilter(Event $event)
 	{
-		parent::beforeRender($event);
+		parent::beforeFilter($event);
 		$this
 			->viewBuilder()
 			->helpers(['Blog'])
@@ -147,5 +147,11 @@ class SiteController extends AppController
 		$posts = $this->paginate($this->Posts);
 
 		$this->set(compact('posts'));
+	}
+	public function latestPostsLoadMore()
+	{
+		$this->viewBuilder()->layout('ajax');
+
+		$this->set(['page' => $this->request->data('page')]);
 	}
 }

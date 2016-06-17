@@ -1,0 +1,1 @@
+<?= $this->cell('LatestsPosts', [15, $page]) ?>

@@ -4,9 +4,9 @@ namespace App\View\Cell;
 use Cake\View\Cell;
 
 /**
- * LatestsPosts cell
+ * LatestsPostsLoadMore cell
  */
-class LatestsPostsCell extends Cell
+class LatestsPostsLoadMoreCell extends Cell
 {
 
     /**
@@ -22,12 +22,7 @@ class LatestsPostsCell extends Cell
      *
      * @return void
      */
-    public function display($limit, $page)
+    public function display()
     {
-        $this->loadModel('Posts');
-
-        $posts = $this->Posts->getLatestsPosts($limit, $page);
-
-        $this->set(compact('posts'));
     }
 }

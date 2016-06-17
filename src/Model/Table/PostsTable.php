@@ -413,8 +413,11 @@ class PostsTable extends Table
         ];
     }
 
-    public function getLatestsPosts($limit = 15)
+    public function getLatestsPosts($limit = 15, $page)
     {
+        $page = (!$page) ? 0 : $page;
+        $page = ($page - 1) * $limit;
+
         return $this->find('all', [
             'fields' => [
                 'title',
@@ -435,6 +438,7 @@ class PostsTable extends Table
                 },
             ],
             'order' => ['pub_date' => 'DESC'],
+            'offset' => $page,
             'limit' => $limit
         ]);
     }

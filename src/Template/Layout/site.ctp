@@ -111,6 +111,24 @@ $(function () {
         <script>
 
 $(function(){
+
+        $('.btn-latest-posts-load-more').click(function(){
+            var $this = $(this);
+            var page = $this.data('page');
+            var url = $this.data('url');
+
+            var currentHtml = $this.html();
+            $this.html('Carregando...');
+
+            $loadMore = $('<div/>');
+            $loadMore.load(url, {page: page}, function(data, xhr, code){
+                console.log(code);
+                $this.data('page', (page + 1));
+                $('.lastest-posts-load-more').append($(this));
+                $this.html(currentHtml);
+            });
+        });
+
                 var wHeight = $(window).height();
 
                 $(window).scroll(function(){

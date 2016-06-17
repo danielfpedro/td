@@ -18,7 +18,17 @@
 <div class="container box-margin-top-lg">
 		<div class="row">
 			<div class="col-md-8">
-				<?= $this->cell('LatestsPosts') ?>
+				<?= $this->cell('LatestsPosts', [15, 1]) ?>
+				<div class="lastest-posts-load-more">
+					
+				</div>
+				<button
+					type="button"
+					class="btn btn-default btn-block btn-latest-posts-load-more"
+					data-url="<?= $this->Url->build(['action' => 'latestPostsLoadMore']) ?>"
+					data-page="2">
+					Carregar Mais
+				</button>
 			</div>
 			<div class="col-md-4">
 				<div class="text-center">
