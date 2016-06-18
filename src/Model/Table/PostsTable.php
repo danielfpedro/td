@@ -464,12 +464,14 @@ class PostsTable extends Table
 
         // Divido em chunk de 2
         $posts = $posts->chunk(2)->toArray();
+        unset($posts[1]);
+        unset($posts[2]);
         // 2 grandes obrigatórios
         // 3 menores não obrigatórios porém se posuir tem que ser os tres, por exemplo, eu nunca poderei ter os 2 grandes e 1 pequeno.
         if (isset($posts[2])) {
 
-            $posts[2][] = $posts[4][0];
-            unset($posts[4]);
+            // $posts[2][] = $posts[4][0];
+            // unset($posts[4]);
         }
 
         return $posts;

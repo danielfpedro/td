@@ -1,5 +1,20 @@
 $topo-bg-color: rgba(255, 255, 255, 1);
 
+.navbar-small{
+	height: 45px;
+}
+$transition-speed: .6s ease;
+.navbar{
+	display: none;
+	transition: background-color $transition-speed, height $transition-speed;
+}
+.navbar-extra-buttons > li > a{
+	transition: line-height $transition-speed, font-size $transition-speed;
+}
+.navbar .navbar-brand > img{
+	transition: height $transition-speed;
+}
+
 .navbar .dropdown-menu {
 	background-color: $dropdown-bgcolor;
 	border: none;
@@ -8,21 +23,34 @@ $topo-bg-color: rgba(255, 255, 255, 1);
 	color: $dropdown-font-color;
 	font-size: $dropdown-font-size;
 }
-.navbar .dropdown-menu > li > a:hover{
+.navbar .dropdown-menu > li > a:hover, .navbar .dropdown-menu > li > a:focus{
 	background-color: $dropdown-hover-bgcolor;
 	color: $dropdown-hover-font-color;
 }
 .navbar .dropdown-menu > li.divider{
 	background-color: $dropdown-divider-color;
 }
-.navbar-custom {
-	background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
-	background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 
-	// background: none;
-	// background-color: #000;
+// DROPDOWN CUSTOM NAVBAR
+.navbar-custom .dropdown-menu {
+	background-color: #000;
+	border: none;
+}
+.navbar-custom .dropdown-menu > li > a{
+	color: $dropdown-font-color;
+	font-size: $dropdown-font-size;
+}
+.navbar-custom .dropdown-menu > li > a:hover, .navbar-custom .dropdown-menu > li > a:focus{
+	background-color: $main-color;
+	color: $dropdown-hover-font-color;
+}
+.navbar-custom .dropdown-menu > li.divider{
+	background-color: lighten(#000, 20%);
+}
+
+.navbar-custom {
+	background: none;
+	background-color: rgba(#000, .8);
 	
 	height: $navbar-custom-height;
 
@@ -32,12 +60,15 @@ $topo-bg-color: rgba(255, 255, 255, 1);
 	font-family: $navbar-font!important;
 	color: $navbar-link-color;
 	text-transform: uppercase;
-	font-weight: normal;
+	font-weight: $navbar-custom-font-weight;
 	font-size: $navbar-custom-font-size;
 	line-height: $navbar-custom-line-height;
 }
 // Extra button sempre são brancos para destacar, e quando hover ele assumen a cor da rede social
-.navbar-custom ul.navbar-main-menu > li > a:hover, .navbar-custom ul.navbar-extra-buttons > li > a:hover {
+.navbar-custom ul.navbar-main-menu > li > a:hover,
+.navbar-custom ul.navbar-main-menu > li > a:focus,
+.navbar-custom ul.navbar-extra-buttons > li > a:hover,
+.navbar-custom ul.navbar-extra-buttons > li > a:focus {
 	color: $navbar-hover-link-color;
 }
 .navbar-custom ul.navbar-main-menu {
@@ -51,7 +82,7 @@ $topo-bg-color: rgba(255, 255, 255, 1);
 	margin-top: $navbar-custom-brand-margin-top;
 }
 .navbar-custom  ul.navbar-main-menu > li.open > a{
-	background: none!important;
+	background: rgba(#000, .4)!important;
 	color: $navbar-hover-link-color!important;
 }
 

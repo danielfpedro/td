@@ -1,4 +1,4 @@
-$main-color: darken(#35293F, 7%);
+$main-color: darken(#35293F, 3%);
 $border-radius: 4px;
 $title-color: lighten(#000, 20%);
 $border-color: darken(#FFF, 10%);
@@ -21,23 +21,27 @@ $text-block-padding: 5px;
 $text-block-padding-lg: $text-block-padding * 2;
 
 // NAVBAR
-$navbar-link-color: darken(#FFF, 15%);
+$navbar-link-color: darken(#FFF, 0);
 $navbar-hover-link-color: darken(#FFF, 0%);
-$navbar-font: 'Roboto Slab', serif;
+$navbar-font: 'Roboto', sans-serif;
+
+$navbar-custom-font-weight: normal;
 
 $navbar-strong-color-light: lighten($main-color, 4%);
 // NAVBAR-CUSTOM
-$navbar-custom-height: 110px;
-$navbar-custom-main-menu-margin-left: 50px;
+$navbar-custom-height: 65px;
+$navbar-custom-main-menu-margin-left: 20px;
 $navbar-custom-font-size: 14px;
-$navbar-custom-line-height: 80px;
+$navbar-custom-line-height: 30px;
 
-$navbar-custom-brand-height: 45px;
-$navbar-custom-brand-margin-top: 15px;
+$navbar-custom-brand-height: 35px;
+$navbar-custom-brand-margin-top: 0px;
 
 // NAVBAR SMALL
 $navbar-small-brand-margin-top: -5px;
 $navbar-small-brand-height: 30px;
+
+// DROPDOWN NAVBAR CUSTOM
 
 // DROPDOWN
 $dropdown-bgcolor: $main-color;
@@ -49,8 +53,8 @@ $dropdown-divider-color: $navbar-strong-color-light;
 
 // MAIN
 $post-main-border-radius: 4px;
-$post-main-height: 250px;
-$post-main-title-size: 22px;
+$post-main-height: 280px;
+$post-main-title-size: 23px;
 $post-main-title-line-height: 30px;
 
 // MAIN SMALL
@@ -60,14 +64,14 @@ $post-main-small-border-radius: $border-radius;
 $post-main-small-line-height: 22px;
 $post-main-small-title-color: ($title-color);
 $post-main-small-title-size: 16px;
-$post-main-small-title-weight: bold;
+$post-main-small-title-weight: normal;
 $post-main-small-avatar-offset-right: 18px;
 $post-main-small-avatar-width: 60px;
 
 // LATEST POSTS
 $post-latest-border-radius: $border-radius;
 $post-latest-title-size: 22px;
-$post-latest-title-weight: bold;
+$post-latest-title-weight: normal;
 $post-latest-title-color: $title-color;
 $post-latest-title-line-height: 22px;
 $post-latest-title-offset-up: 10px;

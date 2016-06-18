@@ -5,7 +5,7 @@
         <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
-        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
         
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,6 +45,52 @@
         <?= $this->Html->script('../lib/anchor-js/anchor.min') ?>
 
         <?= $this->fetch('script') ?>
+
+        <script>
+            $(function(){
+                var wHeight = $(window).height();
+                $(window).resize(function(){
+                    wHeight = $(window).height();
+                });
+                // Alterna a navbar grande e menor
+
+                var $navbar = $('.navbar');
+                var $navbarHasBigVersion = $navbar.data('has-big-version');
+                var navbarDistance = -40;
+                setNavbarPosition();
+                $(window).scroll(function(){
+                    setNavbarPosition();
+                });
+                function setNavbarPosition()
+                {
+                    if ($navbarHasBigVersion) {
+                        var bodyTopDistance = getElementOffset('body', wHeight, 'top');
+                        if (bodyTopDistance < navbarDistance) {
+                            $navbar.addClass('navbar-small');
+                            $navbar.removeClass('navbar-custom');
+                        } else {
+                            $navbar.removeClass('navbar-small');
+                            $navbar.addClass('navbar-custom');
+                        }
+                    }
+
+                    $navbar.fadeIn(100);
+                }
+
+                function getElementOffset(selector, height, position){
+                    var scroll = $(window).scrollTop();
+                    var elementOffset = $(selector).offset().top;
+                    
+                    var distanceToTop = (elementOffset - scroll);
+                    if (position == 'bottom') {
+                        distanceToTop = (distanceToTop < 0) ? 0 : distanceToTop;
+                        return (distanceToTop - height);
+                    }
+
+                    return distanceToTop;
+                }
+            });
+        </script>
 
 <script>
     $(function(){
@@ -122,101 +168,14 @@ $(function(){
 
             $loadMore = $('<div/>');
             $loadMore.load(url, {page: page}, function(data, xhr, code){
-                console.log(code);
                 $this.data('page', (page + 1));
                 $('.lastest-posts-load-more').append($(this));
                 $this.html(currentHtml);
+                if (!code.responseText) {
+                    $this.text('Todos os posts foram carregados.').attr('disabled', true);
+                }
             });
         });
-
-                var wHeight = $(window).height();
-
-                $(window).scroll(function(){
-                    wHeight = $(window).height();                    
-                });
-                var $navbar = $('.navbar');
-                var $navbarHasBigVersion = $navbar.data('has-big-version');
-                $(window).scroll(function(){
-
-                    if ($navbarHasBigVersion) {
-                        var bodyTopDistance = getElementOffset('body', wHeight, 'top');
-                        if (bodyTopDistance < -40) {
-                            $('.navbar').addClass('navbar-small');
-                            $('.navbar').removeClass('navbar-custom');
-                        } else {
-                            $('.navbar').removeClass('navbar-small');
-                            $('.navbar').addClass('navbar-custom');
-                        }
-                    }
-                    /**
-                     * Deck Fixed
-                     */
-                    // $('.container-deck-list').affix({
-                    //     offset: {
-                    //         top: $('.container-deck-list').offset().top - 75,
-                    //         bottom: 250
-                    //     }
-                    // });
-                    // var height = $(window).height();
-
-                    // $deckList = $('.deck-list');
-
-                    // var distanceFromTop = getElementOffset('.post-view-body', height, 'top');
-                    // console.log('Disntacia do texto do deck para o topo', distanceFromTop);
-                    // if (distanceFromTop < 60) {
-                    //     $deckList
-                    //         .addClass('deck-list-fixed')
-                    //         .removeClass('deck-list-unfixed')
-                    //         .css({
-                    //             'width': $deckList.parent().width() + 'px'
-                    //         });
-                    // }
-                    // var footerDistance = getElementOffset('.footer', height, 'bottom');
-
-                    // var unFix = false;
-
-                    // if (footerDistance < 0) {
-                    // }
-
-                    // if (distance < 10) {
-                    //     $deckList
-                    //         .addClass('deck-list-fixed')
-                    //         .removeClass('deck-list-unfixed')
-                    //         .css({
-                    //             'width': $deckList.parent().width() + 'px'
-                    //         });
-                    //     $deckList
-                    //         .css('height', (height - 20) + 'px');
-                    // }
-
-                    // var coverDistance = getElementOffset('.deck-view-cover', height, 'top');
-                    // console.log('distancia da deck view covver', coverDistance);
-                    // if (coverDistance > 2) {
-                    //     $deckList
-                    //         .addClass('deck-list-unfixed')
-                    //         .removeClass('deck-list-fixed');
-                    // }
-
-                    // console.log('Distancia do deck list para o topo', distance);
-
-                    
-                    // console.log('Distancia do footer para o topo', footerDistance);
-
-                });
-            });
-
-            function getElementOffset(selector, height, position){
-                var scroll = $(window).scrollTop();
-                var elementOffset = $(selector).offset().top;
-                
-                var distanceToTop = (elementOffset - scroll);
-                if (position == 'bottom') {
-                    distanceToTop = (distanceToTop < 0) ? 0 : distanceToTop;
-                    return (distanceToTop - height);
-                }
-
-                return distanceToTop;
-            }
         </script>
         <script>
             $( function() {

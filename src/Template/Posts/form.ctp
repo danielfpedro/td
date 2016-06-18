@@ -23,6 +23,7 @@
             echo $this->Form->input('has_cover', ['type' => 'checkbox']);
             echo $this->Form->input('video_cover');
             echo $this->Form->input('video_cover_provider');
+            echo $this->Form->input('home_main');
             echo $this->Form->input('home_main_order');
             echo $this->Form->input('thumb_image');
             echo $this->Form->input('thumb_image_crop_position');

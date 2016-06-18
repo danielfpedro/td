@@ -91,7 +91,10 @@
                 </li>
                 <?php foreach ($socialNetworks as $socialNetwork): ?>
                     <li>
-                        <a href="<?= $socialNetwork['url'] ?>" class="<?= $socialNetwork['class'] ?>">
+                        <a
+                            href="<?= $socialNetwork['url'] ?>"
+                            class="<?= $socialNetwork['class'] ?>"
+                            target="_blank">
                             <span class="fa fa-<?= $socialNetwork['faIcon'] ?>"></span>
                         </a>
                     </li>
