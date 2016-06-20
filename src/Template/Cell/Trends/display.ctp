@@ -4,10 +4,12 @@
 <?php foreach ($posts as $post): ?>
 	<div class="post-compact">
 		<div class="post-compact-avatar">
-			<?php
-				echo $i;
-				$i++;
-			?>
+			<span class="trend-number">
+				<?php
+					echo $i;
+					$i++;
+				?>
+			</span>
 		</div>
 		<div class="post-compact-body">
 			<?= $this->Html->link('<h2>'.$post->title.'</h2>', $post->view_url, ['escape' => false]) ?>

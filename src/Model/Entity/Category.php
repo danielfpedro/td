@@ -38,7 +38,7 @@ class Category extends Entity
 
     protected function _getViewUrl()
     {
-        return ['controller' => 'Categories', 'action' => 'view', 'slug' => $this->_properties['slug']];
+        return ['controller' => 'Site', 'action' => 'category', 'slug' => $this->_properties['slug']];
     }
 
 }

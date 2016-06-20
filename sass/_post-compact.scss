@@ -22,12 +22,22 @@
     margin: 0;
     
 }
+.trend-number{
+    font-size: 23px;
+    font-weight: bold;
+    color: $main-color;
+    color: $title-color;
+}
 
 .post-compact-body > a > h2 {
     font-size: $post-compact-title-size;
     font-weight: $post-compact-title-weight;
-line-height: $post-compact-title-line-height;
+    line-height: $post-compact-title-line-height;
     color: $post-compact-title-color;
+    font-family: $post-compact-font-family
+}
+.post-compact-body > a > h2:hover {
+    text-decoration: underline
 }
 .post-compact-body > span.pub-date {
     font-size: $post-compact-pub-date-size;

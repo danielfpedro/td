@@ -18,7 +18,7 @@
 							<div class="post-main-content">
 								<a href="<?= $postUrl ?>">
 									<h2>
-										<?= h($post->title) ?>
+										<?= (strtolower($post->category->name) == 'deck') ? 'Deck: ' : '' ?><?= h($post->title) ?>
 									</h2>
 								</a>
 							</div>

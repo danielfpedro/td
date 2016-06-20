@@ -1,8 +1,5 @@
 $topo-bg-color: rgba(255, 255, 255, 1);
 
-.navbar-small{
-	height: 45px;
-}
 $transition-speed: .6s ease;
 .navbar{
 	display: none;
@@ -100,14 +97,20 @@ $transition-speed: .6s ease;
 .navbar-small {
 	background: none;
 	background-color: $main-color;
+	min-height: 40px;
+	height: 40px;
+
 	border: none;
 }
+
 .navbar-small ul.navbar-main-menu > li > a, .navbar-small ul.navbar-extra-buttons > li > a {
 	font-family: $navbar-font!important;
 	color: $navbar-link-color;
 	text-transform: uppercase!important;
 	font-weight: normal;
 	font-size: 12px;
+	padding-top: 10px;
+	padding-bottom: 0;
 }
 .navbar-small ul.navbar-main-menu > li > a:hover, .navbar-small ul.navbar-extra-buttons > li > a:hover {
 	color: $navbar-hover-link-color;

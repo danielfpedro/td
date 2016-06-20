@@ -23,37 +23,37 @@
 								'escape' => false
 							]
 						) ?>
-						<span class="pub-date">
-							<?= $post->pub_date_in_words ?>
-						</span>	
 						<p class="post-call-subtitle">
 							<?= $post->subtitle ?>
 						</p>
+						<span class="pub-date">
+							<?= $post->pub_date_in_words ?>
+						</span>	
 					</div>
 					<div class="post-latest-footer text-right">
-						<a href="#" class="dropdown-toggle latests-posts-share">
-							<span class="fa fa-share"></span> Compartilhar
-						</a>
-						<ul class="list-inline latests-posts-share-list-buttons" style="display: none;">
+						<ul class="list-inline">
 							<li>
 								<a
 									href="<?= $post->facebook_share_url ?>"
+									class="latest-post-social facebook"
 									target="_blank">
-									<span class="fa fa-facebook"></span>
+									<span class="fa fa-facebook fa-fw"></span>
 								</a>
 							</li>
 							<li>
 								<a
 									href="<?= $post->twitter_share_url ?>"
+									class="latest-post-social twitter"
 									target="_blank">
-									<span class="fa fa-twitter"></span>
+									<span class="fa fa-twitter fa-fw"></span>
 								</a>
 							</li>
 							<li>
 								<a
 									href="<?= $post->google_plus_share_url ?>"
+									class="latest-post-social google-plus"
 									target="_blank">
-									<span class="fa fa-google-plus"></span>
+									<span class="fa fa-google-plus fa-fw"></span>
 								</a>
 							</li>
 						</ul>

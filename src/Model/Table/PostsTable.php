@@ -443,36 +443,40 @@ class PostsTable extends Table
         ]);
     }
 
-    public function getHomeMain($limit = 5)
+    public function getHomeMain($limit = 2)
     {
         $posts = $this->find('all', [
             'fields' => [
-                'title',
-                'slug',
-                'year',
-                'month',
-                'day',
-                'cover_image',
+                'Posts.title',
+                'Posts.subtitle',
+                'Posts.slug',
+                'Posts.year',
+                'Posts.month',
+                'Posts.day',
+                'Posts.cover_image',
             ],
             'conditions' => [
-                'home_main' => true,
-                'is_active' => true,
+                'Posts.home_main' => true,
+                'Posts.is_active' => true,
             ],
-            'order' => ['home_main' => 'DESC'],
+            //  Contain Categorias para colocar [deck] na frente de posts que são decks
+            'contain' => [
+                'Categories' => function($q){
+                    return $q->select(['Categories.id', 'Categories.name']);
+                }
+            ],
+            'order' => ['Posts.home_main_order' => 'ASC'],
             'limit' => $limit
         ]);
 
         // Divido em chunk de 2
         $posts = $posts->chunk(2)->toArray();
-        unset($posts[1]);
-        unset($posts[2]);
         // 2 grandes obrigatórios
         // 3 menores não obrigatórios porém se posuir tem que ser os tres, por exemplo, eu nunca poderei ter os 2 grandes e 1 pequeno.
-        if (isset($posts[2])) {
-
-            // $posts[2][] = $posts[4][0];
-            // unset($posts[4]);
-        }
+        // if (isset($posts[2])) {
+        //     $posts[2][] = $posts[4][0];
+        //     unset($posts[4]);
+        // }
 
         return $posts;
     }

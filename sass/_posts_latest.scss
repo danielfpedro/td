@@ -5,18 +5,17 @@
 }
 .post-latest-body > a > h2{
     line-height: $post-latest-title-line-height;
-    font-family: 'Roboto Slab', serif!important;
-}
-.post-latest-body > p {
-    margin-top: 8px;
-}
-.post-latest-body > a:hover > h2 {
-    color: #000!important;
-}
-.post-latest-body > a > h2{
+    font-family: $post-latest-font-family;
     font-size: $post-latest-title-size;
     font-weight: $post-latest-title-weight;
     color: $post-latest-title-color;
+}
+.post-latest-body > a:hover > h2 {
+    text-decoration: underline!important;
+    color: $post-latest-title-color;
+}
+.post-latest-body > p {
+    margin-top: 8px;
 }
 .post-latest-body > span.pub-date {
     font-size: $post-latest-pub-date-size;
@@ -24,6 +23,10 @@
     color: $post-latest-pub-date-color;
     margin-top: $post-latest-pub-date-offset-up;
     display: block;
+}
+.post-call-subtitle {
+    color: $color-muted;
+    font-size: 15px;
 }
 
 .post-latest-footer {

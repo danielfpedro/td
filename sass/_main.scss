@@ -57,8 +57,9 @@
 
 }
 .post-main-content {
-	background-color: rgba(#000, .9);
+	background-color: rgba(#000, .8);
 	width: 100%;
+	padding: 15px;
 }
 
 .post-main > a {
@@ -68,15 +69,17 @@
 	// Padding deve ser no h2 para pegar o link em toda extremidade
 	// padding: 20px 20px;
 	margin: 0;
-	margin: 20px;
 	text-shadow: 0px 1px 0px rgba(0, 0, 0, 1);
 
 	color: #FFF;
-	font-weight: bold;
-	font-size: $post-main-title-size;
+	font-weight: regular;
+	font-size: $post-main-title-size + 2;
 	line-height: $post-main-title-line-height;
+	font-family: $font-serif;
 }
+.post-main-content > a{
 
+}
 // SMALL
 .post-main-small-wrap {
 	margin-top: $box-margin;

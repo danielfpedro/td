@@ -3,12 +3,19 @@ body {
     background-color: darken(#FFF, 5%);    
 }
 body, a {
-    font-family: 'Lato', sans-serif!important;
+    font-family: 'Source Sans Pro', sans-serif!important;
+}
+.container{
+    width: 1005px!important;
 }
 a {
     color: $main-color;
     font-weight: bold;
-	text-decoration: none!important;
+	text-decoration: none;
+}
+a:hover {
+    color: $main-color;
+    text-decoration: none;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
@@ -79,11 +86,6 @@ hr {
 }
 .bg-overlay-border-radius {
     @include border-radius($border-radius);
-}
-
-.post-call-subtitle {
-    color: $color-muted;
-    font-size: 14px;
 }
 // ADS
 .ad-horizontal-full {
@@ -231,11 +233,6 @@ $color: darken(#FFF, 20%);
     border: 1px solid #FFF;
 }
 
-.footer {
-    background-color: darken(#FFF, 5%);
-    padding: $box-padding-sm;
-}
-
 .deck-hero-container{
     background-position: top right;
     background-size: cover;
@@ -245,7 +242,18 @@ $color: darken(#FFF, 20%);
     // background-color: #000;
     // color: #FFF;
 }
-
+.footer {
+    background-color: $main-color;
+    padding: 15px 25px 25px 25px;
+    color: darken(#FFF, 15%);
+}
+.footer a{
+    color: #FFF;
+    font-weight: normal!important;
+}
+.footer-social-links > li > a{
+    font-size: 15px;
+}
 .title-with-avatar {
     @include flexbox();
     @include flex-direction(row);
@@ -324,4 +332,28 @@ $color: darken(#FFF, 20%);
 }
 .text-post .video-wrap{
     background-color: darken(#FFF, 5%);
+}
+
+a.latest-post-social{
+    color: darken(#FFF, 25%)!important;
+    padding: 3px 3px;
+    background-color: darken(#FFF, 5%);
+}
+a.latest-post-social:hover{
+    // border: 1px solid darken(#FFF, 8%);
+}
+.latest-post-social.facebook:hover{
+    color: $facebook-color!important;
+}
+.latest-post-social.twitter:hover{
+    color: $twitter-color!important;
+}
+.latest-post-social.google-plus:hover{
+    color: $google-plus-color!important;
+}
+.heart{
+    color: #e74c3c;
+}
+.btn-latest-posts-load-more{
+    text-transform: uppercase;
 }

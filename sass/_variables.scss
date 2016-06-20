@@ -1,7 +1,14 @@
-$main-color: darken(#35293F, 3%);
+$main-color: lighten(#35293F, 25%);
 $border-radius: 4px;
-$title-color: lighten(#000, 20%);
+$title-color: lighten(#000,25%);
 $border-color: darken(#FFF, 10%);
+
+$facebook-color: #2980b9;
+$twitter-color: #3498db;
+$google-plus-color: #e74c3c;
+
+$font-serif: 'Vesper Libre', serif!important;
+$font-sans-serif: 'Source Sans Pro', sans-serif!important;
 
 // COLORS
 $color-muted: darken(#FFF, 50%);
@@ -23,7 +30,7 @@ $text-block-padding-lg: $text-block-padding * 2;
 // NAVBAR
 $navbar-link-color: darken(#FFF, 0);
 $navbar-hover-link-color: darken(#FFF, 0%);
-$navbar-font: 'Roboto', sans-serif;
+$navbar-font: 'Source Sans Pro', sans-serif;
 
 $navbar-custom-font-weight: normal;
 
@@ -38,8 +45,8 @@ $navbar-custom-brand-height: 35px;
 $navbar-custom-brand-margin-top: 0px;
 
 // NAVBAR SMALL
-$navbar-small-brand-margin-top: -5px;
-$navbar-small-brand-height: 30px;
+$navbar-small-brand-margin-top: -6px;
+$navbar-small-brand-height: 25px;
 
 // DROPDOWN NAVBAR CUSTOM
 
@@ -69,11 +76,12 @@ $post-main-small-avatar-offset-right: 18px;
 $post-main-small-avatar-width: 60px;
 
 // LATEST POSTS
+$post-latest-font-family: $font-sans-serif;
 $post-latest-border-radius: $border-radius;
-$post-latest-title-size: 22px;
+$post-latest-title-size: 26px;
 $post-latest-title-weight: normal;
 $post-latest-title-color: $title-color;
-$post-latest-title-line-height: 22px;
+$post-latest-title-line-height: 28px;
 $post-latest-title-offset-up: 10px;
 
 $post-latest-pub-date-size: 12px;
@@ -88,9 +96,10 @@ $post-latest-action-buttons-color: $color-muted;
 
 // COMPACT POSTS
 $post-compact-padding: 15px 0;
-$post-compact-title-size: 15px;
+$post-compact-font-family: $font-sans-serif;
+$post-compact-title-size: 16px;
 $post-compact-title-line-height: 20px; 
-$post-compact-title-weight: bold;
+$post-compact-title-weight: normal;
 $post-compact-title-color: $title-color; 
 $post-compact-title-offset-up: 0;
 
