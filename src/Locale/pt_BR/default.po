@@ -1,6 +1,3 @@
-msgid "shit"
-msgstr "coco"
-
 #: I18n/Number.php:89
 msgid "{0,number,#,###.##} KB"
 msgstr ""
@@ -28,7 +25,7 @@ msgid "{0} from now"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:80
-msgid "{0} ago"
+msgid "{0} atrás"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:82
@@ -44,11 +41,11 @@ msgid "just now"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:150
-msgid "about a second ago"
+msgid "about a second atrás"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:151
-msgid "about a minute ago"
+msgid "about a minute atrás"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:152
@@ -60,7 +57,7 @@ msgid "about a day ago"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:154;329
-msgid "about a week ago"
+msgid "about a semana atrás"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:155;330
@@ -88,7 +85,7 @@ msgid "in about a day"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:170;342
-msgid "in about a week"
+msgid "in about a semana"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:171;343
@@ -124,14 +121,14 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:57;131;318
-msgid "{0} week"
-msgid_plural "{0} weeks"
+msgid "{0} semana"
+msgid_plural "{0} semanas"
 msgstr[0] ""
 msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:59;134;321
-msgid "{0} day"
-msgid_plural "{0} days"
+msgid "{0} dia"
+msgid_plural "{0} dias"
 msgstr[0] ""
 msgstr[1] ""
 

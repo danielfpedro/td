@@ -6,7 +6,11 @@ body, a {
     font-family: 'Source Sans Pro', sans-serif!important;
 }
 .container{
-    width: 1005px!important;
+    width: 1100px!important;
+}
+.btn {
+    border: none;
+    @include border-radius(0);
 }
 a {
     color: $main-color;
@@ -123,8 +127,10 @@ $color: darken(#FFF, 20%);
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
+    @include border-radius(0);
 }
 .label-default, .label-default:hover {
+    // background-color: $main-color;
     background-color: $main-color;
     color: #FFF;
 }
@@ -155,7 +161,7 @@ $color: darken(#FFF, 20%);
 .title {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     color: $title-color;
 }
@@ -343,17 +349,31 @@ a.latest-post-social:hover{
     // border: 1px solid darken(#FFF, 8%);
 }
 .latest-post-social.facebook:hover{
-    color: $facebook-color!important;
+    color: #FFF!important;
+    background-color: $facebook-color!important;
 }
 .latest-post-social.twitter:hover{
-    color: $twitter-color!important;
+    color: #FFF!important;
+    background-color: $twitter-color!important;
 }
 .latest-post-social.google-plus:hover{
-    color: $google-plus-color!important;
+    color: #FFF!important;
+    background-color: $google-plus-color!important;
 }
 .heart{
     color: #e74c3c;
 }
 .btn-latest-posts-load-more{
     text-transform: uppercase;
+    font-size: 12px;
+    // font-weight: bold;
+    color: #FFF;
+    // border: 1px solid $border-color;
+    border: none;
+    background-color: $main-color;
+}
+.btn-latest-posts-load-more:hover, .btn-latest-posts-load-more:focus{
+    color: #FFF;
+    background-color: darken($main-color, 5%);
+
 }

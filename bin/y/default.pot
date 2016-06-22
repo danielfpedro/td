@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-06-22 03:26+0000\n"
+"POT-Creation-Date: 2016-06-22 03:23+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -1488,7 +1488,7 @@ msgid "{0} from now"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:80
-msgid "{0} atrás"
+msgid "{0} ago"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:82
@@ -1504,11 +1504,11 @@ msgid "just now"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:150
-msgid "about a second atrás"
+msgid "about a second ago"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:151
-msgid "about a minute atrás"
+msgid "about a minute ago"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:152
@@ -1520,7 +1520,7 @@ msgid "about a day ago"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:154;329
-msgid "about a semana atrás"
+msgid "about a week ago"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:155;330
@@ -1548,7 +1548,7 @@ msgid "in about a day"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:170;342
-msgid "in about a semana"
+msgid "in about a week"
 msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:171;343
@@ -1584,14 +1584,14 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:57;131;318
-msgid "{0} semana"
-msgid_plural "{0} semanas"
+msgid "{0} week"
+msgid_plural "{0} weeks"
 msgstr[0] ""
 msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:59;134;321
-msgid "{0} dia"
-msgid_plural "{0} dias"
+msgid "{0} day"
+msgid_plural "{0} days"
 msgstr[0] ""
 msgstr[1] ""
 

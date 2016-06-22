@@ -162,24 +162,25 @@ $(function () {
 
         <script>
 
-$(function(){
+        $(function(){
 
-        $('.btn-latest-posts-load-more').click(function(){
-            var $this = $(this);
-            var page = $this.data('page');
-            var url = $this.data('url');
+            $('.btn-latest-posts-load-more').click(function(){
+                var $this = $(this);
+                var page = $this.data('page');
+                var url = $this.data('url');
 
-            var currentHtml = $this.html();
-            $this.html('Carregando...');
+                var currentHtml = $this.html();
+                $this.html('Carregando...').attr('disabled', true);
 
-            $loadMore = $('<div/>');
-            $loadMore.load(url, {page: page}, function(data, xhr, code){
-                $this.data('page', (page + 1));
-                $('.lastest-posts-load-more').append($(this));
-                $this.html(currentHtml);
-                if (!code.responseText) {
-                    $this.text('Todos os posts foram carregados.').attr('disabled', true);
-                }
+                $loadMore = $('<div/>');
+                $loadMore.load(url, {page: page}, function(data, xhr, code){
+                    $this.data('page', (page + 1));
+                    $('.lastest-posts-load-more').append($(this));
+                    $this.html(currentHtml).attr('disabled', false);
+                    if (!code.responseText) {
+                        $this.text('Todos os posts foram carregados.').attr('disabled', true);
+                    }
+                });
             });
         });
         </script>

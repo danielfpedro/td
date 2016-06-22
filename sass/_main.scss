@@ -25,7 +25,7 @@
 .post-main-wrap {
 	padding: 4px;
 
-	@include border-radius($post-main-border-radius);
+	// @include border-radius($post-main-border-radius);
 	background-color: rgba(255, 255, 255, .3);
 }
 
@@ -57,9 +57,18 @@
 
 }
 .post-main-content {
-	background-color: rgba(#000, .8);
+
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 22%, rgba(0,0,0,.8) 60%, rgba(0,0,0,.8) 100%);
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 22%,rgba(0,0,0,.8) 60%,rgba(0,0,0,.8) 100%);
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 22%,rgba(0,0,0,.8) 60%,rgba(0,0,0,.8) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+
+
+
+
+	// background-color: rgba(#000, .8);
 	width: 100%;
-	padding: 15px;
+	padding: 70px 15px 20px 15px;
 }
 
 .post-main > a {
@@ -73,9 +82,9 @@
 
 	color: #FFF;
 	font-weight: regular;
-	font-size: $post-main-title-size + 2;
+	font-size: $post-main-title-size + 5;
 	line-height: $post-main-title-line-height;
-	font-family: $font-serif;
+	font-family: $font-sans-serif;
 }
 .post-main-content > a{
 

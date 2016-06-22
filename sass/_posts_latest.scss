@@ -48,7 +48,7 @@
     height: auto;
     padding: 20px;
 
-    @include border-radius($post-latest-border-radius);
+    // @include border-radius($post-latest-border-radius);
 
     // border-bottom: 1px solid $border-color;
 }
