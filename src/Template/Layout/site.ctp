@@ -9,7 +9,7 @@
         <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Yrsa:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Yrsa:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Vesper+Libre:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet">
         
@@ -41,7 +41,7 @@
 
         <?= $this->fetch('content') ?>
 
-        <div class="box-margin-top-x-3">
+        <div class="">
             <?= $this->element('Site/footer') ?>
         </div>
 
@@ -54,6 +54,18 @@
 
         <script>
             $(function(){
+
+                $('.container-affix-home').css({
+                    width: $('.container-affix-home').parent().width()
+                });
+
+                $('.container-affix-home').affix({
+                    offset: {
+                        top: $('container-affix-home').height() + $('.container-topo').height() + 420,
+                        bottom: $('.footer').height() + 240
+                    }
+                });
+
                 var wHeight = $(window).height();
                 $(window).resize(function(){
                     wHeight = $(window).height();
@@ -113,13 +125,13 @@
         });
     });
 
-$(function () {
+    $(function () {
 
-    $('.btn-navbar-search, .btn-navbar-search-close').click(function(){
-        $('.navbar-hidden-search').fadeToggle();
-        $('#q').val('').focus();
-        return false;
-    });
+        $('.btn-navbar-search, .btn-navbar-search-close').click(function(){
+            $('.navbar-hidden-search').fadeToggle();
+            $('#q').val('').focus();
+            return false;
+        });
 
         // Remove Search if user Resets Form or hits Escape!
         $('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function(event) {
@@ -161,28 +173,38 @@ $(function () {
 
 
         <script>
+            $(function(){
 
-        $(function(){
+                $('.btn-latest-posts-load-more').click(function(){
+                    var $this = $(this);
+                    var page = $this.data('page');
+                    var url = $this.data('url');
+                    var $legend = $('.load-more-legend');
 
-            $('.btn-latest-posts-load-more').click(function(){
-                var $this = $(this);
-                var page = $this.data('page');
-                var url = $this.data('url');
+                    var currentHtml = $this.html();
+                    $this
+                        .html('<span class="fa fa-circle-o-notch fa-spin"></span>')
+                        .attr('disabled', true);
 
-                var currentHtml = $this.html();
-                $this.html('Carregando...').attr('disabled', true);
-
-                $loadMore = $('<div/>');
-                $loadMore.load(url, {page: page}, function(data, xhr, code){
-                    $this.data('page', (page + 1));
-                    $('.lastest-posts-load-more').append($(this));
-                    $this.html(currentHtml).attr('disabled', false);
-                    if (!code.responseText) {
-                        $this.text('Todos os posts foram carregados.').attr('disabled', true);
-                    }
+                    window.setTimeout(function(){
+                        $loadMore = $('<div/>');
+                        $loadMore.load(url, {page: page}, function(data, xhr, code){
+                            $this.data('page', (page + 1));
+                            $('.lastest-posts-load-more').append($(this));
+                            
+                            if (!code.responseText) {
+                                $this.fadeOut(function(){
+                                    $msg = $('<span/>').text('Todos os posts foram carregados.').css({display: 'none'});
+                                    $legend.append($msg);
+                                    $msg.fadeIn();
+                                });
+                            } else {
+                                $this.html(currentHtml).attr('disabled', false);
+                            }
+                        });
+                    });
                 });
             });
-        });
         </script>
         <script>
             $( function() {

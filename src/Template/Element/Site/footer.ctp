@@ -1,4 +1,4 @@
-<br style="display: block; clear: both;">
+
 <div class="footer">
 	<div class="container">
 		<div class="row">
