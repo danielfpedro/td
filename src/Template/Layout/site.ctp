@@ -2,13 +2,10 @@
 <html lang="pt-br">
     <head>
 
-        <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans|Source+Sans+Pro:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
         
         <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
-        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Yrsa:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Vesper+Libre:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet">

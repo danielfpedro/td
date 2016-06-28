@@ -1,4 +1,6 @@
 $main-color: lighten(#35293F, 10%);
+// $main-color: #8e44ad;
+
 $border-radius: 4px;
 $title-color: lighten(#000,25%);
 $border-color: darken(#FFF, 10%);
@@ -39,12 +41,13 @@ $navbar-strong-color-light: lighten($main-color, 4%);
 $navbar-custom-height: 65px;
 $navbar-custom-main-menu-margin-left: 20px;
 $navbar-custom-font-size: 14px;
-$navbar-custom-line-height: 30px;
+$navbar-custom-line-height: 35px;
 
 $navbar-custom-brand-height: 35px;
 $navbar-custom-brand-margin-top: 0px;
 
 // NAVBAR SMALL
+$navbar-small-height: 40px;
 $navbar-small-brand-margin-top: -6px;
 $navbar-small-brand-height: 25px;
 

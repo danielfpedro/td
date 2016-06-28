@@ -10,9 +10,14 @@
     font-weight: $post-latest-title-weight;
     color: $post-latest-title-color;
 }
+.post-latest-body > a > h2{
+    transition: color .3s;
+    font-weight: 600;
+}
 .post-latest-body > a:hover > h2 {
-    text-decoration: underline!important;
-    color: $post-latest-title-color;
+    text-decaration: underline!important;
+    // color: $main-color;
+    // color: saturate(#AD141E, 20%);
 }
 .post-latest-body > p {
     margin-top: 8px;

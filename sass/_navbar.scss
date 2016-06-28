@@ -42,14 +42,15 @@ $transition-speed: .6s ease;
 	color: $dropdown-hover-font-color;
 }
 .navbar-custom .dropdown-menu > li.divider{
-	background-color: lighten(#000, 20%);
+	background-color: lighten(#000, 10%);
 }
 
 .navbar-custom {
 	background: none;
-	background-color: rgba(#000, .8);
+	background-color: rgba(#000, .6);
 	
-	height: $navbar-custom-height;
+	height: $navbar-custom-height!important;
+	min-height: $navbar-custom-height!important;
 
 	border: none;
 }
@@ -59,7 +60,9 @@ $transition-speed: .6s ease;
 	text-transform: uppercase;
 	font-weight: $navbar-custom-font-weight;
 	font-size: $navbar-custom-font-size;
-	line-height: $navbar-custom-line-height;
+	height: $navbar-custom-height;
+	padding-top: $navbar-custom-height / 3;
+	padding-bottom: 0;
 }
 // Extra button sempre são brancos para destacar, e quando hover ele assumen a cor da rede social
 .navbar-custom ul.navbar-main-menu > li > a:hover,
@@ -97,20 +100,22 @@ $transition-speed: .6s ease;
 .navbar-small {
 	background: none;
 	background-color: $main-color;
-	min-height: 40px;
-	height: 40px;
-
+	// background-color: #FFF;
 	border: none;
+	min-height: $navbar-small-height!important;
+	height: $navbar-small-height!important;
 }
-
 .navbar-small ul.navbar-main-menu > li > a, .navbar-small ul.navbar-extra-buttons > li > a {
 	font-family: $navbar-font!important;
 	color: $navbar-link-color;
+	// color: $main-color;
 	text-transform: uppercase!important;
 	font-weight: normal;
 	font-size: 12px;
-	padding-top: 10px;
-	padding-bottom: 0;
+	height: $navbar-small-height;
+	padding-top: $navbar-small-height / 4;
+	// padding-bottom: 0;
+	// line-height: 20px;
 }
 .navbar-small ul.navbar-main-menu > li > a:hover, .navbar-small ul.navbar-extra-buttons > li > a:hover {
 	color: $navbar-hover-link-color;
