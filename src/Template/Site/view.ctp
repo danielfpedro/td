@@ -22,7 +22,7 @@
 
 			<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $post->category->slug] ?>
 			<a href="<?= $this->Url->build($tagUrl) ?>" class="box-margin-top-sm" style="margin-top: 15px; display: block">
-				<span class="label label-default label-lg">
+				<span class="">
 					<?= $post->category->name ?>
 				</span>
 			</a>	

@@ -188,9 +188,10 @@ $color: darken(#FFF, 20%);
     @include align-items(center);
 }
 .post-view-title {
-    font-size: 42px;
+    font-size: 46px;
     font-weight: normal;
     line-height: 45px;
+    font-family: $font-serif;
 }
 .post-view-author-profile-picture {
     width: 30px;
@@ -395,4 +396,15 @@ a.latest-post-social:hover{
 .btn-latest-posts-load-more:focus{
     background-color: darken(#FFF, 4%);
 
+}
+
+.decks-hero-title > h2 { 
+    font-family: $font-serif;
+    color: #000;
+    font-size: 28px;
+    padding-bottom: 20px;
+}
+.decks-hero-title:hover {
+    color: #000;
+    text-decoration: underline;
 }

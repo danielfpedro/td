@@ -23,13 +23,21 @@
 
 				<br>
 			
-				<?php foreach ($classes as $class): ?>
-					<?= $this->Html->link($class->name, [
-						'controller' => 'Site',
-						'action' => 'decksByClass',
-						'slug' => $class->slug
-					]) ?>
-				<?php endforeach ?>
+				<div class="row">
+					<?php foreach ($classes as $class): ?>
+						<div class="col-md-4">
+							<?php $icon = $this->Html->image($class->slug . '-icon.png', ['width' => '50px', 'style' => 'margin-right: 15px']) ?>
+							<?= $this->Html->link('<h2>' . $icon . $class->name . '</h2>', [
+								'controller' => 'Site',
+								'action' => 'decksByClass',
+								'slug' => $class->slug
+							], [
+								'escape' => false,
+								'class' => 'decks-hero-title'
+							]) ?>
+						</div>
+					<?php endforeach ?>
+				</div>
 	
 			</div>
 			<div class="col-md-4">

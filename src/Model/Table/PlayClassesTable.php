@@ -39,7 +39,7 @@ class PlayClassesTable extends Table
     public function getAll()
     {
         return $this->find('all', [
-            
+           'order' => ['PlayClasses.name' => 'ASC']
         ]);
     }
 
