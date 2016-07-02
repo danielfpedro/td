@@ -32,7 +32,7 @@
 					class="btn btn-default btn-latest-posts-load-more btn-block"
 					data-url="<?= $this->Url->build(['action' => 'latestPostsLoadMore']) ?>"
 					data-page="2">
-					<span class="fa fa-ellipsis-h more"></span>
+					Carregar Mais
 				</button>
 			</div>
 		</div>

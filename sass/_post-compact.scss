@@ -2,13 +2,12 @@
     border-bottom: 1px solid $border-color;
     overflow: hidden;
     height: auto;
-    padding: $post-compact-padding;
     // margin-bottom: 25px;
 
     @include flexbox();
     @include flex-direction(row);
     @include align-items(center);
-
+    @include flex-wrap(no-wrap);
 }
 
 .post-compact-avatar{
@@ -22,22 +21,21 @@
     margin: 0;
     
 }
-.trend-number{
-    font-size: 23px;
-    font-weight: bold;
-    color: $main-color;
-    color: $title-color;
+.post-compact-body > a{
 }
-
 .post-compact-body > a > h2 {
     font-size: $post-compact-title-size;
     font-weight: $post-compact-title-weight;
     line-height: $post-compact-title-line-height;
     color: $post-compact-title-color;
-    font-family: $post-compact-font-family
+    font-family: $post-compact-font-family;
+    display: block;
+    width: 100%;
+    padding: $post-compact-padding;
+    margin-top: 0;
 }
 .post-compact-body > a > h2:hover {
-    text-decoration: underline
+    text-decoration: underline;
 }
 .post-compact-body > span.pub-date {
     font-size: $post-compact-pub-date-size;
@@ -63,4 +61,42 @@
     color: #000;
     font-size: 12px;
     text-align: right;
+}
+
+.trends-container{
+    @include flexbox();
+    @include flex-direction(column);
+    // @include align-items(center);
+    // @include flex-wrap(no-wrap);       
+}
+.trend{
+    @include flexbox();
+    @include flex-direction(row);
+}
+.trends-body {
+    @include flexbox();
+    @include flex-direction(column);
+    @include flex(1);
+    // background-color: red;
+    padding: 18px 0 18px 10px;
+    border-bottom: 1px solid $border-color;
+}
+.trends-body > a > h2{
+    font-size: 16px;
+    font-weight: normal;
+    color: #000;
+    font-family: $font-serif;
+}
+.trends-body > a:hover > h2{
+    text-decoration: underline;
+}
+.trends-number{
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    font-family: $font-serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: $title-color;
+    // color: $title-color;
 }

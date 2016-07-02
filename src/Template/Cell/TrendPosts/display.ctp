@@ -6,7 +6,13 @@
 			<?= ($key + 1) ?>
 		</div>
 		<div class="post-compact-body">
-			<?= $this->Html->link('<h2>'.$post->title.'</h2>', $post->view_url, ['escape' => false]) ?>
+			<div  style="background-color: red;">
+				<a href="">
+					<h2>
+						Um gente tudo bem?
+					</h2>
+				</a>
+			</div>
 		</div>
 	</div>
 <?php endforeach ?>

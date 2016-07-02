@@ -1,18 +1,22 @@
-<h4 class="title title-with-divider box-margin-top">#Trend posts</h4>
+<h4 class="title box-margin-top box-margin-bottom-sm title-with-divider">#Trend posts</h4>
 
 <?php $i = 1; ?>
-<?php foreach ($posts as $post): ?>
-	<div class="post-compact">
-		<div class="post-compact-avatar">
-			<span class="trend-number">
-				<?php
-					echo $i;
-					$i++;
-				?>
-			</span>
+<div class="box-margin-bottom">
+	<?php foreach ($posts as $post): ?>
+		<div class="trends-container">
+			<div class="trend">	
+				<div class="trends-number">
+					<span class="">
+						<?php
+							echo $i;
+							$i++;
+						?>
+					</span>
+				</div>
+				<div class="trends-body">
+					<?= $this->Html->link('<h2>'.$post['title'].'</h2>', [], ['escape' => false]) ?>
+				</div>
+			</div>
 		</div>
-		<div class="post-compact-body">
-			<?= $this->Html->link('<h2>'.$post->title.'</h2>', $post->view_url, ['escape' => false]) ?>
-		</div>
-	</div>
-<?php endforeach ?>
+	<?php endforeach ?>
+</div>

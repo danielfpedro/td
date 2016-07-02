@@ -32,6 +32,13 @@ hr {
     margin: $box-margin-sm 0;
 }
 
+.category{
+    color: $color-muted;
+    // font-weight: bold;
+    // text-transform: uppercase;
+    font-size: 13px;
+}
+
 .navbar-hidden-search{
     display: none;
 }
@@ -118,24 +125,25 @@ $color: darken(#FFF, 20%);
     color: $color;
 }
 .label {
-    $height: 18px;
-	display: inline-block;
-    height: $height;
-    padding: 0 8px;
-    line-height: ($height + 1);
-    font-size: 10px;
+ //    $height: 18px;
+	// display: inline-block;
+ //    height: $height;
+ //    padding: 0 8px;
+ //    line-height: ($height + 1);
+ //    font-size: 12px;
     text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
+ //    font-weight: normal;
+ //    text-decoration: none;
     @include border-radius(0);
 }
 .label-default, .label-default:hover {
-    // background-color: $main-color;
-    background-color: $main-color;
+    background-color: $main-color!important;
+    background-color: #e74c3c!important;
     color: #FFF;
 }
 .label-default:hover {
-    background-color: darken($main-color, 10%)!important;
+    // background-color: darken($main-color, 10%)!important;
+    text-decoration: underline!important;
 }
 .label-light, .label-light:hover {
     background-color: darken(#FFF, 10%);
@@ -161,9 +169,10 @@ $color: darken(#FFF, 20%);
 .title {
     margin: 0;
     padding: 0;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: $title-color;
+    text-transform: uppercase;
 }
 .title-with-divider{
     padding-bottom: 12px;
@@ -351,9 +360,9 @@ $color: darken(#FFF, 20%);
 }
 
 a.latest-post-social{
-    color: darken(#FFF, 25%)!important;
+    color: darken(#FFF, 35%)!important;
     padding: 3px 3px;
-    background-color: darken(#FFF, 5%);
+    background-color: darken(#FFF, 7%);
 }
 a.latest-post-social:hover{
     // border: 1px solid darken(#FFF, 8%);
@@ -374,7 +383,7 @@ a.latest-post-social:hover{
     color: #e74c3c;
 }
 .btn-latest-posts-load-more{
-    // text-transform: uppercase;
+    text-transform: uppercase;
     font-size: 12px;
     // font-weight: bold;
     // color: #FFF;
@@ -382,8 +391,8 @@ a.latest-post-social:hover{
     border: none;
     background-color: #FFF;
 }
-.btn-latest-posts-load-more:hover, .btn-latest-posts-load-more:focus{
-    color: #FFF;
-    background-color: darken($main-color, 5%);
+.btn-latest-posts-load-more:hover,
+.btn-latest-posts-load-more:focus{
+    background-color: darken(#FFF, 4%);
 
 }

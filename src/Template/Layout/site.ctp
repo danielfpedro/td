@@ -4,7 +4,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
         
-        <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css?family=Yrsa:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Vesper+Libre:400,700" rel="stylesheet">

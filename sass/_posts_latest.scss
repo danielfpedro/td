@@ -3,21 +3,33 @@
     @include flexbox();
     @include flex-direction(column);
 }
+.post-latest-body > a {
+    margin-top: 10px;
+}
 .post-latest-body > a > h2{
     line-height: $post-latest-title-line-height;
     font-family: $post-latest-font-family;
     font-size: $post-latest-title-size;
     font-weight: $post-latest-title-weight;
     color: $post-latest-title-color;
+    color: #000;
+
+    font-weight: 600;
+
+    margin: 0;
 }
 .post-latest-body > a > h2{
-    transition: color .3s;
-    font-weight: 600;
+    // transition: color .3s;
+    
+}
+.post-latest-category{
+    color: $color-muted;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 .post-latest-body > a:hover > h2 {
-    text-decaration: underline!important;
-    // color: $main-color;
-    // color: saturate(#AD141E, 20%);
+    text-decoration: underline!important;
 }
 .post-latest-body > p {
     margin-top: 8px;

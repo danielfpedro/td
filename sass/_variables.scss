@@ -1,4 +1,4 @@
-$main-color: lighten(#35293F, 10%);
+$main-color: lighten(#35293F, 14%);
 // $main-color: #8e44ad;
 
 $border-radius: 4px;
@@ -9,7 +9,7 @@ $facebook-color: #3B5998;
 $twitter-color: #5EA9DD;
 $google-plus-color: #DC4A38;
 
-$font-serif: 'Vesper Libre', serif!important;
+$font-serif: 'Bitter', serif!important;
 $font-sans-serif: 'Source Sans Pro', sans-serif!important;
 
 // COLORS
@@ -47,7 +47,7 @@ $navbar-custom-brand-height: 35px;
 $navbar-custom-brand-margin-top: 0px;
 
 // NAVBAR SMALL
-$navbar-small-height: 40px;
+$navbar-small-height: 50px;
 $navbar-small-brand-margin-top: -6px;
 $navbar-small-brand-height: 25px;
 
@@ -79,7 +79,7 @@ $post-main-small-avatar-offset-right: 18px;
 $post-main-small-avatar-width: 60px;
 
 // LATEST POSTS
-$post-latest-font-family: $font-sans-serif;
+$post-latest-font-family: $font-serif;
 $post-latest-border-radius: $border-radius;
 $post-latest-title-size: 26px;
 $post-latest-title-weight: normal;
