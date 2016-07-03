@@ -44,30 +44,36 @@ hr {
 }
 
 // A raridade é medida pelo id dela no banco, nao é nada verbal para economizar um join na tabela de raridades só para adicionar uma classe
+.card-list-card{
+    font-size: 18px;
+    font-family: $font-sans-serif;
+    font-weight: normal;
+}
 .card-set{
     font-size: 10px;
     font-style: italic;
-    color: #EEE;
+    color: $title-color;
+    text-transform: uppercase;
     padding-left: 5px;
 }
 .rarity-1, .rarity-2, .rarity-3, .rarity-4, .rarity-5, .rarity-6{
-    background-color: #2c3e50;
-    padding: 3px 6px;
+    // background-color: #2c3e50;
+    // padding: 3px 6px;
 }
 .rarity-1{
-    color: #f1c40f;
+    color: #f39c12;
 }
 .rarity-2{
-    color: #FFF;
+    color: #7f8c8d;
 }
 .rarity-3{
-    color: #f1c40f;
+    color: #2980b9;
 }
 .rarity-4{
-    color: #f1c40f;
+    color: #8e44ad;
 }
 .rarity-5{
-    color: #f1c40f;
+    color: #27ae60;
 }
 .discount-navbar-fixed {
     margin-top: 50px;
@@ -170,7 +176,7 @@ $color: darken(#FFF, 20%);
     margin: 0;
     padding: 0;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: normal;
     color: $title-color;
     text-transform: uppercase;
 }
@@ -399,12 +405,17 @@ a.latest-post-social:hover{
 }
 
 .decks-hero-title > h2 { 
-    font-family: $font-serif;
+    font-family: $font-sans-serif;
     color: #000;
-    font-size: 28px;
+    font-size: 22px;
     padding-bottom: 20px;
 }
 .decks-hero-title:hover {
     color: #000;
     text-decoration: underline;
+}
+
+.content{
+    background-color: #fff;
+    padding: 2p5x;
 }

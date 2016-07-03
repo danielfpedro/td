@@ -10,11 +10,16 @@ use Cake\Datasource\EntityInterface;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+
 use Cake\Validation\Validator;
 use Cake\Utility\Text;
 
+use Cake\Utility\Inflector;
+
 use WideImage\WideImage;
 use Cake\Filesystem\Folder;
+
+use Cake\ORM\TableRegistry;
 
 /**
  * Cards Model
@@ -48,33 +53,102 @@ class CardsTable extends Table
         ]);
         $this->belongsTo('Rarities', [
         ]);
+        $this->belongsTo('CardsRaces', [
+        ]);
+        $this->belongsTo('CardsTypes', [
+        ]);
         $this->belongsToMany('Decks', [
             'through' => 'DecksCards'
         ]);        
     }
 
-    public function beforeSave(Event $event, EntityInterface $entity)
+    private function _createTags($entity)
     {
+        $newTags[] = $entity->name;
+        $newTags[] = 'Carta';
+        if ($entity->tags) {
+            $newTags[] = $entity->tags;
+        }
+        $newTags[] = 'custo ' . $entity->mana_cost;
 
-        $currentValue = $this->find('all', ['conditions' => ['id' => (int)$entity->id]])->first();
-
-        if (!$entity->currentValue || !$currentValue->photo_dir) {
-            $entity->photo_dir = Text::uuid();
+        /**
+         * Só inclui card set se for diferente de básico
+         */
+        if ($entity->cards_set_id != 3) {
+            $cardSet = $this->CardsSets->get($entity->cards_set_id);
+            $newTags[] = $cardSet->name;
         }
 
-        $imagePath = new Folder(WWW_ROOT . 'files' . DS . 'cards' . DS . $entity->photo_dir . DS, true);
+        $cardType = $this->CardsTypes->get($entity->cards_type_id);
+        $newTags[] = $cardType->name;
 
-        if ($entity->photo) {
+        if ($entity->card_race) {
+            $cardRace = $this->CardsRaces->get($entity->cards_race_id);
+            $newTags[] = $cardRace->name;
+        }
 
-            $img = WideImage::load(WWW_ROOT . 'files' . DS . 'images' . DS . $entity->photo);
+        $rarity = $this->Rarities->get($entity->rarity_id);
+        $newTags[] = $rarity->name;
+
+        if ($entity->play_class_id) {
+            $playClass = $this->PlayClasses->get($entity->play_class_id);
+            $newTags[] = 'Carta de Classe';
+            $newTags[] = $playClass->name;
+        }
+
+        if ($entity->tags) {
+            $entity->tags .= ', ';
+        }
+        $entity->tags = implode(',', $newTags);
+
+        return $entity->tags;
+    }
+
+    public function beforeSave(Event $event, EntityInterface $entity)
+    {
+        /**
+         * Só faz isso se estiver adicionando senao iria duplicar as tags em cada edição.
+         */
+        if (!$entity->id) {
+            $entity->tags = $this->_createTags($entity);
+        }
+        
+        if ($entity->photo_file['error'] == 0) {
+            $ext = explode('/', $entity->photo_file['type']);
+            /**
+             * JPG, JPEG vira jpg
+             */
+            $ext = (strtolower($ext[1]) == 'png') ? 'png' : 'jpg';
+            $quality = ($ext == 'png') ? 8 : 80;
+
+            $imagePath = new Folder(WWW_ROOT . 'files' . DS . 'images' . DS, true);
+
+            $img = WideImage::load($entity->photo_file['tmp_name']);
+
+            /**
+             * Coloco o nome da imagem na entity que vou usar no afterSave para salvar a imagem
+             */
+            $entity->image_name = Inflector::slug($entity->name, '-') . '.' . $ext;
 
             $img
-                ->resize(400, 400, 'inside')
-                // ->crop($cropPosition[0], $cropPosition[1], $width, $height)
-                ->saveToFile($imagePath->path . $entity->photo);
+                ->saveToFile($imagePath->path . $entity->image_name, $quality);
         }
     }
 
+    public function afterSave(Event $event, EntityInterface $entity)
+    {
+        if ($entity->photo_file['error'] == 0) {
+            $images = TableRegistry::get('Images');
+            $newImage = $images->newEntity([
+                'alt' => $entity->name,
+                'tags' => $entity->tags,
+                'name' => $entity->image_name,
+                'photo' => ['error' => 4]
+            ]);
+
+            $images->save($newImage);
+        }
+    }
     /**
      * Default validation rules.
      *
@@ -101,12 +175,6 @@ class CardsTable extends Table
         $validator
             ->integer('rarity')
             ->allowEmpty('rarity');
-
-        $validator
-            ->allowEmpty('photo_dir');
-
-        $validator
-            ->allowEmpty('photo');
 
         return $validator;
     }

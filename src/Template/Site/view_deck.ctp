@@ -67,45 +67,6 @@
 					<?= $this->Html->image($post->image_cover_full_path, ['width' => '100%']) ?>	
 				</div>
 			<?php endif ?>
-			
-			<?php if ($post->deck): ?>
-				<div class="row">
-					<?php
-						$cardsGroups = ['Cartas de ' . $post->deck->play_class->name, 'Cartas Neutras'];
-					?>
-					<?php foreach ($cardsGroups as $key => $group): ?>
-						<div class="col-md-6">
-							<table class="table">
-								<thead>
-									<tr>
-										<th class="" colspan="3">
-											<?= $group ?>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($post->deck->cards[$key] as $card): ?>
-										<tr>
-											<td style="width:50px;">
-												<?= $card->mana_cost ?> <?= $this->Html->image('mana_crystal.png', ['width' => 15]) ?>
-											</td>
-											<td>
-												<span class="rarity-<?= $card->rarity_id ?>">
-													<strong><?= $card->name ?></strong>
-													<span class="card-set"><?= $card->cards_set->name ?></span>
-												</span>
-											</td>
-											<td>
-												<?= $card->_joinData->qtd ?>
-											</td>
-										</tr>
-									<?php endforeach ?>
-								</tbody>
-							</table>
-						</div>
-					<?php endforeach ?>
-				</div>
-			<?php endif ?>
 
 			<div class="row box-margin-top">
 				<div class="col-md-11 post-view-body box-padding-right">
@@ -180,44 +141,44 @@ s.setAttribute('data-timestamp', +new Date());
 		</div>
 		<div class="col-md-4">
 			<div class="container-deck-list" data-spy="affix">
-<?php if ($post->deck): ?>
-				<div class="row">
-					<?php
-						$cardsGroups = ['Cartas de ' . $post->deck->play_class->name, 'Cartas Neutras'];
-					?>
-					<?php foreach ($cardsGroups as $key => $group): ?>
-						<div class="col-md-12">
-							<table class="table">
-								<thead>
-									<tr>
-										<th class="" colspan="3">
-											<?= $group ?>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($post->deck->cards[$key] as $card): ?>
+				<?php if ($post->deck): ?>
+					<div class="row">
+						<?php
+							$cardsGroups = ['Cartas de ' . $post->deck->play_class->name, 'Cartas Neutras'];
+						?>
+						<?php foreach ($cardsGroups as $key => $group): ?>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
 										<tr>
-											<td style="width:50px;">
-												<?= $card->mana_cost ?> <?= $this->Html->image('mana_crystal.png', ['width' => 15]) ?>
-											</td>
-											<td>
-												<span class="rarity-<?= $card->rarity_id ?>">
-													<strong><?= $card->name ?></strong>
-													<span class="card-set"><?= $card->cards_set->name ?></span>
-												</span>
-											</td>
-											<td>
-												<?= $card->_joinData->qtd ?>
-											</td>
+											<th class="" colspan="3">
+												<?= $group ?>
+											</th>
 										</tr>
-									<?php endforeach ?>
-								</tbody>
-							</table>
-						</div>
-					<?php endforeach ?>
-				</div>
-			<?php endif ?>
+									</thead>
+									<tbody>
+										<?php foreach ($post->deck->cards[$key] as $card): ?>
+											<tr>
+												<td>
+													<?= $card->_joinData->qtd ?>x&nbsp;
+													<span class="rarity-<?= $card->rarity_id ?>">
+														<span class="card-list-card"><?= $card->name ?></span>
+														<?php if ($card->cards_set->id != 3): ?>
+															<span class="card-set"><?= $card->cards_set->short_name ?></span>	
+														<?php endif ?>
+													</span>
+												</td>
+												<td style="width:50px;">
+													<?= $card->mana_cost ?> <?= $this->Html->image('mana_crystal.png', ['width' => 15]) ?>
+												</td>
+											</tr>
+										<?php endforeach ?>
+									</tbody>
+								</table>
+							</div>
+						<?php endforeach ?>
+					</div>
+				<?php endif ?>
 			</div>
 		</div>
 	</div>

@@ -4,22 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Card Entity.
+ * CardsType Entity.
  *
  * @property int $id
  * @property string $name
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property int $mana_cost
- * @property int $dust_cost
- * @property int $rarity
- * @property int $play_class_id
- * @property \App\Model\Entity\PlayClass $play_class
- * @property string $photo_dir
- * @property string $photo
- * @property \App\Model\Entity\Deck[] $decks
+ * @property \App\Model\Entity\Card[] $cards
  */
-class Card extends Entity
+class CardsType extends Entity
 {
 
     /**
@@ -33,6 +26,6 @@ class Card extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false
+        'id' => false,
     ];
 }

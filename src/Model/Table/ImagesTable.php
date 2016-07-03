@@ -5,7 +5,8 @@ use App\Model\Entity\Image;
 
 use Cake\Event\Event;
 
-use Cake\ORM\EntityInterface;
+use Cake\Datasource\EntityInterface;
+
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -39,26 +40,28 @@ class ImagesTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-
     }
 
     public function beforeSave(Event $event, EntityInterface $entity)
     {
-        $img = WideImage::load($entity->photo['tmp_name']);
-        $dir = new Folder(WWW_ROOT . 'files' . DS . 'images' . DS, true);
 
-        $ext = explode('/', $entity->photo['type']);
-        /**
-         * JPG, JPEG vira jpg
-         */
-        $ext = (strtolower($ext[1]) == 'png') ? 'png' : 'jpg';
-        $quality = ($ext == 'png') ? 8 : 80;
+        if ($entity->photo['error'] == 0) {
+        
+            $img = WideImage::load($entity->photo['tmp_name']);
+            $dir = new Folder(WWW_ROOT . 'files' . DS . 'images' . DS, true);
 
-        $name = Inflector::slug($entity->alt) . '.' . $ext;
-        $entity->name = $name;
+            $ext = explode('/', $entity->photo['type']);
+            /**
+             * JPG, JPEG vira jpg
+             */
+            $ext = (strtolower($ext[1]) == 'png') ? 'png' : 'jpg';
+            $quality = ($ext == 'png') ? 8 : 80;
 
-        $img->saveToFile($dir->path . $name, $quality);
+            $name = Inflector::slug($entity->alt) . '.' . $ext;
+            $entity->name = $name;
+
+            $img->saveToFile($dir->path . $name, $quality);
+        }
     }
 
     /**
@@ -75,7 +78,7 @@ class ImagesTable extends Table
 
         $validator
             ->requirePresence('photo', 'create')
-            ->notEmpty('photo');
+            ->allowEmpty('photo', 'update');
 
         $validator
             ->requirePresence('tags', 'create')

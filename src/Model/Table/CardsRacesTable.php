@@ -1,18 +1,18 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\PlayClass;
+use App\Model\Entity\CardsRace;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * PlayClasses Model
+ * CardsRaces Model
  *
- * @property \Cake\ORM\Association\HasMany $Decks
+ * @property \Cake\ORM\Association\HasMany $Cards
  */
-class PlayClassesTable extends Table
+class CardsRacesTable extends Table
 {
 
     /**
@@ -25,24 +25,14 @@ class PlayClassesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('play_classes');
+        $this->table('cards_races');
         $this->displayField('name');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Decks', [
-            'foreignKey' => 'play_class_id'
-        ]);
-    }
-
-    public function getAll()
-    {
-        return $this->find('all', [
-            'contain' => [
-                'Decks'
-            ],
-           'order' => ['PlayClasses.name' => 'ASC']
+        $this->hasMany('Cards', [
+            'foreignKey' => 'cards_race_id'
         ]);
     }
 
@@ -60,10 +50,6 @@ class PlayClassesTable extends Table
 
         $validator
             ->allowEmpty('name');
-
-        $validator
-            ->requirePresence('slug', 'create')
-            ->notEmpty('slug');
 
         return $validator;
     }

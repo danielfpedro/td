@@ -14,6 +14,7 @@
         <legend><?= __('Add Post') ?></legend>
         <?php
             echo $this->Form->input('title');
+            echo $this->Form->input('deck_title');
             echo $this->Form->input('subtitle');
             echo $this->Form->input('body');
             echo $this->Form->input('is_active');

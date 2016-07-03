@@ -67,8 +67,10 @@ class CardsController extends AppController
         $playClasses = $this->Cards->PlayClasses->find('list', ['limit' => 200]);
         $cardsSets = $this->Cards->CardsSets->find('list', ['limit' => 200]);
         $rarities = $this->Cards->Rarities->find('list', ['limit' => 200]);
+        $cardsTypes = $this->Cards->cardsTypes->find('list', ['limit' => 200]);
+        $cardsRaces = $this->Cards->cardsRaces->find('list', ['limit' => 200]);
 
-        $this->set(compact('card', 'playClasses', 'cardsSets', 'rarities'));
+        $this->set(compact('card', 'playClasses', 'cardsSets', 'rarities', 'cardsTypes', 'cardsRaces'));
         $this->set('_serialize', ['card']);
     }
 
@@ -97,8 +99,10 @@ class CardsController extends AppController
         $playClasses = $this->Cards->PlayClasses->find('list', ['limit' => 200]);
         $cardsSets = $this->Cards->CardsSets->find('list', ['limit' => 200]);
         $rarities = $this->Cards->Rarities->find('list', ['limit' => 200]);
+        $cardsTypes = $this->Cards->cardsTypes->find('list', ['limit' => 200]);
+        $cardsRaces = $this->Cards->cardsRaces->find('list', ['limit' => 200]);
 
-        $this->set(compact('card', 'playClasses', 'cardsSets', 'rarities'));
+        $this->set(compact('card', 'playClasses', 'cardsSets', 'rarities', 'cardsTypes', 'cardsRaces'));
         $this->set('_serialize', ['card']);
     }
 
