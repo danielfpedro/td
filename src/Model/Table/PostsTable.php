@@ -448,6 +448,7 @@ class PostsTable extends Table
         $posts = $this->find('all', [
             'fields' => [
                 'Posts.title',
+                'Posts.deck_title',
                 'Posts.subtitle',
                 'Posts.slug',
                 'Posts.year',

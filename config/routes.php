@@ -50,6 +50,11 @@ Router::scope('/decks', function (RouteBuilder $routes) {
     $routes->connect('/:slug', ['controller' => 'Site', 'action' => 'decksByClass']);
 });
 
+Router::scope('/cartas', function (RouteBuilder $routes) {
+    $routes->extensions(['json']);
+    $routes->connect('/:id', ['controller' => 'Cards', 'action' => 'get']);
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

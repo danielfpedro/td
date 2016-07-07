@@ -2,6 +2,30 @@
 
 <?= $this->Html->script('Site/affix', ['block' => true]) ?>
 
+<?= $this->Html->script('../lib/preview-card/src/jquery.boilerplate.js', ['block' => true]) ?>
+
+
+<?= $this->Html->scriptStart(['block' => true]) ?>
+
+	$( function() {
+		var url = 'http://localhost/td/cartas/{id}.json';
+
+		$("span.rarity-5" ).defaultPluginName({
+			imageSize: 300,
+			endPoint: url,
+			field: 'img',
+			beforeSend: function(){
+
+			}
+		});
+	} );
+
+<?= $this->Html->scriptEnd() ?>
+
+<script>
+</script>
+
+
 <?= $this->cell('Navbar') ?>
 
 <div class="discount-navbar-fixed">

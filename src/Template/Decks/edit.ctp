@@ -23,6 +23,7 @@
     <fieldset>
         <legend><?= __('Edit Deck') ?></legend>
         <?php
+            echo $this->Form->input('name');
             echo $this->Form->input('decks_type_id', ['options' => $decksTypes]);
             echo $this->Form->input('play_class_id', ['options' => $playClasses]);
             echo $this->Form->input('decks_classification_id', ['options' => $decksClassifications]);

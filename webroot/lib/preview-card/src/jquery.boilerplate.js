@@ -86,12 +86,12 @@
 						    url: _this.settings.endPoint.replace('{id}', cardUid),
 						    success: function(data) {
 						        console.log(data);
-						        _this.image = data[0][_this.settings.field];
+						        _this.image = data[_this.settings.field];
 
-						        $this.data('image', data[0][_this.settings.field]);
+						        $this.data('image', data[_this.settings.field]);
 
 						        $('[data-card-uid="'+cardUid+'"]').each(function(){
-						        	$(this).data('image', data[0][_this.settings.field]);
+						        	$(this).data('image', data[_this.settings.field]);
 						        });
 
 						        $('.my-modal-body').html('').css('background-image', 'url("'+_this.image+'")');
@@ -170,7 +170,7 @@
 					    url: this.settings.endPoint.replace('{id}', cardUid),
 					    success: function(data) {
 					        console.log(data);
-					        _this.image = data[0][_this.settings.field];
+					        _this.image = data[_this.settings.field];
 
 							$("<img/>")
 								.css({

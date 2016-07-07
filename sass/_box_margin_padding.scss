@@ -26,8 +26,14 @@
 .box-margin-top {
     margin-top: $box-margin!important;
 }
+.box-margin-top-x-5 {
+    margin-top: ($box-margin * 5)!important;
+}
 .box-margin-top-x-3 {
     margin-top: ($box-margin * 3)!important;
+}
+.box-margin-top-x-2 {
+    margin-top: ($box-margin * 2)!important;
 }
 .box-margin-right {
     margin-right: $box-margin!important;

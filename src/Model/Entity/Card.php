@@ -3,6 +3,9 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
+use Cake\Utility\Inflector;
+use Cake\View\Helper\UrlHelper;
+
 /**
  * Card Entity.
  *
@@ -35,4 +38,13 @@ class Card extends Entity
         '*' => true,
         'id' => false
     ];
+
+    protected $_virtual = [
+        'img'
+    ];
+
+    protected function _getImg()
+    {
+        return UrlHelper::build('/files/images/' . Inflector::slug($this->_properties['name'], '-') . '.png', true);
+    }
 }

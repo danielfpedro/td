@@ -187,6 +187,10 @@ $color: darken(#FFF, 20%);
 .btn-share {
     color: $color-muted!important;
 }
+.content-post{
+    background-color: #fff;
+    padding: 25px;
+}
 .post-view-info {
     // background-color: red;
     @include flexbox();
@@ -211,9 +215,15 @@ $color: darken(#FFF, 20%);
     // margin-left: 5px;
 }
 .post-view-body {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 28px;
     color: lighten(#000, 35%);
+}
+.post-view-body > .text-post > p{
+    margin-bottom: 15px;
+}
+.post-view-body > .text-post > blockquote{
+    margin: 30px 0;
 }
 
 .btn-share-lg > span.fa{
@@ -417,5 +427,5 @@ a.latest-post-social:hover{
 
 .content{
     background-color: #fff;
-    padding: 2p5x;
+    padding: 25px;
 }

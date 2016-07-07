@@ -86,6 +86,7 @@ class SiteController extends AppController
 	public function decksByClass()
 	{
 		$this->loadModel('DecksClassifications');
+		
 		$playClassAndClassifications = $this
 			->DecksClassifications
 			->getByClass($this->request->slug);

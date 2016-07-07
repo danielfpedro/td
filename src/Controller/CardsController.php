@@ -11,6 +11,12 @@ use App\Controller\AppController;
 class CardsController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
     /**
      * Index method
      *
@@ -123,5 +129,23 @@ class CardsController extends AppController
             $this->Flash->error(__('The card could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function get()
+    {
+        $card = $this->Cards->find('all', [
+            'fields' => [
+                'Cards.id',
+                'Cards.name',
+            ],
+            'conditions' => [
+                'Cards.id' => $this->request->id
+            ]
+        ])
+        ->first();
+        echo json_encode($card);
+        exit();
+        $this->set(compact('card'));
+        $this->set('_serialize', ['card']);
     }
 }
