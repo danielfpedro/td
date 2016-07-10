@@ -6,22 +6,23 @@
 
     @include flexbox();
     @include flex-direction(row);
-    @include align-items(center);
+    @include align-items(top);
     @include flex-wrap(no-wrap);
+
+    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 .post-compact-avatar{
-    margin-right: 18px!important;
+    margin-right: 15px!important;
     width: auto;
 }
 .post-compact-avatar > a > img{
     width: $post-compact-avatar-width;
 }
-.post-compact-body > h2 {
-    margin: 0;
-    
-}
-.post-compact-body > a{
+
+.post-compact-body{
+    width: 100%;
 }
 .post-compact-body > a > h2 {
     font-size: $post-compact-title-size;
@@ -31,8 +32,8 @@
     font-family: $post-compact-font-family;
     display: block;
     width: 100%;
-    padding: $post-compact-padding;
-    margin-top: 0;
+    margin: 0;
+    margin-bottom: $box-margin-sm/2;
 }
 .post-compact-body > a > h2:hover {
     text-decoration: underline;
@@ -43,6 +44,12 @@
     font-color: $post-compact-pub-date-color;
     margin-top: $post-compact-pub-date-offset-up;
     display: block;
+}
+.post-compact-category{
+    color: $color-muted;
+    font-family: $font-serif;
+    font-size: 11px;
+    font-weight: normal;
 }
 
 .post-compact-footer {
@@ -82,10 +89,10 @@
     border-bottom: 1px solid $border-color;
 }
 .trends-body > a > h2{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: normal;
     color: #000;
-    font-family: $font-serif;
+    font-family: $font-sans-serif;
 }
 .trends-body > a:hover > h2{
     text-decoration: underline;

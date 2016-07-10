@@ -24,9 +24,14 @@
 }
 .post-latest-category{
     color: $color-muted;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
+    font-family: $font-serif;
+}
+.post-latest-category:hover{
+    color: $color-muted;
+    text-decoration: underline;
 }
 .post-latest-body > a:hover > h2 {
     text-decoration: underline!important;

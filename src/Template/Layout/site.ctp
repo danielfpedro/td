@@ -38,10 +38,6 @@
 
         <?= $this->fetch('content') ?>
 
-        <div class="">
-            <?= $this->element('Site/footer') ?>
-        </div>
-
         <?= $this->Html->script('../lib/jquery/dist/jquery.min') ?>
         <?= $this->Html->script('../lib/bootstrap/dist/js/bootstrap.min') ?>
         
@@ -51,15 +47,17 @@
 
         <script>
             $(function(){
-
+                // AFFIX HOME
                 $('.container-affix-home').css({
                     width: $('.container-affix-home').parent().width()
                 });
 
+                var affixHomeTop = $('.container-topo').height() + 450;
+                var affixHomeBottom = 395;
                 $('.container-affix-home').affix({
                     offset: {
-                        top: $('container-affix-home').height() + $('.container-topo').height() + 420,
-                        bottom: $('.footer').height() + 240
+                        top: affixHomeTop,
+                        bottom: affixHomeBottom 
                     }
                 });
 
@@ -180,7 +178,7 @@
 
                     var currentHtml = $this.html();
                     $this
-                        .html('<span class="fa fa-circle-o-notch fa-spin"></span>')
+                        .html('<span class="fa fa-spinner fa-spin"></span>')
                         .attr('disabled', true);
 
                     window.setTimeout(function(){
@@ -191,7 +189,7 @@
                             
                             if (!code.responseText) {
                                 $this.fadeOut(function(){
-                                    $msg = $('<span/>').text('Todos os posts foram carregados.').css({display: 'none'});
+                                    $msg = $('<em/>').text('Todos os posts foram carregados.').css({display: 'none'});
                                     $legend.append($msg);
                                     $msg.fadeIn();
                                 });

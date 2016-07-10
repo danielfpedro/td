@@ -87,7 +87,7 @@ $post-latest-title-color: $title-color;
 $post-latest-title-line-height: 28px;
 $post-latest-title-offset-up: 10px;
 
-$post-latest-pub-date-size: 12px;
+$post-latest-pub-date-size: 13px;
 $post-latest-pub-date-weight: normal;
 $post-latest-pub-date-color: $color-muted; 
 $post-latest-pub-date-offset-up: 8px;
@@ -100,15 +100,15 @@ $post-latest-action-buttons-color: $color-muted;
 // COMPACT POSTS
 $post-compact-padding: 15px 0;
 $post-compact-font-family: $font-sans-serif;
-$post-compact-title-size: 16px;
-$post-compact-title-line-height: 20px; 
+$post-compact-title-size: 18px;
+$post-compact-title-line-height: 24px; 
 $post-compact-title-weight: normal;
-$post-compact-title-color: $title-color; 
+$post-compact-title-color: #000; 
 $post-compact-title-offset-up: 0;
 
-$post-compact-avatar-width: 60px;
+$post-compact-avatar-width: 90px;
 
-$post-compact-pub-date-size: 12px;
+$post-compact-pub-date-size: 11px;
 $post-compact-pub-date-weight: normal;
 $post-compact-pub-date-color: $color-muted; 
 $post-compact-pub-date-offset-up: 4px;

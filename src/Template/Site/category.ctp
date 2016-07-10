@@ -12,12 +12,14 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<h1 class="title title-with-divider"><?= $tag->name ?></h1>
+			<h1 class="title box-margin-bottom-sm"><?= $tag->name ?></h1>
 
 			<?= $this->element('Site/latests_posts', ['posts' => $posts]) ?>
 
-			<?= $this->Paginator->prev() ?>
-			<?= $this->Paginator->next() ?>
+			<ul class="pagination">
+				<?= $this->Paginator->prev('<span class="fa fa-chevron-left"></span>', ['escape'=> false]) ?>
+				<?= $this->Paginator->next('<span class="fa fa-chevron-right"></span>', ['escape'=> false]) ?>
+			</ul>
 		</div>
 		<div class="col-md-4">
 			<div class="">

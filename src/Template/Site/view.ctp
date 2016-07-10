@@ -12,34 +12,27 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<!-- Capa de vídeo -->
-			<?php if ($post->video_cover): ?>
-				<div>
-					<?= $this->Post->showVideo($post->video_cover, $post->video_cover_provider) ?>
-				</div>
-			<?php endif ?>
-
-			<!-- Capa imagem -->
-			<?php if ($post->has_cover): ?>
-				<div">
-					<?= $this->Html->image($post->image_cover_full_path, ['width' => '100%']) ?>	
-				</div>
-			<?php endif ?>	
 			<div class="content-post">
-
+				<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $post->category->slug] ?>
+				<a href="<?= $this->Url->build($tagUrl) ?>" class="post-view-category">
+					<span class="">
+						<?= $post->category->name ?>
+					</span>
+				</a>
 				<h1 class="post-view-title box-margin-bottom">
 					<?= $post->title ?>
 				</h1>
-				<div class="row post-view-info box-margin-top box-margin-bottom">
-					<div class="col-md-4">
-						<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $post->category->slug] ?>
-						<a href="<?= $this->Url->build($tagUrl) ?>">
-							<span class="">
-								<?= $post->category->name ?>
-							</span>
-						</a>&nbsp;<span class="post-view-pubdate"><?= $post->pub_date_in_words ?></span>
+
+				<div class="row box-margin-bottom-sm">
+					<div class="col-md-12">
+						<span class="post-view-pubdate">
+							<span class="fa fa-clock-o"></span>
+							<?= $post->pub_date_in_words ?>
+						</span>
 					</div>
-					<div class="col-md-8 text-right">
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-left">
 						<a
 							href="<?= $post->facebook_share_url ?>"
 							class="btn btn-primary btn-share-lg"
@@ -55,8 +48,21 @@
 					</div>
 				</div>
 	
+				<!-- Capa de vídeo -->
+				<?php if ($post->video_cover): ?>
+					<div class="post-cover box-margin-top">
+						<?= $this->Post->showVideo($post->video_cover, $post->video_cover_provider) ?>
+					</div>
+				<?php endif ?>
 
-				<div class="row">
+				<!-- Capa imagem -->
+				<?php if ($post->has_cover): ?>
+					<div class="post-cover box-margin-top">
+						<?= $this->Html->image($post->image_cover_full_path, ['width' => '100%']) ?>	
+					</div>
+				<?php endif ?>	
+
+				<div class="row box-margin-top-x-2">
 					<div class="col-md-12 post-view-body">
 						<!-- <?= $this->Text->autoParagraph($post->body) ?>		 -->
 						<?= $this->Post->parseText($post->body) ?>		
@@ -94,8 +100,6 @@
 				<div class="box-margin-top-x-2">
 					<?= $this->cell('ReadMore', ['currentPost' => $post]) ?>
 				</div>
-
-			</div>
 
 				<hr>
 				<h1 class="title box-margin-bottom">Comentários</h1>

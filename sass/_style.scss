@@ -6,7 +6,7 @@ body, a {
     font-family: 'Source Sans Pro', sans-serif!important;
 }
 .container{
-    width: 1100px!important;
+    // width: 1200px!important;
 }
 .btn {
     border: none;
@@ -98,8 +98,17 @@ hr {
     left: 0;
     z-index:-1;
 }
+.bg-overlay-60 {
+    background-color: rgba(0, 0, 0, .6);
+}
+.bg-overlay-50 {
+    background-color: rgba(0, 0, 0, .5);
+}
 .bg-overlay-40 {
     background-color: rgba(0, 0, 0, .4);
+}
+.bg-overlay-30 {
+    background-color: rgba(0, 0, 0, .3);
 }
 .bg-overlay-border-radius {
     @include border-radius($border-radius);
@@ -175,10 +184,11 @@ $color: darken(#FFF, 20%);
 .title {
     margin: 0;
     padding: 0;
-    font-size: 20px;
-    font-weight: normal;
-    color: $title-color;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
     text-transform: uppercase;
+    font-family: $font-serif;
 }
 .title-with-divider{
     padding-bottom: 12px;
@@ -198,18 +208,27 @@ $color: darken(#FFF, 20%);
     @include align-items(center);
 }
 .post-view-title {
-    font-size: 46px;
+    font-size: 48px;
     font-weight: normal;
     line-height: 45px;
-    font-family: $font-serif;
+    font-family: $font-sans-serif;
+    color: #000;
 }
 .post-view-author-profile-picture {
     width: 30px;
     margin-top: -5px;
     padding-right: 5px;
 }
+.post-view-category{
+    color: $color-muted;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: $font-serif;
+}
 .post-view-pubdate {
     color: $color-muted;
+    font-size: 16px;
 }
 .post-view-author{
     // margin-left: 5px;
@@ -232,33 +251,53 @@ $color: darken(#FFF, 20%);
 }
 
 .post-squared {
-    @include border-radius($border-radius);
     background-position: center center;
     background-size: cover;
     position: relative;
     z-index: 1;
+    background-color: lighten(#000, 20%);
+    height: 180px;
 }
+.post-squared-title {
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 22%, rgba(0,0,0,.8) 60%, rgba(0,0,0,.8) 100%);
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 22%,rgba(0,0,0,.8) 60%,rgba(0,0,0,.8) 100%);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 22%,rgba(0,0,0,.8) 60%,rgba(0,0,0,.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 10px;
+    // background-color: rgba(#000, .8);
+}
+
 .post-squared-title > a > h3 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #FFF;
-    padding: 15px;
-    min-height: 100px;
-}
-.post-squared-footer {
-    font-size: 14px;
+    font-size: 24px;
     font-weight: normal;
     color: #FFF;
-    padding: 15px;
+    // padding: 15px;
+    // min-height: 100px;
+    font-family: $font-sans-serif;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 1);
+}
+.post-squared-footer {
+    text-align: right;
+    font-size: 16px;
+    font-weight: normal;
+    color: #FFF;
+    padding: 8px 8px 0 0;;
 }
 .post-squared-footer > a {
     color: #FFF;
     font-weight: bold;
     text-decoration: underline;
 }
-.post-squared-footer-pub-date {
+.post-squared-pub-date {
     font-size: 12px;
-    padding-left: 3px;
+    color: #FFF;
+    font-weight: normal;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 1);
 }
 .post-squared-footer img {
     width: 25px!important;
@@ -335,6 +374,9 @@ $color: darken(#FFF, 20%);
     position: fixed!important;
     top: 60px;
 }
+.affix{
+    position: fixed!important;
+}
 
 .container-affix-home.affix {
     // position: fixed;
@@ -399,11 +441,14 @@ a.latest-post-social:hover{
 .heart{
     color: #e74c3c;
 }
+.load-more-legend{
+    color: $color-muted;
+}
 .btn-latest-posts-load-more{
     text-transform: uppercase;
     font-size: 12px;
     // font-weight: bold;
-    // color: #FFF;
+    color: $color-muted;
     border: 1px solid $border-color!important;
     border: none;
     background-color: #FFF;
@@ -428,4 +473,9 @@ a.latest-post-social:hover{
 .content{
     background-color: #fff;
     padding: 25px;
+}
+
+.post-cover{
+    margin-right: -25px;
+    margin-left: -25px;
 }

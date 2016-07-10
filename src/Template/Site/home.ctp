@@ -1,4 +1,4 @@
-<?php $this->assign('title', 'Guias, Decks e Notícias - ') ?>
+<?php $this->assign('title', 'Guias, Decks e Notícias sobre Hearthstone - ') ?>
 
 <?= $this->cell('Navbar', ['hasBigVersion' => true ]) ?>
 
@@ -15,10 +15,11 @@
 	</div>
 </div>
 
-<div class="container box-margin-top-lg">
+<div class="container box-margin-top-x-2">
 	<div class="row">
 		<div class="col-md-8">
 			<?= $this->cell('LatestsPosts', [15, 1]) ?>
+
 			<div class="lastest-posts-load-more">
 				
 			</div>
@@ -32,17 +33,19 @@
 					class="btn btn-default btn-latest-posts-load-more btn-block"
 					data-url="<?= $this->Url->build(['action' => 'latestPostsLoadMore']) ?>"
 					data-page="2">
-					Carregar Mais
+					<span class="fa fa-ellipsis-h"></span>
 				</button>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="container-affix-home">
-				<div class="text-left">
-					<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhearthstone&width=340&height=214&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+				<div class="text-left box-margin-bottom">
+					<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhearthstone&width=340&height=214&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 				</div>
 				
-				<?= $this->cell('Trends') ?>
+				<div class="trends box-margin-bottom">
+					<?= $this->cell('Trends') ?>	
+				</div>
 
 				<div class="text-center">
 					<img src="http://placehold.it/350x300?text=Ad%20Side Column" width="100%">
@@ -51,9 +54,10 @@
 
 		</div>
 	</div>
-
-	<div class="ad-horizontal-full hidden-xs box-margin-top box-margin-bottom">
-		<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
-	</div>
-
 </div>
+
+<div class="ad-horizontal-full hidden-xs box-margin-top box-margin-bottom">
+	<img src="http://placehold.it/800x90?text=Ad%20Horizontal%20full%20800x900">
+</div>
+
+<?= $this->element('Site/footer') ?>

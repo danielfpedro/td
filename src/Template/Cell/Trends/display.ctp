@@ -1,7 +1,7 @@
-<h4 class="title box-margin-top box-margin-bottom-sm title-with-divider">#Trend posts</h4>
+<h4 class="title box-margin-bottom-sm title-with-divider">#Trend posts</h4>
 
 <?php $i = 1; ?>
-<div class="box-margin-bottom">
+<div class="">
 	<?php foreach ($posts as $post): ?>
 		<div class="trends-container">
 			<div class="trend">	

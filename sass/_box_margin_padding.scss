@@ -41,6 +41,9 @@
 .box-margin-bottom {
     margin-bottom: $box-margin!important;
 }
+.box-margin-bottom-x-2 {
+    margin-bottom: ($box-margin * 2)!important;
+}
 .box-margin-left {
     margin-left: $box-margin!important;
 }
