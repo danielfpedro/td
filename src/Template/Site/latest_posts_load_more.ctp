@@ -1,1 +1,1 @@
-<?= $this->cell('LatestsPosts', [15, $page]) ?>
+<?= $this->cell('LatestsPosts', [20, $page]) ?>

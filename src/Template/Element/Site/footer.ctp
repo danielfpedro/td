@@ -5,28 +5,18 @@
 			<div class="col-md-12 text-center">
 				<ul class="list-inline footer-links">
 					<li>
-						<a href="#">
-							<?= $this->Html->link('Trabalhe conosco', []) ?>
+						<a href="mailto:trabalheconosco@papodetaverna.com.br" target="_blank">
+							Trabalhe Conosco
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<?= $this->Html->link('Imprensa', []) ?>
+						<a href="mailto:imprensa@papodetaverna.com.br" target="_blank">
+							Imprensa
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<?= $this->Html->link('Publicidade', []) ?>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<?= $this->Html->link('Termos de utilização', []) ?>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<?= $this->Html->link('Privacidade', []) ?>
+						<a href="mailto:publicidade@papodetaverna.com.br" target="_blank">
+							Publicidade
 						</a>
 					</li>
 				</ul>	
@@ -57,7 +47,7 @@
 				</ul>
 			</div>
 			<div class="col-md-12 text-center box-margin-top-sm">
-				<?= $this->Html->link('Papo de Taverna', ['controller' => 'Site', 'action' => 'home']) ?> © 2016. Feito com <span class="fa fa-heart heart"></span> por <a href="#">Daniel Pedro</a>.
+				<?= $this->Html->link('Papo de Taverna', ['controller' => 'Site', 'action' => 'home']) ?> © <?= (new Datetime())->format('Y') ?>.
 			</div>
 		</div>
 	</div>

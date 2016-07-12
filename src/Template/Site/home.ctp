@@ -1,5 +1,7 @@
 <?php $this->assign('title', 'Guias, Decks e Notícias sobre Hearthstone - ') ?>
 
+<?= $this->Html->script('Site/latest-load-more', ['block' => true ]) ?>
+
 <?= $this->cell('Navbar', ['hasBigVersion' => true ]) ?>
 
 <div class="container-topo">
@@ -18,7 +20,7 @@
 <div class="container box-margin-top-x-2">
 	<div class="row">
 		<div class="col-md-8">
-			<?= $this->cell('LatestsPosts', [15, 1]) ?>
+			<?= $this->cell('LatestsPosts', [20, 1]) ?>
 
 			<div class="lastest-posts-load-more">
 				

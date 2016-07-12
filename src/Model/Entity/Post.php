@@ -45,9 +45,9 @@ class Post extends Entity
         return [
             'controller' => 'Site',
             'action' => 'view',
-            'year' => $this->_properties['year'],
-            'month' => $this->_properties['month'],
-            'day' => $this->_properties['day'],
+            'year' => $this->_properties['pub_date']->format('Y'),
+            'month' => $this->_properties['pub_date']->format('m'),
+            'day' => $this->_properties['pub_date']->format('d'),
             'slug' => $this->_properties['slug'],
         ];
     }
@@ -76,7 +76,7 @@ class Post extends Entity
     protected function _getTwitterShareUrl()
     {
         $viewUrl = UrlHelper::build($this->_getViewUrl(), true);
-        return "https://twitter.com/home?status=" . $viewUrl;
+        return "https://twitter.com/share?text=" . $this->_properties['title'] . "&url=" . $viewUrl .'&via=TalksDeTaverna';
     }
     protected function _getGooglePlusShareUrl()
     {
@@ -85,8 +85,12 @@ class Post extends Entity
     }
     protected function _getPubDateInWords()
     {
-        $config = ['accuracy' => 'day'];
-        return (new Time($this->_properties['pub_date']))->timeAgoInWords($config);
+        $config = [
+            'accuracy' => ['day' => 'day'],
+            'end' => '+1 month',
+            'format' => 'dd/MMMM/YYY'
+        ];
+        return $this->_properties['pub_date']->timeAgoInWords($config);
     }
     protected function _getTagUrlString()
     {

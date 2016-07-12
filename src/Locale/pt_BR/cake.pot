@@ -71,133 +71,133 @@ msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:80
 msgid "{0} from now"
-msgstr "{0} de agora"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:80
 msgid "{0} ago"
-msgstr "{0} atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:82
 msgid "{0} after"
-msgstr "{0} depois"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:82
 msgid "{0} before"
-msgstr "{0} antes"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:113
 msgid "just now"
-msgstr "agora"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:150
 msgid "about a second ago"
-msgstr "um segundo atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:151
 msgid "about a minute ago"
-msgstr "um minuto atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:152
 msgid "about an hour ago"
-msgstr "uma hora atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:153;328
 msgid "about a day ago"
-msgstr "um dia atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:154;329
 msgid "about a week ago"
-msgstr "um semana atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:155;330
 msgid "about a month ago"
-msgstr "um mês atrás"
+msgstr "há um mês atrás"
 
 #: I18n/RelativeTimeFormatter.php:156;331
 msgid "about a year ago"
-msgstr "um ano atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:166
 msgid "in about a second"
-msgstr "há um segundo"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:167
 msgid "in about a minute"
-msgstr "há um minuto"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:168
 msgid "in about an hour"
-msgstr "há um hora"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:169;341
 msgid "in about a day"
-msgstr "há um dia"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:170;342
 msgid "in about a week"
-msgstr "há uma semana"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:171;343
 msgid "in about a month"
-msgstr "há um mês"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:172;344
 msgid "in about a year"
-msgstr "há um ano"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:300
 msgid "today"
-msgstr "hoje"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:364
 msgid "%s ago"
-msgstr "%s atrás"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:365
-msgid "on %s"
-msgstr "em %s"
+msgid "em %s"
+msgstr ""
 
 #: I18n/RelativeTimeFormatter.php:47;125;312
 msgid "{0} year"
 msgid_plural "{0} years"
-msgstr[0] "{0} ano"
-msgstr[1] "{0} anos"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:51;128;315
 msgid "{0} month"
 msgid_plural "{0} months"
-msgstr[0] "{0} mês"
-msgstr[1] "{0} meses"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:57;131;318
 msgid "{0} week"
 msgid_plural "{0} weeks"
-msgstr[0] "{0} semana"
-msgstr[1] "{0} semanas"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:59;134;321
 msgid "{0} day"
 msgid_plural "{0} days"
-msgstr[0] "{0} dia"
-msgstr[1] "{0} dias"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:64;137
 msgid "{0} hour"
 msgid_plural "{0} hours"
-msgstr[0] "{0} hora"
-msgstr[1] "{0} horas"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:68;140
 msgid "{0} minute"
 msgid_plural "{0} minutes"
-msgstr[0] "{0} minuto"
-msgstr[1] "{0} minutos"
+msgstr[0] ""
+msgstr[1] ""
 
 #: I18n/RelativeTimeFormatter.php:72;143
 msgid "{0} second"
 msgid_plural "{0} seconds"
-msgstr[0] "{0} segundo"
-msgstr[1] "{0} segundos"
+msgstr[0] ""
+msgstr[1] ""
 
 #: Network/Response.php:1417
 msgid "The requested file was not found"
@@ -249,49 +249,49 @@ msgstr ""
 
 #: View/Widget/DateTimeWidget.php:530
 msgid "January"
-msgstr "Janeiro"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:531
 msgid "February"
-msgstr "Fevereiro"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:532
 msgid "March"
-msgstr "Março"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:533
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:534
 msgid "May"
-msgstr "Maio"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:535
 msgid "June"
-msgstr "Junho"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:536
 msgid "July"
-msgstr "Julho"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:537
 msgid "August"
-msgstr "Agosto"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:538
 msgid "September"
-msgstr "Setembro"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:539
 msgid "October"
-msgstr "Outubro"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:540
 msgid "November"
-msgstr "Novembro"
+msgstr ""
 
 #: View/Widget/DateTimeWidget.php:541
 msgid "December"
-msgstr "Dezembro"
+msgstr ""
 

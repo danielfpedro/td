@@ -14,7 +14,7 @@
 					</span>
 				</div>
 				<div class="trends-body">
-					<?= $this->Html->link('<h2>'.$post['title'].'</h2>', [], ['escape' => false]) ?>
+					<?= $this->Html->link('<h2>'.$post->title.'</h2>', $post->view_url, ['escape' => false]) ?>
 				</div>
 			</div>
 		</div>

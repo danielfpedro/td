@@ -11,6 +11,13 @@ use App\Controller\AppController;
 class PostsController extends AppController
 {
 
+    public function setTrends()
+    {
+        $this->Posts->setTrends(7, 10);
+        echo 'Montado';
+        $this->autoRender = false;
+    }
+
     /**
      * Index method
      *

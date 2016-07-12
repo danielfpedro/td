@@ -165,58 +165,5 @@
 
 </script>
 
-
-
-        <script>
-            $(function(){
-
-                $('.btn-latest-posts-load-more').click(function(){
-                    var $this = $(this);
-                    var page = $this.data('page');
-                    var url = $this.data('url');
-                    var $legend = $('.load-more-legend');
-
-                    var currentHtml = $this.html();
-                    $this
-                        .html('<span class="fa fa-spinner fa-spin"></span>')
-                        .attr('disabled', true);
-
-                    window.setTimeout(function(){
-                        $loadMore = $('<div/>');
-                        $loadMore.load(url, {page: page}, function(data, xhr, code){
-                            $this.data('page', (page + 1));
-                            $('.lastest-posts-load-more').append($(this));
-                            
-                            if (!code.responseText) {
-                                $this.fadeOut(function(){
-                                    $msg = $('<em/>').text('Todos os posts foram carregados.').css({display: 'none'});
-                                    $legend.append($msg);
-                                    $msg.fadeIn();
-                                });
-                            } else {
-                                $this.html(currentHtml).attr('disabled', false);
-                            }
-                        });
-                    });
-                });
-            });
-        </script>
-        <script>
-            $( function() {
-                var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards';
-                var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/EX1_570';
-
-                // $("a#element" ).defaultPluginName({
-                //     imageSize: 500,
-                //     endPoint: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/{id}?locale=ptBR',
-                //     field: 'img',
-                //     beforeSend: function(request) {
-                //         var key = "MsGzaHtBCPmsh23JKgh4K8FNMl2Ap1uXfoyjsnOxBYFvYuhW49";
-                //         request.setRequestHeader("X-Mashape-Key", key);
-                //     }
-                // });
-            } );
-        </script>
-
     </body>
 </html>

@@ -24,8 +24,8 @@
 }
 .post-latest-category{
     color: $color-muted;
-    font-weight: bold;
-    font-size: 12px;
+    font-weight: normal;
+    font-size: 10px;
     text-transform: uppercase;
     font-family: $font-serif;
 }
@@ -48,7 +48,7 @@
 }
 .post-call-subtitle {
     color: $color-muted;
-    font-size: 15px;
+    font-size: $post-latest-subtitle-size;
 }
 
 .post-latest-footer {

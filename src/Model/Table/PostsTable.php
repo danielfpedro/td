@@ -122,35 +122,39 @@ class PostsTable extends Table
         $imagePath = WWW_ROOT . 'files' . DS . 'images' . DS;
 
         if ($entity->thumb_image) {
-            $cropPosition = explode(',', $entity->thumb_image_crop_position);
+            if (file_exists($imagePath . $entity->thumb_image)) {
+                $cropPosition = explode(',', $entity->thumb_image_crop_position);
 
-            $img = WideImage::load($imagePath . $entity->thumb_image);
+                $img = WideImage::load($imagePath . $entity->thumb_image);
 
-            $img
-                ->resize(400, 400, 'outside')
-                ->crop($cropPosition[0], $cropPosition[1], 400, 400)
-                ->saveToFile($imagePath . 'square_' . $entity->thumb_image);
+                $img
+                    ->resize(400, 400, 'outside')
+                    ->crop($cropPosition[0], $cropPosition[1], 400, 400)
+                    ->saveToFile($imagePath . 'square_' . $entity->thumb_image);
+            }
         }
 
         if ($entity->cover_image) {
-            $cropPosition = explode(',', $entity->cover_image_crop_position);
+            if (file_exists($imagePath . $entity->cover_image)) {
+                $cropPosition = explode(',', $entity->cover_image_crop_position);
 
-            $img = WideImage::load($imagePath . $entity->cover_image);
+                $img = WideImage::load($imagePath . $entity->cover_image);
 
-            $maxWith = 1000;
+                $maxWith = 1000;
 
-            $width = $img->getWidth();
+                $width = $img->getWidth();
 
-            if ($width > $maxWith) {
-                $width = $maxWith;
+                if ($width > $maxWith) {
+                    $width = $maxWith;
+                }
+
+                $height = $width / 2;
+
+                $img
+                    ->resize($width, $height, 'outside')
+                    ->crop($cropPosition[0], $cropPosition[1], $width, $height)
+                    ->saveToFile($imagePath . 'cover_' . $entity->cover_image);
             }
-
-            $height = $width / 2;
-
-            $img
-                ->resize($width, $height, 'outside')
-                ->crop($cropPosition[0], $cropPosition[1], $width, $height)
-                ->saveToFile($imagePath . 'cover_' . $entity->cover_image);
         }
     }
 
@@ -213,21 +217,16 @@ class PostsTable extends Table
         ]);
     }
 
-    /**
-     * @param  int $limit Quantidade de posts
-     * @param  int $daysAgo Quanto tempo atrás serão selecionados os trends 
-     * @return obj Posts
-     */
-    public function getTrends($limit, $daysAgo)
+    public function setTrends($daysAgo = 7, $limit)
     {
         $now = Time::now();
 
-        $trend = $this->Trends->find();
+        $trends = $this->Trends->find();
 
-        $trend
+        $trends
             ->select([
                 'post_id',
-                'total' => $trend->func()->count('post_id')
+                'total' => $trends->func()->count('post_id')
             ])
             ->where([
                 'created >=' => $now->subDays($daysAgo)
@@ -236,37 +235,40 @@ class PostsTable extends Table
             ->order(['total' => 'DESC'])
             ->limit($limit);
 
-        $ids = [];
-        $postsQtd = [];
-        foreach ($trend as $value) {
-            $ids[] = $value['post_id'];
-            $postsQtd[$value['post_id']]['total'] = $value['total'];
+        $i = 1;
+        foreach ($trends as $value) {
+            $entity = $this->get($value['post_id']);
+            $entity->trends_cache = $i;
+
+            $this->save($entity);
+
+            $i++;
         }
+    }
 
-        $conditions = [];
-
-        if ($ids) {
-            $conditions['id IN'] = $ids;
-        }
-
+    /**
+     * @param  int $limit Quantidade de posts
+     * @param  int $daysAgo Quanto tempo atrás serão selecionados os trends 
+     * @return obj Posts
+     */
+    public function getTrends($limit, $daysAgo)
+    {
         $posts = $this->find('all', [
             'fields' => [
-                'id',
-                'title',
-                'slug',
-                'year',
-                'month',
-                'day'
+                'Posts.id',
+                'Posts.title',
+                'Posts.slug',
+                'Posts.pub_date',
             ],
-            'conditions' => $conditions
+            'conditions' => [
+                'Posts.is_active' => true
+            ],
+            'order' => [
+                'Posts.trends_cache'
+            ]
         ]);
 
-        $new = $posts->map(function($post) use ($postsQtd){
-            $post->total = (isset($postsQtd[$post->id]['total'])) ? $postsQtd[$post->id]['total'] : 0;
-            return $post;
-        });
-
-        return $new->sortBy('total');
+        return $posts;
     }
 
     public function getForView($slug)
@@ -413,28 +415,25 @@ class PostsTable extends Table
         ];
     }
 
-    public function getLatestsPosts($limit = 15, $page)
+    public function getLatestsPosts($limit = 20, $page)
     {
         $page = (!$page) ? 0 : $page;
         $page = ($page - 1) * $limit;
 
         return $this->find('all', [
             'fields' => [
-                'title',
-                'subtitle',
-                'slug',
-                'pub_date',
-                'year',
-                'month',
-                'day',
-                'thumb_image',
+                'Posts.title',
+                'Posts.subtitle',
+                'Posts.slug',
+                'Posts.pub_date',
+                'Posts.thumb_image',
             ],
             'conditions' => [
                 'Posts.is_active' => true,
             ],
             'contain' => [
                 'Categories' => function($q){
-                    return $q->select(['name', 'slug']);
+                    return $q->select(['Categories.name', 'Categories.slug']);
                 },
             ],
             'order' => ['pub_date' => 'DESC'],
@@ -448,12 +447,8 @@ class PostsTable extends Table
         $posts = $this->find('all', [
             'fields' => [
                 'Posts.title',
-                'Posts.deck_title',
-                'Posts.subtitle',
                 'Posts.slug',
-                'Posts.year',
-                'Posts.month',
-                'Posts.day',
+                'Posts.pub_date',
                 'Posts.cover_image',
             ],
             'conditions' => [

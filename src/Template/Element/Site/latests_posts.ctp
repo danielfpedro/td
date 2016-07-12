@@ -6,8 +6,7 @@
 		<div class="row">
 			<div class="col-md-4 post-latest-avatar">
 				<?= $this->Html->image($post->full_img_square_path, [
-					'url' => $post->view_url,
-					'alt' => $post->thumb_image
+					'url' => $post->view_url
 				]) ?>
 			</div>
 			<div class="col-md-8">
@@ -26,7 +25,7 @@
 							<?= $post->subtitle ?>
 						</p>
 						<span class="pub-date">
-							<?= $post->pub_date_in_words ?>
+							<span class="fa fa-clock-o"></span>&nbsp;<?= $post->pub_date_in_words ?>
 						</span>	
 					</div>
 					<div class="post-latest-footer text-right">
