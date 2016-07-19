@@ -13,12 +13,10 @@ body, a {
     @include border-radius(0);
 }
 a {
-    color: $main-color;
-    font-weight: bold;
-	text-decoration: none;
+    color: #e74c3c;
 }
 a:hover {
-    color: $main-color;
+    /*color: #e74c3c;*/
     text-decoration: none;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -149,16 +147,12 @@ $color: darken(#FFF, 20%);
     text-transform: uppercase;
  //    font-weight: normal;
  //    text-decoration: none;
-    @include border-radius(0);
+    // @include border-radius(0);
 }
 .label-default, .label-default:hover {
     background-color: $main-color!important;
     background-color: #e74c3c!important;
     color: #FFF;
-}
-.label-default:hover {
-    // background-color: darken($main-color, 10%)!important;
-    text-decoration: underline!important;
 }
 .label-light, .label-light:hover {
     background-color: darken(#FFF, 10%);
@@ -226,9 +220,13 @@ $color: darken(#FFF, 20%);
     text-transform: uppercase;
     font-family: $font-serif;
 }
+.post-view-category:hover{
+    color: $color-muted;
+    text-decoration: underline;
+}
 .post-view-pubdate {
     color: $color-muted;
-    font-size: 16px;
+    font-size: 14px;
 }
 .post-view-author{
     // margin-left: 5px;
@@ -240,6 +238,7 @@ $color: darken(#FFF, 20%);
 }
 .post-view-body > .text-post > p{
     margin-bottom: 15px;
+    color: #555;
 }
 .post-view-body > .text-post > blockquote{
     margin: 30px 0;
@@ -482,6 +481,19 @@ a.latest-post-social:hover{
 }
 
 .post-cover{
-    margin-right: -25px;
-    margin-left: -25px;
+    // margin-right: -25px;
+    // margin-left: -25px;
+}
+
+.label-pdt{
+    background-color: $main-color;
+    text-weight: normal;
+}
+a > .label-pdt{
+    color: #FFF!important;
+}
+a > .label-pdt:hover{
+    background-color: darken($main-color, 10%);
+}
+a:hover > span.label-pdt{
 }

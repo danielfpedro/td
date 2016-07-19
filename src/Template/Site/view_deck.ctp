@@ -185,3 +185,5 @@
 		</div>
 	</div>
 </div>
+
+<?= $this->element('Site/footer') ?>

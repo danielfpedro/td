@@ -53,7 +53,7 @@ class SiteController extends AppController
 		$this->loadModel('Posts');
 		$this->loadModel('Trends');
 		
-		$post = $this->Posts->getForView($this->request['slug']);
+		$post = $this->Posts->getForView($this->request);
 
 		$trend = $this->Trends->newEntity();
 		$trend->post_id = $post->id;

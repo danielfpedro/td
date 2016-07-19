@@ -12,13 +12,14 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\I18n\Time;
+use Cake\I18n\Date;
+
 
 use Cake\Utility\Inflector;
 
 use Cake\Collection\Collection;
 
 use WideImage\WideImage;
-
 /**
  * Posts Model
  *
@@ -173,15 +174,13 @@ class PostsTable extends Table
                 'Posts.slug',
                 'Posts.pub_date',
                 'Posts.thumb_image',
-                'Posts.day',
-                'Posts.month',
-                'Posts.year',
+                'Posts.pub_date',
                 'Posts.cover_image'
             ],
             'conditions' => $conditions,
             'contain' => [
-                'Authors' => function($q){
-                    return $q->select(['Authors.id', 'Authors.name']);
+                'Categories' => function($q){
+                    return $q->select(['id', 'name', 'slug']);
                 }
             ],
             'order' => 'rand()',
@@ -197,20 +196,11 @@ class PostsTable extends Table
                 'Posts.title',
                 'Posts.slug',
                 'Posts.pub_date',
-                'Posts.day',
-                'Posts.month',
-                'Posts.year',
                 'Posts.cover_image'
             ],
             'conditions' => [
                 'Posts.is_active' => true,
                 'Posts.id !=' => $currentPost->id,
-                ''
-            ],
-            'contain' => [
-                'Authors' => function($q){
-                    return $q->select(['Authors.id', 'Authors.name']);
-                }
             ],
             'order' => 'rand()',
             'limit' => $limit
@@ -271,9 +261,14 @@ class PostsTable extends Table
         return $posts;
     }
 
-    public function getForView($slug)
+    public function getForView($request)
     {
-        $post = $this->find('all', [
+        $date = new \DateTime($request['year'] . '-' . $request['month'] . '-' . $request['day']);
+
+        $posts = $this->find('all', [
+            'typeMap' => [
+                'defaults' => ['pub_date' => 'date']
+            ],
             'fields' => [
                 'Posts.id',
                 'Posts.title',
@@ -285,15 +280,11 @@ class PostsTable extends Table
                 'Posts.has_cover',
                 'Posts.pub_date',
                 'Posts.cover_image',
-                'Posts.year',
-                'Posts.month',
-                'Posts.day',
                 'Posts.tags_string',
                 'Posts.deck_id',
             ],
             'conditions' => [
                 'Posts.is_active' => true,
-                'Posts.slug' => $slug
             ],
             'contain' => [
                 'Categories' => function($q){
@@ -302,12 +293,21 @@ class PostsTable extends Table
                 'Authors' => function($q){
                     return $q->select(['id', 'name']);
                 },
-                'Decks' => function($q){
-                    return $q->select(['id']);
-                },
             ],
-        ])
-        ->first();
+        ]);
+
+        $post = [];
+
+        foreach ($posts as $value) {
+            if ($value->slug == $request['slug']) {
+                $post = $value;
+                break;
+            }
+        }
+
+        if (!$post) {
+            return $post;
+        }
 
         $post->deck = null;
 
@@ -347,7 +347,7 @@ class PostsTable extends Table
         return $post;
     }
 
-    public function getByCategory($category, $limit = 15)
+    public function getByCategory($category, $limit = 20)
     {
         /**
          * Troca os espaços vazios por %, técnica basica no LIKE
@@ -360,9 +360,6 @@ class PostsTable extends Table
                 'Posts.subtitle',
                 'Posts.slug',
                 'Posts.pub_date',
-                'Posts.year',
-                'Posts.month',
-                'Posts.day',
                 'Posts.thumb_image',
             ],
             'conditions' => [
@@ -379,7 +376,7 @@ class PostsTable extends Table
         ];
     }
 
-    public function getSearch($query, $limit = 15)
+    public function getSearch($query, $limit = 20)
     {
         /**
          * Não importa o quanto ele escreve eu só levo em conta os 18 primeiros characters
@@ -396,9 +393,6 @@ class PostsTable extends Table
                 'Posts.subtitle',
                 'Posts.slug',
                 'Posts.pub_date',
-                'Posts.year',
-                'Posts.month',
-                'Posts.day',
                 'Posts.thumb_image',
             ],
             'conditions' => [

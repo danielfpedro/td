@@ -23,15 +23,20 @@
 						value="<?= h($this->request->query('q')) ?>"
 						placeholder="<?= __("Pesquisar") ?>">
 				</div>
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-primary">
 					Pesquisar
 				</button>
 			</form>
 
 			<?= $this->element('Site/latests_posts', ['posts' => $posts]) ?>
 
-			<?= $this->Paginator->prev() ?>
-			<?= $this->Paginator->next() ?>
+			<br>
+
+			<ul class="pagination">
+				<?= $this->Paginator->prev('<span class="fa fa-chevron-left"></span>', ['escape'=> false]) ?>
+				<?= $this->Paginator->next('<span class="fa fa-chevron-right"></span>', ['escape'=> false]) ?>
+			</ul>
+
 		</div>
 		<div class="col-md-4">
 			<div class="">

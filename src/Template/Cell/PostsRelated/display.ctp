@@ -8,9 +8,11 @@
 			<?= $this->Html->image($post->full_img_square_path, ['class' => '', 'url' => $post->view_url]) ?>
 		</div>
 		<div class="post-compact-body">
-			<a href="#" class="post-compact-category">
-				Notícia
-			</a>
+			<?= $this->Html->link($post->category->name, [
+				'controller' => 'Site',
+				'action' => 'category',
+				'slug' => $post->category->slug
+			]) ?>
 			<?= $this->Html->link('<h2>' . $post->title . '</h2>', $post->view_url, [
 				'escape' => false,
 				'class' => ''

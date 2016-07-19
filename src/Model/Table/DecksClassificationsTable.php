@@ -44,7 +44,9 @@ class DecksClassificationsTable extends Table
             ->find('all', [
                 'fields' => [
                     'PlayClasses.id',
-                    'PlayClasses.name'
+                    'PlayClasses.name',
+                    'PlayClasses.slug',
+                    'PlayClasses.bio',
                 ],
                 'conditions' => [
                 'PlayClasses.slug' => $classSlug

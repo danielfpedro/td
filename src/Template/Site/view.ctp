@@ -72,10 +72,11 @@
 				<div class="row box-margin-top-x-2">
 					<div class="col-md-12">
 						Tópicos:
+						<br>
 						<?php foreach ($post->tagsArray as $tag): ?>
 							<?php $tagUrl = ['controller' => 'Site', 'action' => 'category', 'slug' => $tag['slug']] ?>
 							<a href="<?= $this->Url->build($tagUrl) ?>">
-								<span class="label label-light label-sm"><?= $tag['name'] ?></span>
+								<span class="label label-pdt"><?= $tag['name'] ?></span>
 							</a>&nbsp;								
 						<?php endforeach ?>
 					</div>
@@ -139,3 +140,5 @@
 		</div>
 	</div>
 </div>
+
+<?= $this->element('Site/footer') ?>

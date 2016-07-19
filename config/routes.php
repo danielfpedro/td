@@ -42,8 +42,17 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 
+
+Router::addUrlFilter(function ($params, $request) {
+    if (isset($request->query['page']) && isset($request->params['slug']) && !isset($params['slug'])) {
+        $params['slug'] = $request->params['slug'];
+    }
+    return $params;
+});
+
+
 Router::scope('/categoria', function (RouteBuilder $routes) {
-    $routes->connect('/:slug', ['controller' => 'Site', 'action' => 'category']);
+    $routes->connect('/:slug/', ['controller' => 'Site', 'action' => 'category']);
 });
 Router::scope('/decks', function (RouteBuilder $routes) {
     $routes->connect('/classes', ['controller' => 'Site', 'action' => 'decks']);
