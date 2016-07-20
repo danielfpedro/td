@@ -106,6 +106,7 @@ class CardsTable extends Table
 
     public function beforeSave(Event $event, EntityInterface $entity)
     {
+        return;
         /**
          * Só faz isso se estiver adicionando senao iria duplicar as tags em cada edição.
          */
@@ -113,7 +114,7 @@ class CardsTable extends Table
             $entity->tags = $this->_createTags($entity);
         }
         
-        if ($entity->photo_file['error'] == 0) {
+        if ($entity->photo_file || $entity->photo_file['error'] == 0) {
             $ext = explode('/', $entity->photo_file['type']);
             /**
              * JPG, JPEG vira jpg

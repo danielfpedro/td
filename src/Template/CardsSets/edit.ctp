@@ -20,6 +20,8 @@
             echo $this->Form->input('name');
             echo $this->Form->input('short_name');
             echo $this->Form->input('slug');
+            echo $this->Form->input('ordem');
+            echo $this->Form->input('nickname');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

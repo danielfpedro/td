@@ -25,8 +25,16 @@
             <td><?= h($cardsSet->slug) ?></td>
         </tr>
         <tr>
+            <th><?= __('Nickname') ?></th>
+            <td><?= h($cardsSet->nickname) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($cardsSet->id) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Ordem') ?></th>
+            <td><?= $this->Number->format($cardsSet->ordem) ?></td>
         </tr>
         <tr>
             <th><?= __('Created') ?></th>
@@ -48,12 +56,20 @@
                 <th><?= __('Modified') ?></th>
                 <th><?= __('Mana Cost') ?></th>
                 <th><?= __('Dust Cost') ?></th>
-                <th><?= __('Rarity') ?></th>
                 <th><?= __('Play Class Id') ?></th>
                 <th><?= __('Photo Dir') ?></th>
                 <th><?= __('Photo') ?></th>
                 <th><?= __('Locale') ?></th>
                 <th><?= __('Cards Set Id') ?></th>
+                <th><?= __('Rarity Id') ?></th>
+                <th><?= __('Tags') ?></th>
+                <th><?= __('Cards Type Id') ?></th>
+                <th><?= __('Cards Race Id') ?></th>
+                <th><?= __('Text') ?></th>
+                <th><?= __('Flavor') ?></th>
+                <th><?= __('Game Id') ?></th>
+                <th><?= __('Attack') ?></th>
+                <th><?= __('Health') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($cardsSet->cards as $cards): ?>
@@ -64,12 +80,20 @@
                 <td><?= h($cards->modified) ?></td>
                 <td><?= h($cards->mana_cost) ?></td>
                 <td><?= h($cards->dust_cost) ?></td>
-                <td><?= h($cards->rarity) ?></td>
                 <td><?= h($cards->play_class_id) ?></td>
                 <td><?= h($cards->photo_dir) ?></td>
                 <td><?= h($cards->photo) ?></td>
                 <td><?= h($cards->locale) ?></td>
                 <td><?= h($cards->cards_set_id) ?></td>
+                <td><?= h($cards->rarity_id) ?></td>
+                <td><?= h($cards->tags) ?></td>
+                <td><?= h($cards->cards_type_id) ?></td>
+                <td><?= h($cards->cards_race_id) ?></td>
+                <td><?= h($cards->text) ?></td>
+                <td><?= h($cards->flavor) ?></td>
+                <td><?= h($cards->game_id) ?></td>
+                <td><?= h($cards->attack) ?></td>
+                <td><?= h($cards->health) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Cards', 'action' => 'view', $cards->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Cards', 'action' => 'edit', $cards->id]) ?>

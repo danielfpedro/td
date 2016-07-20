@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+
+use GuzzleHttp\Client;
+use Cake\Utility\Text;
 
 /**
  * Cards Controller
@@ -15,6 +19,182 @@ class CardsController extends AppController
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
+    }
+
+    public function suckFromApi()
+    {
+        $client = new Client(['base_uri' => 'http://hearthstonelabs.com/v1/cardDB/ptBR/']);
+        $response = $client->request('GET');
+        $content = json_decode($response->getBody()->getContents());
+
+        $cards = [];
+        $already = [];
+
+        foreach ($content as $key => $card) {
+
+            $cards[$key]['game_uid'] = $card->gameId;
+            $cards[$key]['locale'] = $card->language;
+            $cards[$key]['name'] = $card->title;
+            $cards[$key]['text'] = $card->text;
+            $cards[$key]['flavor'] = $card->flavor;
+            $cards[$key]['mana_cost'] = $card->cost;
+            $cards[$key]['attack'] = $card->attack;
+            $cards[$key]['health'] = $card->health;
+
+            $cards[$key]['cards_set_id'] = $this->_getCardSetId($card->set);
+            $cards[$key]['rarity_id'] = $this->_getCardRarityId($card->rarity);
+            $cards[$key]['cards_type_id'] = $this->_getCardTypeId($card->type);
+            $cards[$key]['play_class_id'] = $this->_getCardPlayClassId($card->playerClass);
+            $cards[$key]['cards_race_id'] = $this->_getCardRaceId($card->race);
+
+            /**
+             * Se for algum set bizarro do tipo taverna, cheat ou algo do tipo eu passo a bola para o Romário.
+             */
+            if (!$cards[$key]['cards_set_id']) {
+                continue;
+            }
+
+            // if ($card->race) {
+            //     if (!in_array($card->race, $already)) {
+            //         debug($card->race);
+            //         $already[] = $card->race;
+            //     }
+            // }
+            
+            $checkCard = $this->Cards->find('all', [
+                'conditions' => [
+                    'game_uid' => $card->gameId,
+                    'locale' => $card->language
+                ]
+            ])
+            ->first();
+
+            if ($checkCard) {
+                $entity = $this->Cards->get($checkCard->id);
+                $entity = $this->Cards->patchEntity($entity, $cards[$key]);
+            } else {
+                $entity = $this->Cards->newEntity($cards[$key]);
+            }
+            /**
+             * Adiciona UUID caso ainda não tenha,
+             * serve para salvar a pasta das imagens e evitar que alguem cave e sugue tudo.
+             */
+            if (!$entity->uuid) {
+                $entity->uuid = Text::uuid();
+            }
+
+            // debug($cards[$key]);
+            // exit();
+            
+            // debug($entity);
+
+            if (!$this->Cards->save($entity)) {
+                echo 'Ocoreu um erro ao tentar salvar';
+                debug($entity);
+            }
+
+            // if (count($cards) >= 5) {
+            //     break;
+            // }
+
+            // debug($cards[$key]['rarity_id']);
+        }
+        debug($cards);
+        //debug($content);
+
+        $this->autoRender = false;
+    }
+
+    private function _getCardRaceId($data)
+    {
+        $values = [
+            'murloc',
+            'mechanical',
+            'pirate',
+            'beast',
+            'demon',
+            'dragon',
+            'totem',
+        ];
+        foreach ($values as $key => $value) {
+            if (strtolower($data) == $value) {
+                return ($key + 1);
+            }
+        }
+        return null;
+    }
+
+    private function _getCardPlayClassId($data)
+    {
+        $values = [
+            'priest',
+            'hunter',
+            'shaman',
+            'rogue',
+            'paladin',
+            'warlock',
+            'druid',
+            'warrior',
+            'mage',
+        ];
+        foreach ($values as $key => $value) {
+            if (strtolower($data) == $value) {
+                return ($key + 1);
+            }
+        }
+        return null;
+    }
+
+    private function _getCardTypeId($data)
+    {
+        $values = [
+            'weapon',
+            'spell',
+            'minion',
+        ];
+        foreach ($values as $key => $value) {
+            if (strtolower($data) == $value) {
+                return ($key + 1);
+            }
+        }
+        return null;
+    }
+
+    private function _getCardRarityId($data)
+    {
+        $values = [
+            'legendary',
+            'common',
+            'rare',
+            'epic',
+            'free',
+        ];
+        foreach ($values as $key => $value) {
+            if (strtolower($data) == $value) {
+                return ($key + 1);
+            }
+        }
+        return null;
+    }
+
+    private function _getCardSetId($data)
+    {
+        $values = [
+            'og',
+            'loe',
+            'core',
+            'brm',
+            'gvg',
+            'tgt',
+            'expert1',
+            'naxx'
+        ];
+        foreach ($values as $key => $value) {
+            if (strtolower($data) == $value) {
+                return ($key + 1);
+            }
+        }
+        return null;
     }
 
     /**

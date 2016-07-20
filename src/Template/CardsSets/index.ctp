@@ -17,6 +17,8 @@
                 <th><?= $this->Paginator->sort('modified') ?></th>
                 <th><?= $this->Paginator->sort('short_name') ?></th>
                 <th><?= $this->Paginator->sort('slug') ?></th>
+                <th><?= $this->Paginator->sort('ordem') ?></th>
+                <th><?= $this->Paginator->sort('nickname') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,6 +31,8 @@
                 <td><?= h($cardsSet->modified) ?></td>
                 <td><?= h($cardsSet->short_name) ?></td>
                 <td><?= h($cardsSet->slug) ?></td>
+                <td><?= $this->Number->format($cardsSet->ordem) ?></td>
+                <td><?= h($cardsSet->nickname) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $cardsSet->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cardsSet->id]) ?>
