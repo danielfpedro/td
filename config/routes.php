@@ -61,7 +61,8 @@ Router::scope('/decks', function (RouteBuilder $routes) {
 
 Router::scope('/cartas', function (RouteBuilder $routes) {
     $routes->extensions(['json']);
-    $routes->connect('/:id', ['controller' => 'Cards', 'action' => 'get']);
+    $routes->connect('/card-preview/:id', ['controller' => 'Cards', 'action' => 'cardPreview']);
+    $routes->connect('/autocomplete', ['controller' => 'Cards', 'action' => 'autocomplete']);
 });
 
 Router::scope('/', function (RouteBuilder $routes) {

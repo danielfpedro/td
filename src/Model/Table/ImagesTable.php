@@ -45,7 +45,7 @@ class ImagesTable extends Table
     public function beforeSave(Event $event, EntityInterface $entity)
     {
 
-        if ($entity->photo['error'] == 0) {
+        if (isset($entity->photo) && $entity->photo['error'] == 0) {
         
             $img = WideImage::load($entity->photo['tmp_name']);
             $dir = new Folder(WWW_ROOT . 'files' . DS . 'images' . DS, true);

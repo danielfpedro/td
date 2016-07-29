@@ -6,6 +6,12 @@ use App\Controller\AppController;
 
 use GuzzleHttp\Client;
 use Cake\Utility\Text;
+use Cake\Utility\Inflector;
+
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
+
+use WideImage\WideImage;
 
 /**
  * Cards Controller
@@ -19,6 +25,85 @@ class CardsController extends AppController
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
+    }
+
+    public function suckForImg()
+    {
+        $cards = $this->Cards->find('all', [
+            'contain' => [
+                'Rarities',
+                'CardsRaces',
+                'CardsSets',
+                'CardsTypes'
+            ]
+        ]);
+
+        $this->viewBuilder()->layout('json');
+
+        $url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/';
+        $key = 'MsGzaHtBCPmsh23JKgh4K8FNMl2Ap1uXfoyjsnOxBYFvYuhW49';
+
+        $client = new Client(['base_uri' => $url]);
+
+        foreach ($cards as $key => $card) {
+            /**
+             * Pego o nome da pasta do card, se não ouver eu crio
+             */
+            if (!$card->photo_dir) {
+                $card->photo_dir = Text::uuid();
+            }
+
+            $dir = new Folder(WWW_ROOT . DS . 'files' . DS . 'images' . DS . 'cards' . DS . $card->photo_dir, true);
+            $dirImages = new Folder(WWW_ROOT . DS . 'files' . DS . 'images', true);
+
+            $this->Cards->save($card);
+
+            $response = $client->request('GET', $card->game_uid, [
+                'query' => ['locale' => 'ptBR'],
+                'verify' => false,
+                'headers' => ['X-Mashape-Key' => 'MsGzaHtBCPmsh23JKgh4K8FNMl2Ap1uXfoyjsnOxBYFvYuhW49']
+            ]);
+            $content = json_decode($response->getBody()->getContents());        
+
+            $img = WideImage::load($content[0]->img);
+            $img->saveToFile($dir->path . DS . strtolower(Inflector::slug($card->name)) . '.png', 9);
+
+            $img->saveToFile($dirImages->path . DS . Inflector::slug($card->name) . '.png', 9);
+
+            $tags = [
+                'Carta',
+                'Custo ' . $card->mana_cost,
+                $card->rarity->name,
+                $card->cards_set->name,
+                $card->cards_type->name,
+            ];
+
+            if ($card->cards_race) {
+                $tags[] = $card->cards_race->name;
+            }
+
+            $this->loadModel('Images');
+
+            $image = $this->Images->find('all', [
+                'conditions' => [
+                    'game_uid' => $card->game_uid
+                ]
+            ])
+            ->first();
+
+            if (!$image) {
+                $image = $this->Images->newEntity();
+            }
+
+            $image->name = Inflector::slug($card->name);
+            $image->alt = $card->name;
+            $image->tags = implode($tags, ',');
+            $image->game_uid = $card->game_uid;
+
+            $this->Images->save($image);
+        }
+
+        $this->autoRender = false;
     }
 
     public function suckFromApi()
@@ -311,21 +396,39 @@ class CardsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function get()
+    public function cardPreview()
     {
         $card = $this->Cards->find('all', [
             'fields' => [
                 'Cards.id',
-                'Cards.name',
+                'Cards.name'
             ],
             'conditions' => [
-                'Cards.id' => $this->request->id
+                'Cards.id' => (int)$this->request->id
             ]
         ])
         ->first();
-        echo json_encode($card);
-        exit();
+
         $this->set(compact('card'));
         $this->set('_serialize', ['card']);
     }
+
+    public function autocomplete()
+    {
+        $conditions = [];
+        if ($this->request->query('term')) {
+            $q = str_replace(' ', '%', $this->request->query('term'));
+            $conditions[] = ['Cards.name LIKE' => '%'.$q.'%'];
+        }
+
+        $cards = $this->Cards->find('all', [
+            'fields' => ['Cards.id', 'Cards.name'],
+            'conditions' => $conditions,
+            'limit' => 10
+        ]);
+
+        $this->set(compact('cards'));
+        $this->set('_serialize', ['cards']);
+    }
+
 }
