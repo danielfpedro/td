@@ -40,11 +40,15 @@ class Card extends Entity
     ];
 
     protected $_virtual = [
-        'img'
+        'img',
+        'label',
     ];
 
+    protected function _getLabel() {
+        return $this->_properties['name'];
+    }
     protected function _getImg()
     {
-        return UrlHelper::build('/files/images/' . Inflector::slug($this->_properties['name'], '-') . '.png', true);
+        return UrlHelper::build('/files/images/cards/'.$this->_properties['photo_dir'].'/' . strtolower(Inflector::slug($this->_properties['name'], '-')) . '.png', true);
     }
 }

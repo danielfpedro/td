@@ -1,14 +1,90 @@
 <?= $this->assign('title', $post->title .' - ') ?>
 
+<style type="text/css">
+			.my-hs-popover{
+				background-position: center center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				position: absolute;
+				background-color: #DDD;
+				display: none;
+			}
+			.custom-modal .modal-content{
+				background: none!important;
+			}
+			.custom-modal .modal-content{
+				background: none!important;
+			}
+			.custom-modal .modal-body {
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+				position: relative;
+				overflow: hidden;
+			}
+			.overlay {
+				position: fixed;
+				top: 0;
+				left: 0
+				right: 0;
+				bottom: 0;
+				width: 100%;
+				background-color: rgba(0, 0, 0, .8);
+				/*background-color: pink;*/
+				z-index: 99999;
+				display: none;
+				padding: 20px;
+			}
+			.my-modal-body {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background-size: contain;
+				background-position: center center;
+				background-repeat: no-repeat;
+				/*background-color: red;*/
+			}
+			.my-modal-body-loading {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 42px;
+				height: 42px;
+				margin-left: -21px;
+				margin-top: -21px;
+			}
+			.my-modal-close {
+				clear: both;
+				z-index: 3;
+				position: fixed;
+				top: 0;
+				right: 0;
+				border: none;
+				background: none;
+				float: right;
+				font-weight: bold;
+				font-size: 30px;
+				background-color: #c0392b;
+				color: #FFF;
+				margin: 0;
+				padding: 0!important;
+/*			    cursor: pointer;
+			    display: flex;
+			    flex-wrap: wrap-reverse;*/
+/*			    align-content: center;
+			    align-items: center;*/
+
+			}
+</style>
+
 <?= $this->Html->script('Site/affix', ['block' => true]) ?>
 
 <?= $this->Html->script('../lib/preview-card/src/jquery.boilerplate.js', ['block' => true]) ?>
 
-
 <?= $this->Html->scriptStart(['block' => true]) ?>
 
 	$( function() {
-		var url = 'http://localhost/td/cartas/{id}.json';
+		var url = 'http://localhost/td/cartas/card-preview/{id}.json';
 
 		$("span.rarity-5" ).defaultPluginName({
 			imageSize: 300,
@@ -25,6 +101,11 @@
 <script>
 </script>
 
+	<div class="overlay">
+		<span class="my-modal-close">&times;</span>
+		<div class="my-modal-body">
+		</div>
+	</div>
 
 <?= $this->cell('Navbar') ?>
 

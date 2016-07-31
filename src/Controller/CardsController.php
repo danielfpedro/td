@@ -401,7 +401,8 @@ class CardsController extends AppController
         $card = $this->Cards->find('all', [
             'fields' => [
                 'Cards.id',
-                'Cards.name'
+                'Cards.name',
+                'Cards.photo_dir'
             ],
             'conditions' => [
                 'Cards.id' => (int)$this->request->id
@@ -422,7 +423,7 @@ class CardsController extends AppController
         }
 
         $cards = $this->Cards->find('all', [
-            'fields' => ['Cards.id', 'Cards.name'],
+            'fields' => ['Cards.id', 'Cards.name', 'Cards.photo_dir', 'Cards.mana_cost', 'Cards.play_class_id'],
             'conditions' => $conditions,
             'limit' => 10
         ]);

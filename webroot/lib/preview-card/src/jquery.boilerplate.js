@@ -18,6 +18,10 @@
 			defaults = {
 				xsBreakpoint: 768,
 				imageSize: 300,
+				height: 300,
+				width: 240,
+				modalFadeSpeed: 200,
+				popoverFadeSpeed: 100,
 				loadingText: "Carregando...",
 				rarityColors: {
 					rare: "blue",
@@ -31,7 +35,7 @@
 			};
 
 		// The actual plugin constructor
-		function Plugin ( element, options ) {
+		function Plugin (element, options) {
 			this.element = element;
 
 			// jQuery has an extend method which merges the contents of two or
@@ -42,8 +46,6 @@
 			this._defaults = defaults;
 			this._name = pluginName;
 
-			this.ratio = .7;
-
 			this.init();
 
 		}
@@ -53,7 +55,7 @@
 			init: function() {
 				
 				this.popoverOpened = false;
-				this.img = '';
+				this.img = "";
 
 				// Place initialization logic here
 				// You already have access to the DOM element and
@@ -62,94 +64,278 @@
 				// you can add more functions like the one below and
 				// call them like the example below
 				var _this = this;
-				this.popoverOptions = {
-					"trigger": "hover",
-					html: true,
-					content: "<div class=\"loader-container\"><div class=\"loader\"></div></div>",
-					placement: "top",
-					template: '<div class="popover custom-popover" role="tooltip"><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-				};
+				// $(this.element).popover(this.popoverOptions);
 
-				$(this.element).popover(this.popoverOptions);
-
-				$(this.element).click(function(){
+				$(this.element).mouseenter(function(){
 					var $this = $(this);
 					var cardUid = $this.data("card-uid");
-					$(this).popover("hide");
 
-					_this.openModal();
-					if (!$this.data('image')) {
-						$('.my-modal-body').css('background-image', 'none').html('<div class="my-modal-body-loading">Carregando</div>');
+					_this.showPopover();
+
+					if (!_this.checkPopoverCreated($(_this.element))) {
+						$(_this.element).append('Carregando...');
 						$.ajax({
 						    beforeSend: _this.settings.beforeSend,
 						    dataType: "json",
 						    url: _this.settings.endPoint.replace('{id}', cardUid),
 						    success: function(data) {
-						        console.log(data);
-						        _this.image = data[_this.settings.field];
+						    	var image = data.card[_this.settings.field];
+						        _this.image = data.card[_this.settings.field];
 
-						        $this.data('image', data[_this.settings.field]);
+						        $this.data('image', image);
 
 						        $('[data-card-uid="'+cardUid+'"]').each(function(){
-						        	$(this).data('image', data[_this.settings.field]);
+						        	$(this).data('image', image);
 						        });
 
-						        $('.my-modal-body').html('').css('background-image', 'url("'+_this.image+'")');
+						        _this.showPopover();
+
+						        // $('.my-modal-body').html('').css('background-image', 'url("'+_this.image+'")');
 						    },
 						});
 					} else {
-						$('.my-modal-body').html('').css('background-image', 'url("'+$this.data('image')+'")');
+						_this.showPopover();
+					}
+				});
+				$(this.element).mouseleave(function(){
+					_this.hidePopover();
+				});
+				$(this.element).blur(function(){
+					_this.hidePopover();
+				});
+
+				$(this.element).click(function(){
+					var $this = $(this);
+					$this.blur();
+
+					// if (_this.getWhereToDisplay() !== "modal") {
+					// 	return;
+					// }
+
+					var cardUid = $this.data("card-uid");
+
+					_this.openModal();
+					// var wWidth = $(window).width();
+					// var wHeight = $(window).height();
+					// if ($) {}
+					if (!$this.data("image")) {
+						var $loader = $("<img/>")
+							.attr("src", "/td/lib/preview-card/src/loader.gif")
+							.addClass("my-modal-body-loading");
+
+						$(".my-modal-body")
+							.css("background-image", "none")
+							.html("")
+							.append($loader);
+
+						// $close.show().addClass("animated bounceInDown");
+
+						$.ajax({
+						    beforeSend: _this.settings.beforeSend,
+						    dataType: "json",
+						    url: _this.settings.endPoint.replace("{id}", cardUid),
+						    success: function(data) {
+						        _this.image = data.card[_this.settings.field];
+
+						        $this.data("image", data.card[_this.settings.field]);
+
+						        $("[data-card-uid=\""+cardUid+"\"]").each(function(){
+						        	$(this).data("image", data.card[_this.settings.field]);
+						        });
+								$(".my-modal-loading").fadeOut(_this.settings.modalFadeSpeed);
+						        $(".my-modal-body").hide().html("").css("background-image", "url("+_this.image+")").show().addClass('animated bounceInDown');
+						    },
+						});
+					} else {
+						$(".my-modal-body").html("").css("background-image", "url("+$this.data("image")+")").show().addClass("animated bounceInDown");
 					}
 					return false;
 				});
 
-				$(document).on('click', '.my-modal-close', function(){
+				$(document).on('click', ".my-modal-close", function(){
 					_this.closeModal();
 				});
 
-				$('.overlay').click(function(){
+				$(".overlay").click(function(){
 					_this.closeModal();
 				});
 
-				this.togglePopoverBasedMediaQuery();
+				// this.togglePopoverBasedMediaQuery();
+				$('.overlay').css({
+					width: $(window).width(),
+					height: $(window).height(),
+				});
 				$(window).resize(function(){
-					_this.togglePopoverBasedMediaQuery();
+					$('.overlay').css({
+						width: $(window).width(),
+						height: $(window).height(),
+					});
 				});
 
-				this.setElementInitialSettings();
-				this.setRarityColor();
+				// this.setElementInitialSettings();
+				// this.setRarityColor();
 			},
-			togglePopoverBasedMediaQuery: function(){
-				var _this = this;
-				var documentWidth = $(window).width();
-				if (documentWidth <= this.settings.xsBreakpoint) {
-					$(this.element).popover('destroy');
-				} else {
-					/**
-					 * Importantissimo este destroy para noa acumular quando faz o resize
-					 */
-					$(this.element).popover('destroy');
-					$(this.element).popover(this.popoverOptions);
-
-					$(this.element).on("shown.bs.popover", function () {
-						// console.log("On show");
-						$(_this.element).addClass('popover-opened');
-						_this.setContent($(this));
+			getPopoverElement: function(image){
+				var $element = $("<div/>");
+				$element
+					.addClass("my-hs-popover")
+					.css({
+						// "background-image": "url("+image+")",
+						height: this.settings.height,
+						width: this.settings.width
 					});
-					$(this.element).on("hidden.bs.popover", function () {
-						// console.log("On show");
-						$(_this.element).removeClass('popover-opened');
-						_this.setContent($(this));
+
+				if (image) {
+					$element
+						.css({"background-image": "url("+image+")"});
+				}
+
+				return $element;
+			},
+			checkPopoverCreated: function($element){
+				var created = $element.data("popover-created");
+				return !(typeof created === "undefined" || !created);
+			},
+			createPopover: function($element, image){
+				image = (typeof image === "undefined") ? null : image;
+
+				if (!this.checkPopoverCreated($element)) {
+					var $popover = this.getPopoverElement(image);
+					$element.after($popover);
+					$element.data("popover-created", true);
+				}
+			},
+			getPopover: function(){
+				return $(this.element).next(".my-hs-popover");
+			},
+			showPopover: function(){
+				/**
+				 * O showpopover é chamado sempre que acontecer um mouse over porem o metodo abaixo é inteligente
+				 * o suficiente para criar o popover somente se ele ainda nao foi criado.
+				 */
+				this.createPopover($(this.element));
+				var $popover = this.getPopover();
+				/**
+				 * Diferente do createpopover que só vai criar o popover se ele ainda nao foi criado, a posição do popover tem que recalculada toda a vez que o popover 
+				 * for ser exibido
+				 */
+				var whereToDisplay = this.getWhereToDisplay();
+
+				if (whereToDisplay !== "modal") {
+					this.positionPopover($popover, whereToDisplay);
+					$popover.fadeIn(this.settings.popoverFadeSpeed);
+
+					var imageName = $(this.element).data("image");
+					if (typeof imageName === "undefined") {		
+						
+						$popover.html("Carregando...");
+						var _this = this;
+						var $this = $(this.element);
+						var cardUid = $this.data("card-uid");
+
+						$.ajax({
+						    beforeSend: _this.settings.beforeSend,
+						    dataType: "json",
+						    url: _this.settings.endPoint.replace("{id}", cardUid),
+						    success: function(data) {
+						    	var image = data.card[_this.settings.field];
+						        _this.image = data.card[_this.settings.field];
+
+						        $popover.html("");
+						        $this.data("image", image);
+
+						        $("[data-card-uid=\""+cardUid+"\"]").each(function(){
+						        	$(this)
+						        		.data({
+						        			"image": image
+						        		});
+						        	_this.createPopover($(this), image);
+						        });
+
+						        $popover.css({
+						        	"background-image": "url("+image+")"
+						        });
+
+						        // $('.my-modal-body').html('').css('background-image', 'url("'+_this.image+'")');
+						    },
+						});
+					}
+				}
+			},
+			hidePopover: function(){
+				var $popover = $(this.element).next(".my-hs-popover");
+				$popover.fadeOut(this.settings.popoverFadeSpeed);
+			},
+			getWhereToDisplay: function(){
+				var distanceTop = this.getDistanceFromTop($(this.element));
+				var distanceBottom = this.getDistanceFromBottom($(this.element));
+
+				var whereToDisplay = "modal";
+				var wWidth = $(window).width();
+
+				// var $elementHeight = $(this.element).height();
+
+				if (distanceTop > this.settings.height && wWidth > this.settings.width) {
+					whereToDisplay = "top";
+				} else if (distanceBottom > this.settings.height && wWidth > this.settings.width) {
+					whereToDisplay = "bottom";
+				}
+				console.log("Display in", whereToDisplay);
+				return whereToDisplay;
+			},
+			positionPopover: function($popover, whereToDisplay){
+				console.log("Posicionando em ", whereToDisplay);
+				var rightDistance = $(window).width() - $(this.element).offset().left;
+
+				$popover.css({
+					left: $(this.element).offset().left,
+					"margin-left": 0
+				});
+
+				if (rightDistance < this.settings.width) {
+					$popover.css({
+						'margin-left': -(this.settings.width - rightDistance)
 					});
 				}
+
+				switch (whereToDisplay) {
+					case 'top':
+						$popover.css({
+							'margin-top': -(this.settings.height + $(this.element).height()),
+						});
+						break;
+					case 'bottom':
+						$popover.css({
+							'margin-top': 0,
+						});
+						break;
+				}
+				return whereToDisplay;
+				console.log('Distancia para o topo', distanceTop);
+				console.log('Distancia para o bottom', distanceBottom);
+			},
+			getDistanceFromTop: function($element){
+				var scrollTop     = $(window).scrollTop(),
+					elementOffset = $element.offset().top,
+					distance      = (elementOffset - scrollTop);
+
+				return distance;
+			},
+			getDistanceFromBottom: function($element){
+				var wHeight     = $(window).height();
+				var distanceTop = this.getDistanceFromTop($element);
+				console.log($element.height());
+
+				return wHeight - distanceTop - $element.height();
 			},
 			closeModal: function(){
 				this.modalOpened = false;
-				$('.overlay').fadeOut('fast');
+				$(".my-modal-body").removeClass("animated bounceInDown");
+				$(".overlay").fadeOut(this.settings.modalFadeSpeed);
 			},
 			openModal: function() {
 				this.modalOpened = true;
-				$('.overlay').fadeIn('fast');
+				$(".overlay").fadeIn(this.settings.modalFadeSpeed);
 			},
 			setElementInitialSettings: function() {
 				$(this.element)
@@ -170,7 +356,7 @@
 					    url: this.settings.endPoint.replace('{id}', cardUid),
 					    success: function(data) {
 					        console.log(data);
-					        _this.image = data[_this.settings.field];
+					        _this.image = data.card[_this.settings.field];
 
 							$("<img/>")
 								.css({

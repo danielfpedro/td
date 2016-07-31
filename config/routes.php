@@ -42,6 +42,12 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 
+Router::prefix('admin', function ($routes) {
+    // Because you are in the admin scope,
+    // you do not need to include the /admin prefix
+    // or the admin route element.
+    $routes->fallbacks('DashedRoute');
+});
 
 Router::addUrlFilter(function ($params, $request) {
     if (isset($request->query['page']) && isset($request->params['slug']) && !isset($params['slug'])) {
@@ -73,8 +79,6 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Site', 'action' => 'home']);
 
-    $routes->connect('/:year/:month/:day/:slug', ['controller' => 'Site', 'action' => 'view']);
-
     $routes->connect('/pesquisa', ['controller' => 'Site', 'action' => 'search']);
 
     /**
@@ -98,7 +102,10 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+    $routes->connect('/:year/:month/:day/:slug', ['controller' => 'Site', 'action' => 'view']);
     $routes->fallbacks('DashedRoute');
+
+    
 });
 
 /**
