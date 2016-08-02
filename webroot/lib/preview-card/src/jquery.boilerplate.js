@@ -67,35 +67,29 @@
 				// $(this.element).popover(this.popoverOptions);
 
 				$(this.element).mouseenter(function(){
-					var $this = $(this);
-					var cardUid = $this.data("card-uid");
+					// var $this = $(this);
+					// var cardUid = $this.data("card-uid");
 
 					_this.showPopover();
 
-					if (!_this.checkPopoverCreated($(_this.element))) {
-						$(_this.element).append('Carregando...');
-						$.ajax({
-						    beforeSend: _this.settings.beforeSend,
-						    dataType: "json",
-						    url: _this.settings.endPoint.replace('{id}', cardUid),
-						    success: function(data) {
-						    	var image = data.card[_this.settings.field];
-						        _this.image = data.card[_this.settings.field];
+					// if (!_this.checkPopoverCreated($(_this.element))) {
+					// 	$(_this.element).append('Carregando...');
+					// 	$.ajax({
+					// 	    beforeSend: _this.settings.beforeSend,
+					// 	    dataType: "json",
+					// 	    url: _this.settings.endPoint.replace('{id}', cardUid),
+					// 	    success: function(data) {
+					// 	    	var image = data.card[_this.settings.field];
+					// 	        _this.image = data.card[_this.settings.field];
 
-						        $this.data('image', image);
+					// 	        $this.data('image', image);
 
-						        $('[data-card-uid="'+cardUid+'"]').each(function(){
-						        	$(this).data('image', image);
-						        });
-
-						        _this.showPopover();
-
-						        // $('.my-modal-body').html('').css('background-image', 'url("'+_this.image+'")');
-						    },
-						});
-					} else {
-						_this.showPopover();
-					}
+					// 	        $('[data-card-uid="'+cardUid+'"]').each(function(){
+					// 	        	$(this).data('image', image);
+					// 	        });
+					// 	    },
+					// 	});
+					// }
 				});
 				$(this.element).mouseleave(function(){
 					_this.hidePopover();
@@ -176,13 +170,13 @@
 				// this.setRarityColor();
 			},
 			getPopoverElement: function(image){
-				var $element = $("<div/>");
-				$element
+				console.log('Here');
+				var $element = $("<div/>")
 					.addClass("my-hs-popover")
 					.css({
 						// "background-image": "url("+image+")",
-						height: this.settings.height,
-						width: this.settings.width
+						height: this.settings.height + 'px',
+						width: this.settings.width + 'px'
 					});
 
 				if (image) {
@@ -223,7 +217,8 @@
 
 				if (whereToDisplay !== "modal") {
 					this.positionPopover($popover, whereToDisplay);
-					$popover.fadeIn(this.settings.popoverFadeSpeed);
+					console.log('Mostrando o popover');
+					$popover.stop().fadeIn(this.settings.popoverFadeSpeed);
 
 					var imageName = $(this.element).data("image");
 					if (typeof imageName === "undefined") {		
@@ -255,8 +250,6 @@
 						        $popover.css({
 						        	"background-image": "url("+image+")"
 						        });
-
-						        // $('.my-modal-body').html('').css('background-image', 'url("'+_this.image+'")');
 						    },
 						});
 					}
@@ -278,6 +271,8 @@
 				if (distanceTop > this.settings.height && wWidth > this.settings.width) {
 					whereToDisplay = "top";
 				} else if (distanceBottom > this.settings.height && wWidth > this.settings.width) {
+					whereToDisplay = "bottom";
+				} else {
 					whereToDisplay = "bottom";
 				}
 				console.log("Display in", whereToDisplay);

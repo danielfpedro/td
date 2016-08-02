@@ -6,8 +6,9 @@
 				background-size: contain;
 				background-repeat: no-repeat;
 				position: absolute;
-				background-color: #DDD;
+				/*background-color: #DDD;*/
 				display: none;
+				z-index: 999;
 			}
 			.custom-modal .modal-content{
 				background: none!important;
@@ -79,33 +80,14 @@
 
 <?= $this->Html->script('Site/affix', ['block' => true]) ?>
 
-<?= $this->Html->script('../lib/preview-card/src/jquery.boilerplate.js', ['block' => true]) ?>
+<?= $this->Html->script('Site/card-preview.js', ['block' => true]) ?>
 
-<?= $this->Html->scriptStart(['block' => true]) ?>
 
-	$( function() {
-		var url = 'http://localhost/td/cartas/card-preview/{id}.json';
-
-		$("span.rarity-5" ).defaultPluginName({
-			imageSize: 300,
-			endPoint: url,
-			field: 'img',
-			beforeSend: function(){
-
-			}
-		});
-	} );
-
-<?= $this->Html->scriptEnd() ?>
-
-<script>
-</script>
-
-	<div class="overlay">
-		<span class="my-modal-close">&times;</span>
-		<div class="my-modal-body">
-		</div>
+<div class="overlay">
+	<span class="my-modal-close">&times;</span>
+	<div class="my-modal-body">
 	</div>
+</div>
 
 <?= $this->cell('Navbar') ?>
 
@@ -244,15 +226,21 @@
 											<tr>
 												<td>
 													<?= $card->_joinData->qtd ?>x&nbsp;
-													<span class="rarity-<?= $card->rarity_id ?>">
-														<span class="card-list-card"><?= $card->name ?></span>
+													<span
+														class="card rarity-<?= $card->rarity_id ?>"
+														data-card-uid="<?= $card->id ?>">
+														<span class="card-list-card">
+															<?= $card->name ?>
+														</span>
 														<?php if ($card->cards_set->id != 3): ?>
 															<span class="card-set"><?= $card->cards_set->short_name ?></span>	
 														<?php endif ?>
 													</span>
 												</td>
 												<td style="width:50px;">
-													<?= $card->mana_cost ?> <?= $this->Html->image('mana_crystal.png', ['width' => 15]) ?>
+													<?= $card->mana_cost ?> <?= $this->Html->image('mana_crystal.png', [
+														'width' => 15
+													]) ?>
 												</td>
 											</tr>
 										<?php endforeach ?>

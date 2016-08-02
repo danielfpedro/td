@@ -27,6 +27,8 @@
         <?= $this->Html->css('style.min') ?>
         <?= $this->fetch('css') ?>
 
+        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -44,6 +46,8 @@
         <?= $this->Html->script('../lib/anchor-js/anchor.min') ?>
 
         <?= $this->fetch('script') ?>
+
+        <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
 
         <script>
             $(function(){
